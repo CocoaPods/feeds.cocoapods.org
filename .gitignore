@@ -1,3 +1,4 @@
 .rvmrc
 .env
+public/*.rss
 tmp/*

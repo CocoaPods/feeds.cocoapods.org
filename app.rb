@@ -23,7 +23,7 @@ class CocoapodFeed < Sinatra::Application
 
   def self.update_feed
     repo = Repo.new
-    #repo.update
+    repo.update
 
     feed = Rss.new(repo.pods, repo.creation_dates).feed
     feed_file = './public/new-pods.rss'

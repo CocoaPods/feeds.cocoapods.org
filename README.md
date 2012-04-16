@@ -1,6 +1,6 @@
 This application creates and RSS feed containing the last 30 pods added to [CocoaPods/specs](https://github.com/CocoaPods/specs) and during each update it tweets about the new pods.
 
-# App
+#### Application
 
 - Sinatra application
 - requires git
@@ -18,13 +18,14 @@ $ foreman start
 #### Events
 
 - Initialization:
-    - the [CocoaPods/specs](https://github.com/CocoaPods/specs) repo is cloned in `tmp/.cocoapods/master`
-    - the `public/new-pods.rss` is created
-- GitHub callback:
-    - the `public/new-pods.rss` is created
+    - the specs repo is cloned in `tmp/.cocoapods/master`
+    - `public/new-pods.rss` is created
+- GitHub push hook:
+    - the specs repo is updated
+    - `public/new-pods.rss` is updated
     - tweets for the new pods
 
-#### Implementation Notes
+#### Notes
 
 - The most challenging part is to get git to show when a file has been added to the master branch of the repo. Some branches are not merged for a long time and those pod should not appear in the feed. However when the branch is eventually merged the pod should have the date of the merge and not the date of the original commit.
     - Apparently is not possible to extract this information from git for all the pods in one shot and needs to be done per each pod.

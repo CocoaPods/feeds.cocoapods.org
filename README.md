@@ -1,31 +1,33 @@
-This application creates and RSS feed containing the last 30 pods added to [CocoaPods/specs](https://github.com/CocoaPods/specs) and during each update it tweets about the new pods.
+This Sinatra creates a RSS feed containing the last 30 pods added to [CocoaPods/specs](https://github.com/CocoaPods/specs) and during each update it tweets about the new pods.
 
-#### Application
+## Application
 
-- Sinatra application
-- requires git
-- available at http://feeds.cocoapods.org/
-- based on [cococapods.org](https://github.com/CocoaPods/CocoaPods.org)
+- Running on Ruby 1.9.2/3.
+- Sinatra application.
+- Requires a host caplable of running git.
+- Available at http://feeds.cocoapods.org [Not working yet].
+- Based on [cococapods.org](https://github.com/CocoaPods/CocoaPods.org).
 
-#### Setup
+## Setup
 
 ```shell
-$ edit .env
+$ cp .env.sample .env
+$ vim .env
 $ bundle install
 $ foreman start
 ```
 
-#### Events
+## Events
 
 - Initialization:
-    - the specs repo is cloned in `tmp/.cocoapods/master`
-    - `public/new-pods.rss` is created
+    1. the specs repo is cloned or updated in `tmp/.cocoapods/master`.
+    2. the new pods feed is created in `public/new-pods.rss`.
 - GitHub push hook:
-    - the specs repo is updated
-    - `public/new-pods.rss` is updated
-    - tweets for the new pods
+    1. the specs repo is updated.
+    2. the feed is recreated.
+    3. tweets for the new pods.
 
-#### Notes
+## Notes
 
 - The most challenging part is to get git to show when a file has been added to the master branch of the repo. Some branches are not merged for a long time and those pod should not appear in the feed. However when the branch is eventually merged the pod should have the date of the merge and not the date of the original commit.
     - Apparently is not possible to extract this information from git for all the pods in one shot and needs to be done per each pod.

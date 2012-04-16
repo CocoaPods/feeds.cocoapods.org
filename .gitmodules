@@ -1,0 +1,9 @@
+[submodule "vendor/CocoaPods"]
+	path = vendor/CocoaPods
+	url = git://github.com/CocoaPods/CocoaPods.git
+[submodule "vendor/Xcodeproj"]
+	path = vendor/Xcodeproj
+	url = git://github.com/CocoaPods/Xcodeproj
+[submodule "tmp/.cocopods/master"]
+	path = tmp/.cocopods/master
+	url = git@github.com:CocoaPods/Specs.git

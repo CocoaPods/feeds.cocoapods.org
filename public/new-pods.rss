@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>CocoaPods</title>
+    <link>http://www.cocoapods.org</link>
+    <description>CocoaPods new added pods feed</description>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Apr 2012 23:29:48 +0200</lastBuildDate>
+    <item>
+      <title>UIDeviceAddition</title>
+      <link>https://github.com/gekitz/UIDevice-with-UniqueIdentifier-for-iOS-5</link>
+      <description>&lt;p&gt;Apple stopped supporting a unique identifier for iOS. This source code solves the problem. It generates a unique identifier based on the mac address of the device in combination with the bundle identifier.&lt;/p&gt;&lt;p&gt;[ by Georg Kitz | available at: &lt;a href=&quot;git://github.com/gekitz/UIDevice-with-UniqueIdentifier-for-iOS-5.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 1.0&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;Watchers: 806&lt;/li&gt;&lt;li&gt;Forks: 65&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Mon, 16 Apr 2012 17:37:46 +0200</pubDate>
+      <dc:date>2012-04-16T17:37:46+02:00</dc:date>
+    </item>
+    <item>
+      <title>VPPCoreData</title>
+      <link>http://github.com/vicpenap/VPPCoreData</link>
+      <description>&lt;p&gt;VPPCoreData is a Core Data wrapper with Active Record support that simplifies the task of managing data with Core Data framework. This library offers an automatic setup of Core Data and a set of methods to set and retrieve data, both in foreground and background.&lt;/p&gt;&lt;p&gt;[ by Victor Pena | available at: &lt;a href=&quot;https://github.com/vicpenap/VPPCoreData.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.2.0&lt;/li&gt;&lt;li&gt;Platform: iOS - OS X&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 4&lt;/li&gt;&lt;li&gt;Forks: 1&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Mon, 16 Apr 2012 13:49:02 +0200</pubDate>
+      <dc:date>2012-04-16T13:49:02+02:00</dc:date>
+    </item>
+    <item>
+      <title>PrettyKit</title>
+      <link>http://github.com/vicpenap/PrettyKit</link>
+      <description>&lt;p&gt;PrettyKit for iOS is a small set of new widgets and UIKit subclasses that gives you a deeper UIKit customization. You will be able to change their background color, add gradients, shadows, etc.&lt;/p&gt;&lt;p&gt;[ by Victor Pena | available at: &lt;a href=&quot;https://github.com/vicpenap/PrettyKit.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.1.0&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 79&lt;/li&gt;&lt;li&gt;Forks: 9&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Mon, 16 Apr 2012 13:49:02 +0200</pubDate>
+      <dc:date>2012-04-16T13:49:02+02:00</dc:date>
+    </item>
+    <item>
+      <title>VPPDropDown</title>
+      <link>https://github.com/vicpenap/VPPDropDown</link>
+      <description>&lt;p&gt;VPPDropDown is an iOS library that allows you to create dropdown-like menus in a table view, as seen in old Tweetie.&lt;/p&gt;&lt;p&gt;[ by Victor Pena | available at: &lt;a href=&quot;https://github.com/vicpenap/VPPDropDown.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.3.0&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 75&lt;/li&gt;&lt;li&gt;Forks: 7&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Mon, 16 Apr 2012 13:49:02 +0200</pubDate>
+      <dc:date>2012-04-16T13:49:02+02:00</dc:date>
+    </item>
+    <item>
+      <title>VPPMap</title>
+      <link>https://github.com/vicpenap/VPPMap</link>
+      <description>&lt;p&gt;VPPMap library for iOS simplifies the creation and management of a MKMapView.&lt;/p&gt;&lt;p&gt;[ by Victor Pena | available at: &lt;a href=&quot;https://github.com/vicpenap/VPPMap.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.2.0&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 96&lt;/li&gt;&lt;li&gt;Forks: 3&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Mon, 16 Apr 2012 13:49:02 +0200</pubDate>
+      <dc:date>2012-04-16T13:49:02+02:00</dc:date>
+    </item>
+    <item>
+      <title>VPPLocation</title>
+      <link>https://github.com/vicpenap/VPPLocation</link>
+      <description>&lt;p&gt;VPPLocation Library for iOS simplifies the task of retrieving the user location and reverse geocoder info about it.&lt;/p&gt;&lt;p&gt;[ by Victor Pena | available at: &lt;a href=&quot;https://github.com/vicpenap/VPPLocation.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 3.0.0&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 3&lt;/li&gt;&lt;li&gt;Forks: 2&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Mon, 16 Apr 2012 13:49:02 +0200</pubDate>
+      <dc:date>2012-04-16T13:49:02+02:00</dc:date>
+    </item>
+    <item>
+      <title>ObjectAL-for-iPhone</title>
+      <link>http://kstenerud.github.com/ObjectAL-for-iPhone/</link>
+      <description>&lt;p&gt;iOS Audio development, minus the headache. ObjectAL is the easy Objective-C interface to OpenAL, AVAudioPlayer, and audio session management.&lt;/p&gt;&lt;p&gt;[ by Karl Stenerud | available at: &lt;a href=&quot;git://github.com/kstenerud/ObjectAL-for-iPhone.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 2.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: Apache 2.0&lt;/li&gt;&lt;li&gt;Watchers: 345&lt;/li&gt;&lt;li&gt;Forks: 27&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Sun, 15 Apr 2012 22:15:43 +0200</pubDate>
+      <dc:date>2012-04-15T22:15:43+02:00</dc:date>
+    </item>
+    <item>
+      <title>libffi</title>
+      <link>http://sourceware.org/libffi/</link>
+      <description>&lt;p&gt;A portable foreign-function interface library.&lt;/p&gt;&lt;p&gt;[ by Anthony Green, Raffaele Sena, Jon Beniston, Bo Thorsen, Landon Fuller, and Zachary Waldowski | available at: &lt;a href=&quot;https://github.com/zwaldowski/libffi-iOS.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 3.0.11&lt;/li&gt;&lt;li&gt;Platform: iOS - OS X&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 2&lt;/li&gt;&lt;li&gt;Forks: 0&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Sun, 15 Apr 2012 20:55:00 +0200</pubDate>
+      <dc:date>2012-04-15T20:55:00+02:00</dc:date>
+    </item>
+    <item>
+      <title>JBDeviceOwner</title>
+      <link>https://github.com/jakeboxer/JBDeviceOwner</link>
+      <description>&lt;p&gt;Cocoa Touch library for finding information on an iOS device's owner. Inspired by Square's iOS app. Typing names, email addresses, and other personal info is never fun. 
+This is often your user's first experience with your app, and it sucks. Fortunately, these data often already exist somewhere on your user's phone. 
+JBDeviceOwner can currently get you the following attributes of the device's owner: name, email address, phone number (more are coming).&lt;/p&gt;&lt;p&gt;[ by Jake Boxer | available at: &lt;a href=&quot;https://github.com/jakeboxer/JBDeviceOwner.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.3&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 102&lt;/li&gt;&lt;li&gt;Forks: 7&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Fri, 13 Apr 2012 15:17:57 +0200</pubDate>
+      <dc:date>2012-04-13T15:17:57+02:00</dc:date>
+    </item>
+    <item>
+      <title>OCCalendar</title>
+      <link>https://github.com/ocrickard/OCCalendar</link>
+      <description>&lt;p&gt;OCCalendar is a very simple component for iPhone/iPad that provides a 'Popover' date picker controller. It is very easy to add to your project, and is 100% CoreGraphics code, so it uses no images, and is resolution independent. I realize that I need to cut down the size for iPhone a bit more. I originally wrote it just for iPad, and my paths and sizing are all just slightly too wide for the iPhone. I'll fix it when I get a chance.&lt;/p&gt;&lt;p&gt;[ by Oliver Clark Rickard | available at: &lt;a href=&quot;https://github.com/ocrickard/OCCalendar.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.3&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: BSD&lt;/li&gt;&lt;li&gt;Watchers: 279&lt;/li&gt;&lt;li&gt;Forks: 20&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Thu, 12 Apr 2012 08:22:07 +0200</pubDate>
+      <dc:date>2012-04-12T08:22:07+02:00</dc:date>
+    </item>
+    <item>
+      <title>JBTabBarController</title>
+      <link>http://jinthagerman.github.com/JBTabBarController</link>
+      <description>&lt;p&gt;JBTabBarController aims to be a drop-in replacement of UITabBarController with the intention of letting developers easily customise its appearance. JBTabBar uses images for all UI elements except for the labels on TabBar items. This gives the Developer/Designer the freedom to customise all aspects of the TabBar.&lt;/p&gt;&lt;p&gt;[ by Jin Budelmann | available at: &lt;a href=&quot;https://github.com/jinthagerman/JBTabBarController.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.3&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 56&lt;/li&gt;&lt;li&gt;Forks: 9&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Tue, 10 Apr 2012 08:50:35 +0200</pubDate>
+      <dc:date>2012-04-10T08:50:35+02:00</dc:date>
+    </item>
+    <item>
+      <title>LibComponentLogging-NSLogger</title>
+      <link>http://0xc0.de/LibComponentLogging</link>
+      <description>&lt;p&gt;LibComponentLogging-NSLogger is a logging back-end for LibComponentLogging which integrates the logging client from Florent Pillet's NSLogger project.&lt;/p&gt;&lt;p&gt;[ by Arne Harren | available at: &lt;a href=&quot;https://github.com/aharren/LibComponentLogging-NSLogger.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 1.0.4&lt;/li&gt;&lt;li&gt;Platform: iOS - OS X&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 3&lt;/li&gt;&lt;li&gt;Forks: 2&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Sat, 07 Apr 2012 22:41:04 +0200</pubDate>
+      <dc:date>2012-04-07T22:41:04+02:00</dc:date>
+    </item>
+    <item>
+      <title>Injective</title>
+      <link>http://farcaller.github.com/Injective/</link>
+      <description>&lt;p&gt;Cocoa / Cocoa Touch Dependency Injection framework with features for simpler TDD&lt;/p&gt;&lt;p&gt;[ by Vladimir Pouzanov | available at: &lt;a href=&quot;git://github.com/farcaller/Injective.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.2.0&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;Watchers: 13&lt;/li&gt;&lt;li&gt;Forks: 4&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Sat, 07 Apr 2012 16:42:34 +0200</pubDate>
+      <dc:date>2012-04-07T16:42:34+02:00</dc:date>
+    </item>
+    <item>
+      <title>UDTableView</title>
+      <link>https://github.com/ud7/UDTableView-allowsMultipleSelection</link>
+      <description>&lt;p&gt;UDTableView allowsMultipleSelection backport to pre iOS5.&lt;/p&gt;&lt;p&gt;[ by Rolandas Razma | available at: &lt;a href=&quot;https://github.com/ud7/UDTableView-allowsMultipleSelection.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 1.0.0&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 18&lt;/li&gt;&lt;li&gt;Forks: 5&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Sat, 07 Apr 2012 16:41:47 +0200</pubDate>
+      <dc:date>2012-04-07T16:41:47+02:00</dc:date>
+    </item>
+    <item>
+      <title>XMLReader</title>
+      <link>https://github.com/RestKit/XML-to-NSDictionary</link>
+      <description>&lt;p&gt;An NSXMLParser-based XML to NSDictionary converter.&lt;/p&gt;&lt;p&gt;[ by Caccinolo Benoit, ezgit, Insert-Witty-Name, and Christopher Swasey | available at: &lt;a href=&quot;https://github.com/RestKit/XML-to-NSDictionary.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.1&lt;/li&gt;&lt;li&gt;Platform: iOS - OS X&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 2&lt;/li&gt;&lt;li&gt;Forks: 0&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Sat, 07 Apr 2012 16:41:47 +0200</pubDate>
+      <dc:date>2012-04-07T16:41:47+02:00</dc:date>
+    </item>
+    <item>
+      <title>objectiveflickr</title>
+      <link>http://lukhnos.org</link>
+      <description>&lt;p&gt;ObjectiveFlickr, a Flickr API framework for Objective-C&lt;/p&gt;&lt;p&gt;[ by Lukhnos D. Liu | available at: &lt;a href=&quot;https://github.com/lukhnos/objectiveflickr.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 469&lt;/li&gt;&lt;li&gt;Forks: 75&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Fri, 06 Apr 2012 18:21:06 +0200</pubDate>
+      <dc:date>2012-04-06T18:21:06+02:00</dc:date>
+    </item>
+    <item>
+      <title>ShareKit</title>
+      <link>http://getsharekit.com/</link>
+      <description>&lt;p&gt;Drop in sharing features for all iPhone and iPad apps &lt;/p&gt;&lt;p&gt;[ by ShareKit | available at: &lt;a href=&quot;https://github.com/ShareKit/ShareKit.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 2.0&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 635&lt;/li&gt;&lt;li&gt;Forks: 150&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Fri, 06 Apr 2012 18:21:06 +0200</pubDate>
+      <dc:date>2012-04-06T18:21:06+02:00</dc:date>
+    </item>
+    <item>
+      <title>SoloComponents-iOS</title>
+      <link>http://www.tarantsov.com/</link>
+      <description>&lt;p&gt;Self-contained, two-file (.h/.m) iPhone/iPad components that are dead-easy to drop into your projects&lt;/p&gt;&lt;p&gt;[ by Andrey Tarantsov | available at: &lt;a href=&quot;https://github.com/andreyvit/SoloComponents-iOS.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;Watchers: 345&lt;/li&gt;&lt;li&gt;Forks: 32&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Fri, 06 Apr 2012 13:15:18 +0200</pubDate>
+      <dc:date>2012-04-06T13:15:18+02:00</dc:date>
+    </item>
+    <item>
+      <title>LKbadgeView</title>
+      <link>https://github.com/lakesoft</link>
+      <description>&lt;p&gt;Custom badge view&lt;/p&gt;&lt;p&gt;[ by lakesoft | available at: &lt;a href=&quot;https://github.com/lakesoft/LKbadgeView.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 102&lt;/li&gt;&lt;li&gt;Forks: 8&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Fri, 06 Apr 2012 13:15:18 +0200</pubDate>
+      <dc:date>2012-04-06T13:15:18+02:00</dc:date>
+    </item>
+    <item>
+      <title>MDAboutController</title>
+      <link>http://mochidev.com/</link>
+      <description>&lt;p&gt;Automatically populated about view controller for iOS apps!&lt;/p&gt;&lt;p&gt;[ by Dimitri Bouniol | available at: &lt;a href=&quot;https://github.com/mochidev/MDAboutController.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 89&lt;/li&gt;&lt;li&gt;Forks: 8&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Fri, 06 Apr 2012 13:15:18 +0200</pubDate>
+      <dc:date>2012-04-06T13:15:18+02:00</dc:date>
+    </item>
+    <item>
+      <title>Color-Picker-for-iOS</title>
+      <link>https://github.com/hayashi311</link>
+      <description>&lt;p&gt;ColorPicker for iPhone and iPod touch&lt;/p&gt;&lt;p&gt;[ by Ryota Hayashi | available at: &lt;a href=&quot;https://github.com/hayashi311/Color-Picker-for-iOS.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: BSD&lt;/li&gt;&lt;li&gt;Watchers: 47&lt;/li&gt;&lt;li&gt;Forks: 10&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Fri, 06 Apr 2012 13:15:18 +0200</pubDate>
+      <dc:date>2012-04-06T13:15:18+02:00</dc:date>
+    </item>
+    <item>
+      <title>MWFeedParser</title>
+      <link>https://github.com/mwaterfall/MWFeedParser</link>
+      <description>&lt;p&gt;An Objective-C RSS / Atom Feed Parser for iOS&lt;/p&gt;&lt;p&gt;[ by Michael Waterfall | available at: &lt;a href=&quot;https://github.com/mwaterfall/MWFeedParser.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 758&lt;/li&gt;&lt;li&gt;Forks: 113&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Fri, 06 Apr 2012 13:00:48 +0200</pubDate>
+      <dc:date>2012-04-06T13:00:48+02:00</dc:date>
+    </item>
+    <item>
+      <title>Objective-C-HMTL-Parser</title>
+      <link>http://www.benreeves.co.uk</link>
+      <description>&lt;p&gt;An objective c wrapper around libxml for parsing HTMLr&lt;/p&gt;&lt;p&gt;[ by Max Howell | available at: &lt;a href=&quot;https://github.com/zootreeves/Objective-C-HMTL-Parser.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 268&lt;/li&gt;&lt;li&gt;Forks: 42&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Fri, 06 Apr 2012 13:00:48 +0200</pubDate>
+      <dc:date>2012-04-06T13:00:48+02:00</dc:date>
+    </item>
+    <item>
+      <title>CMPopTipView</title>
+      <link>https://github.com/chrismiles/CMPopTipView</link>
+      <description>&lt;p&gt;Custom UIView for iOS that pops up an animated &quot;bubble&quot; pointing at a button or other view. Useful for popup tips.&lt;/p&gt;&lt;p&gt;[ by Chris Miles | available at: &lt;a href=&quot;https://github.com/chrismiles/CMPopTipView.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 688&lt;/li&gt;&lt;li&gt;Forks: 65&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Fri, 06 Apr 2012 13:00:48 +0200</pubDate>
+      <dc:date>2012-04-06T13:00:48+02:00</dc:date>
+    </item>
+    <item>
+      <title>FTUtils</title>
+      <link>http://ftutils.com/</link>
+      <description>&lt;p&gt;The code in FTUtils is common utility code extracted from Free Time Studios iPhone projects. Currently, there is only one primary utility (FTAnimation) and some simple preprocessor macros. Some unit tests exist for the code, but more are needed.&lt;/p&gt;&lt;p&gt;[ by Nathan Eror, Corey Floyd, and Ben Lenarts | available at: &lt;a href=&quot;https://github.com/neror/ftutils.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 1.1.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 595&lt;/li&gt;&lt;li&gt;Forks: 52&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Fri, 06 Apr 2012 02:24:15 +0200</pubDate>
+      <dc:date>2012-04-06T02:24:15+02:00</dc:date>
+    </item>
+    <item>
+      <title>ECSlidingViewController</title>
+      <link>https://github.com/edgecase/ecslidingviewcontroller</link>
+      <description>&lt;p&gt;ECSlidingViewController is a view controller container that presents its child view controllers in two layers. It provides functionality for sliding the top view to reveal the views underneath it. This functionality is inspired by the Path 2.0 and Facebook iPhone apps.&lt;/p&gt;&lt;p&gt;[ by Mike Enriquez | available at: &lt;a href=&quot;git://github.com/edgecase/ECSlidingViewController.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.9.0&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 371&lt;/li&gt;&lt;li&gt;Forks: 44&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Thu, 05 Apr 2012 12:03:04 +0200</pubDate>
+      <dc:date>2012-04-05T12:03:04+02:00</dc:date>
+    </item>
+    <item>
+      <title>GHUnitOSX</title>
+      <link>https://github.com/gabriel/gh-unit</link>
+      <description>&lt;p&gt;GHUnit is a test framework for Objective-C, Mac OS X 10.5 and above and iPhone 3.x and above. It can be used standalone or with other testing frameworks like SenTestingKit or GTM.&lt;/p&gt;&lt;p&gt;[ by Gabriel Handford | available at: &lt;a href=&quot;https://github.com/gabriel/gh-unit.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.4.33&lt;/li&gt;&lt;li&gt;Platform: OS X&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 1059&lt;/li&gt;&lt;li&gt;Forks: 104&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Thu, 05 Apr 2012 12:02:38 +0200</pubDate>
+      <dc:date>2012-04-05T12:02:38+02:00</dc:date>
+    </item>
+    <item>
+      <title>SEDraggable</title>
+      <link>http://github.com/brynbellomy/iOS-DragAndDrop</link>
+      <description>&lt;p&gt;Drag and drop UIView subclasses for iOS&lt;/p&gt;&lt;p&gt;[ by bryn austin bellomy | available at: &lt;a href=&quot;http://github.com/brynbellomy/iOS-DragAndDrop.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 1.0.0&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 7&lt;/li&gt;&lt;li&gt;Forks: 2&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Thu, 05 Apr 2012 02:33:05 +0200</pubDate>
+      <dc:date>2012-04-05T02:33:05+02:00</dc:date>
+    </item>
+    <item>
+      <title>MWPhotoBrowser</title>
+      <link>https://github.com/mwaterfall/MWPhotoBrowser</link>
+      <description>&lt;p&gt;A simple iOS photo browser&lt;/p&gt;&lt;p&gt;[ by Michael Waterfall | available at: &lt;a href=&quot;https://github.com/mwaterfall/MWPhotoBrowser.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: MIT&lt;/li&gt;&lt;li&gt;Watchers: 428&lt;/li&gt;&lt;li&gt;Forks: 55&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Wed, 04 Apr 2012 15:31:36 +0200</pubDate>
+      <dc:date>2012-04-04T15:31:36+02:00</dc:date>
+    </item>
+    <item>
+      <title>ABContactHelper</title>
+      <link>https://github.com/erica/ABContactHelper</link>
+      <description>&lt;p&gt;Objective-C Address Book wrapper.&lt;/p&gt;&lt;p&gt;[ by Erica Sadun | available at: &lt;a href=&quot;https://github.com/erica/ABContactHelper.git&quot;&gt;github.com&lt;/a&gt; ]&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Latest version: 0.0.1&lt;/li&gt;&lt;li&gt;Platform: iOS&lt;/li&gt;&lt;li&gt;License: BSD&lt;/li&gt;&lt;li&gt;Watchers: 130&lt;/li&gt;&lt;li&gt;Forks: 23&lt;/li&gt;&lt;/ul&gt;</description>
+      <pubDate>Tue, 03 Apr 2012 11:19:59 +0200</pubDate>
+      <dc:date>2012-04-03T11:19:59+02:00</dc:date>
+    </item>
+  </channel>
+</rss>

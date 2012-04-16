@@ -1,0 +1,11 @@
+!!! 5
+%html
+  %head
+    %link(rel="stylesheet" href="css/bootstrap.min.css")
+  %body
+    .container
+      %h1 Hook Test
+      %form.form-horizontal.well{ :action => "/some_url", :method => "post"}
+        %label Pod name:
+        %input.span3{:type => "text", :name => "mail"}
+        %button.btn.success{:type => "submit"} Submit

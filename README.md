@@ -3,7 +3,7 @@ This Sinatra creates a RSS feed containing the last 30 pods added to [CocoaPods/
 ## Application
 
 - Running on Ruby 1.9.2/3.
-- Sinatra application.
+- Procfile-based Sinatra applications
 - Requires a host caplable of running git.
 - Available at http://feeds.cocoapods.org [Not working yet].
 - Based on [cococapods.org](https://github.com/CocoaPods/CocoaPods.org).

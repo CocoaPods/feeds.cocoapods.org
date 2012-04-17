@@ -17,12 +17,18 @@ $ bundle install
 $ foreman start
 ```
 
+[GitHub post-receive hook](http://help.github.com/post-receive-hooks/):
+
+```shell
+$ curl -d 'payload={"ref":"refs/heads/master"}' http://localhost:5000/hook
+```
+
 ## Events
 
 - Initialization:
     1. the specs repo is cloned or updated in `tmp/.cocoapods/master`.
     2. the feed is created in `public/new-pods.rss`.
-- GitHub push hook:
+- GitHub post-receive hook:
     1. the specs repo is updated.
     2. the feed is recreated.
     3. tweets for the new pods.

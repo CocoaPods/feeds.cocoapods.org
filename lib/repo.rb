@@ -7,16 +7,15 @@ class CocoapodFeed
     end
 
     def setup
+      return if (@repos_dir + 'master').exist?
       @repos_dir.mkpath
       puts '-> Cloning Specs Repo'.green
       Dir.chdir(@repos_dir) { `git clone '#{ENV['SPECS_URL']}' master` }
     end
 
     def update
-      dir = @repos_dir + 'master'
-      setup unless dir.exist?
       puts '-> Updating Specs Repo'.green
-      Dir.chdir(dir) { `git pull` }
+      Dir.chdir(@repos_dir + 'master') { `git pull` }
     end
 
     def sets

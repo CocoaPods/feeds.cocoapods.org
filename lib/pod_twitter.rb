@@ -13,21 +13,16 @@ class CocoapodFeed
       intro       = "[New] #{pod.name} - "
       link_lenght = 21 + 1
       available   = 140 - intro.length - link_lenght
-
       if pod.summary.length > available
         summary = pod.summary[0..available-4].gsub(/('s)?( )?$/,'') + '...'
       else
         summary = pod.summary
       end
-
       link = " #{pod.homepage}"
       text = intro + summary + link
-
-      begin
-        Twitter.update(text)
-      rescue StandardError => e
-        puts "[!] Tweet failed - #{e.message}".red
-      end
+      Twitter.update(text)
+    rescue StandardError => e
+      puts "[!] Tweet failed - #{e.message}".red
     end
   end
 end

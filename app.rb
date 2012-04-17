@@ -11,7 +11,7 @@ require 'json'
 class CocoapodFeed < Sinatra::Application
   require File.expand_path '../lib/repo', __FILE__
   require File.expand_path '../lib/rss', __FILE__
-  require File.expand_path '../lib/twitter', __FILE__
+  require File.expand_path '../lib/pod_twitter', __FILE__
 
   configure do
     set :haml, :format => :html5
@@ -21,19 +21,35 @@ class CocoapodFeed < Sinatra::Application
     register Sinatra::Reloader
   end
 
-  def self.update_feed
-    repo = Repo.new
-    repo.update
+  def self.init
+    Repo.new.setup
+    update(true, false)
+  end
 
-    feed = Rss.new(repo.pods, repo.creation_dates).feed
-    feed_file = './public/new-pods.rss'
-    File.open(feed_file, 'w') { |f| f.write(feed) }
-    puts '-> RSS feed created'.magenta
+  def self.update(feed = true, tweet = false)
+    repo  = Repo.new
+    old   = repo.pods
+    repo.update
+    new   = repo.pods
+
+    if tweet
+      delta = new - old
+      delta.each { |pod| PodTwitter.tweet(pod) }
+      puts "-> Tweeted #{delta.length} pods".yellow
+    end
+
+    if feed
+      feed = Rss.new(repo.pods, repo.creation_dates).feed
+      feed_file = './public/new-pods.rss'
+      File.open(feed_file, 'w') { |f| f.write(feed) }
+      puts '-> RSS feed created'.yellow
+    end
   end
 
   get '/' do
     repo = Repo.new
     @creation_dates = repo.creation_dates
+    @all_pods       = repo.pods
     @pods           = Rss.new(repo.pods, @creation_dates).feed_pods
     haml :index
   end
@@ -41,18 +57,8 @@ class CocoapodFeed < Sinatra::Application
   post "/#{ENV['HOOK_PATH']}" do
     start_time = Time.now
     payload    = JSON.parse(params[:payload])
-
     if payload['ref'] == "refs/heads/master"
-      repo     = Repo.new
-      old_pods = repo.pods
-      old_pods.reject!{|pod| pod.name == "PrettyKit"}
-
-      self.class.update_feed
-
-      new_pods   = repo.pods
-      added_pods = new_pods - old_pods
-      added_pods.each { |pod| puts PodTwitter.tweet(pod) }
-
+      self.class.update(true, true)
       status 200
       body "REINDEXED - #{(Time.now - start_time).to_i} seconds"
     else

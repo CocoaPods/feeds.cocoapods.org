@@ -30,6 +30,8 @@ class CocoapodFeed
       item.link         = pod.homepage
       item.pubDate      = @creation_dates[pod.name]
       item.description  = item_description(pod)
+    rescue
+      puts "[!] Malformed pod #{pod.name}".red
     end
 
     def item_description(pod)

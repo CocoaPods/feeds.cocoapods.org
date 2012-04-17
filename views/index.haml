@@ -12,9 +12,8 @@
         %p
           %a.btn.btn-warning.btn-large{:href => url('/new-pods.rss')} Get the Feed
           %a.btn.btn-large{:href => 'http://cocoapods.org/'} CocoaPods.org
-      .alert
-        %strong Warning!
-        The feed is not operational yet.
+      .alert.alert-success
+        Counting #{@all_pods.length} pods.
       %table.table.table-striped.table-bordered
         %thead
           %tr

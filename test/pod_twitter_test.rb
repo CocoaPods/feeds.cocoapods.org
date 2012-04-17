@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require File.expand_path('../test_helper', __FILE__)
 
 class PodTwitterTest < Test::Unit::TestCase
@@ -14,10 +15,16 @@ class PodTwitterTest < Test::Unit::TestCase
   end
 
   def test_it_truncates_the_summary_if_the_complete_text_would_be_over_140_chars
-    @pod.stubs(:summary).returns('This is a message which is waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay ' \
+    @pod.stubs(:summary).returns('This is a message which is waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay ' \
                                  'too long and will get truncated here (this will be omitted).')
-    Twitter.expects(:update).with('[New] JSONKit - This is a message which is waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay ' \
-                                  'too long and will get truncated here... https://github.com/johnezang/JSONKit')
+
+    expected = '[New] JSONKit - This is a message which is waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay ' \
+               'too long and will get truncated here… https://github.com/johnezang/JSONKit'
+
+    # This is because the link can be any size, but will be shortened to 21 chars (with a leading space).
+    assert_equal 140, (expected.size - @pod.homepage.size + 20)
+
+    Twitter.expects(:update).with(expected)
     CocoapodFeed::PodTwitter.tweet(@pod)
   end
 end

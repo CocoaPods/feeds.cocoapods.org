@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require "twitter"
 
 Twitter.configure do |config|

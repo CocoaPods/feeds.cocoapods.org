@@ -30,19 +30,19 @@ class CocoapodFeed < Sinatra::Application
     repo  = Repo.new
     old   = repo.pods
     repo.update
-    new   = repo.pods
-
-    if tweet
-      delta = new - old
-      delta.each { |pod| PodTwitter.tweet(pod) }
-      puts "-> Tweeted #{delta.length} pods".yellow
-    end
+    pods  = repo.pods
 
     if feed
-      feed = Rss.new(repo.pods, repo.creation_dates).feed
+      feed = Rss.new(pods, repo.creation_dates).feed
       feed_file = './public/new-pods.rss'
       File.open(feed_file, 'w') { |f| f.write(feed) }
       puts '-> RSS feed created'.yellow
+    end
+
+    if tweet
+      delta = pods - old
+      delta.each { |pod| PodTwitter.tweet(pod) }
+      puts "-> Tweeted #{delta.length} pods".yellow
     end
   end
 

@@ -1,3 +1,5 @@
+# feeds.cocoapods.org - RSS and Twitter updates for new pods
+
 This application creates an RSS feed containing the last 30 pods added to [CocoaPods/specs](https://github.com/CocoaPods/specs) and during each update it tweets about the new pods.
 
 ## Application

@@ -4,27 +4,38 @@ require 'rexml/document'
 class RSSTest < Test::Unit::TestCase
   def setup
     super
+    unless @rss
+      @sets = []
+      json_kit = Pod::Source.search(Pod::Dependency.new('JSONKit'))
+      json_kit.stubs(:required_version).returns(Pod::Version.new('1.4'))
+      @sets << json_kit
+      ss_zip_archive = Pod::Source.search(Pod::Dependency.new('SSZipArchive'))
+      ss_zip_archive.stubs(:required_version).returns(Pod::Version.new('0.1.2'))
+      @sets << ss_zip_archive
 
-    @sets = []
-    json_kit = Pod::Source.search(Pod::Dependency.new('JSONKit'))
-    json_kit.stubs(:required_version).returns(Pod::Version.new('1.4'))
-    @sets << json_kit
-    ss_zip_archive = Pod::Source.search(Pod::Dependency.new('SSZipArchive'))
-    ss_zip_archive.stubs(:required_version).returns(Pod::Version.new('0.1.2'))
-    @sets << ss_zip_archive
+      @pods = @sets.map { |set| Pod::Command::Presenter::CocoaPod.new(set) }
 
-    @pods = @sets.map { |set| Pod::Command::Presenter::CocoaPod.new(set) }
+      @creation_dates = {
+        'JSONKit'      => Time.now - 60,
+        'SSZipArchive' => Time.now - 30,
+      }
 
-    @creation_dates = {
-      'JSONKit'      => Time.now - 60,
-      'SSZipArchive' => Time.now - 30,
-    }
-
-    @rss = CocoapodFeed::Rss.new(@pods, @creation_dates)
+      @rss = CocoapodFeed::Rss.new(@pods, @creation_dates)
+      @root = REXML::Document.new(@rss.feed).root
+    end
   end
 
+  # TODO this needs to be refactored to test smaller units
+  #
+  # E.g.
+  #
+  # def test_it_uses_the_pod_titles_as_item_title
+  #   assert_equal 'SSZipArchive', @root.elements['channel/item[1]/title'].text
+  #   assert_equal 'JSONKit',      @root.elements['channel/item[2]/title'].text
+  # end
+
   def test_it_generates_a_rss_document
-    root = REXML::Document.new(@rss.feed).root
+    root = @root
     assert_equal 'CocoaPods', root.elements['channel/title'].text
 
     # SSZipArchive has been created most recently, so comes first

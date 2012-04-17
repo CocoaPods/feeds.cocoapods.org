@@ -22,4 +22,5 @@ gem 'twitter'
 group :development do
   gem 'awesome_print'
   gem 'foreman'
+  gem 'rack-test'
 end

@@ -75,6 +75,7 @@ DEPENDENCIES
   json
   octokit
   open4
+  rack-test
   rake
   sinatra
   sinatra-contrib

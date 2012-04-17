@@ -1,4 +1,5 @@
 .rvmrc
 .env
+.*.sw?
 public/*.rss
 tmp/*

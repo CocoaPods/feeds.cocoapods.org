@@ -9,6 +9,8 @@ require 'sinatra/reloader'
 require 'json'
 
 class CocoapodFeed < Sinatra::Application
+  RSS_FILE = File.expand_path('../public/new-pods.rss', __FILE__)
+
   require File.expand_path '../lib/repo', __FILE__
   require File.expand_path '../lib/rss', __FILE__
   require File.expand_path '../lib/pod_twitter', __FILE__
@@ -34,8 +36,7 @@ class CocoapodFeed < Sinatra::Application
 
     if feed
       feed = Rss.new(pods, repo.creation_dates).feed
-      feed_file = './public/new-pods.rss'
-      File.open(feed_file, 'w') { |f| f.write(feed) }
+      File.open(RSS_FILE, 'w') { |f| f.write(feed) }
       puts '-> RSS feed created'.yellow
     end
 
@@ -62,7 +63,7 @@ class CocoapodFeed < Sinatra::Application
     payload    = JSON.parse(params[:payload])
     if payload['ref'] == "refs/heads/master"
       self.class.update(true, true)
-      status 200
+      status 201
       body "REINDEXED - #{(Time.now - start_time).to_i} seconds"
     else
       status 200

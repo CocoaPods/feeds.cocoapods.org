@@ -1,10 +1,10 @@
-This Application creates an RSS feed containing the last 30 pods added to [CocoaPods/specs](https://github.com/CocoaPods/specs) and during each update it tweets about the new pods.
+This application creates an RSS feed containing the last 30 pods added to [CocoaPods/specs](https://github.com/CocoaPods/specs) and during each update it tweets about the new pods.
 
 ## Application
 
 - Running on Ruby 1.9.2/3.
 - Procfile-based Sinatra application.
-- Requires a host caplable of running git.
+- Requires a host caplable of managing a git repository.
 - Available at http://feeds.cocoapods.org [Not working yet].
 - Based on [cococapods.org](https://github.com/CocoaPods/CocoaPods.org).
 

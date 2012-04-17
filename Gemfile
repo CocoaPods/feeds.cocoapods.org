@@ -23,4 +23,5 @@ group :development do
   gem 'awesome_print'
   gem 'foreman'
   gem 'rack-test'
+  gem 'mocha'
 end

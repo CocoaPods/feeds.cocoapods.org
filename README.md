@@ -42,3 +42,7 @@ $ curl -d 'payload={"ref":"refs/heads/master"}' http://localhost:5000/hook
     - The pod command caches this information for 3 days, as the watcher and the followers change slowly.
     - This app to avoid 30 network requests during the feed generation simply offers a snapshot of the stats at the publication of the pod in the feed.
         - i.e. the `cache_duration` in `Pod::Specification::Statistics` is set to a huge time.
+
+## License
+
+This application and CocoaPods are available under the MIT license.

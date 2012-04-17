@@ -9,20 +9,25 @@ end
 
 class CocoapodFeed
   class PodTwitter
+    # Twitter shortens urls to 20 characters
+    # for http and 21 for https
+    #
+    MAX_LENGTH = 140 - 1 - 21
+
     def self.tweet(pod)
-      intro       = "[New] #{pod.name} - "
-      link_lenght = 21 + 1
-      available   = 140 - intro.length - link_lenght
-      if pod.summary.length > available
-        summary = pod.summary[0..available-4].gsub(/('s)?( )?$/,'') + '...'
-      else
-        summary = pod.summary
-      end
-      link = " #{pod.homepage}"
-      text = intro + summary + link
-      Twitter.update(text)
+      status = status(pod) << " #{pod.homepage}"
+      Twitter.update(status)
     rescue StandardError => e
       puts "[!] Tweet failed - #{e.message}".red
+    end
+
+    def self.status(pod)
+      text = "[#{pod.name}] #{pod.summary}"
+      text << '.' unless text =~ /\.$/
+      if text.length >= MAX_LENGTH
+        text = text[0..MAX_LENGTH-4].gsub(/('s)?( )?\.?,?$/,'') + '...'
+      end
+      text
     end
   end
 end

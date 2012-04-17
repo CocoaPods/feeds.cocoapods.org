@@ -48,9 +48,12 @@ class CocoapodFeed < Sinatra::Application
 
   get '/' do
     repo = Repo.new
+    pods = repo.pods
     @creation_dates = repo.creation_dates
-    @all_pods       = repo.pods
-    @pods           = Rss.new(repo.pods, @creation_dates).feed_pods
+    @pods_count     = pods.length
+    @new_pods       = Rss.new(pods, @creation_dates).feed_pods
+    @pods_tweets    = {}
+    @new_pods.each { |pod| @pods_tweets[pod.name] = PodTwitter.status(pod) }
     haml :index
   end
 

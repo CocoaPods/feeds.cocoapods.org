@@ -1,3 +1,5 @@
+# feeds.cocoapods.org - RSS and Twitter updates for new pods
+
 This application creates an RSS feed containing the last 30 pods added to [CocoaPods/specs](https://github.com/CocoaPods/specs) and during each update it tweets about the new pods.
 
 ## Application
@@ -33,12 +35,6 @@ $ curl -d 'payload={"ref":"refs/heads/master"}' http://localhost:5000/hook
     2. the feed is recreated.
     3. tweets for the new pods.
 
-## Performance Notes
+## License
 
-- Computing the creation date requires to execute a git call for every pod.
-    - The pod command caches this information.
-    - This app should cache this information itself but, to keep things simple, it simply leverages the existing infrastructure.
-- GitHub stats require a network roundtrip for every pod.
-    - The pod command caches this information for 3 days, as the watcher and the followers change slowly.
-    - This app to avoid 30 network requests during the feed generation simply offers a snapshot of the stats at the publication of the pod in the feed.
-        - i.e. the `cache_duration` in `Pod::Specification::Statistics` is set to a huge time.
+This application and CocoaPods are available under the [MIT license](http://www.opensource.org/licenses/mit-license.php).

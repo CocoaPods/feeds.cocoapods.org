@@ -17,7 +17,7 @@ $ bundle install
 $ foreman start
 ```
 
-[GitHub post-receive hook](http://help.github.com/post-receive-hooks/):
+Test GitHub [post-receive hook](http://help.github.com/post-receive-hooks/):
 
 ```shell
 $ curl -d 'payload={"ref":"refs/heads/master"}' http://localhost:5000/hook
@@ -33,12 +33,12 @@ $ curl -d 'payload={"ref":"refs/heads/master"}' http://localhost:5000/hook
     2. the feed is recreated.
     3. tweets for the new pods.
 
-## Performance
+## Performance Notes
 
-- Finding the creation date requires to execute git for every pod.
-    - the creation date _should_ never change and for this reason are cached directly by the CocoaPods lib.
+- Computing the creation date requires to execute a git call for every pod.
+    - The pod command caches this information.
     - This app should cache this information itself but, to keep things simple, it simply leverages the existing infrastructure.
 - GitHub stats require a network roundtrip for every pod.
-    - As the watcher and the followers change slowly the pod command caches this information for 3 days.
-    - This app to preserve processor time during the feed generation simply offers a snapshot of the stats at the publication of the pod in the feed.
+    - The pod command caches this information for 3 days, as the watcher and the followers change slowly.
+    - This app to avoid 30 network requests during the feed generation simply offers a snapshot of the stats at the publication of the pod in the feed.
         - i.e. the `cache_duration` in `Pod::Specification::Statistics` is set to a huge time.

@@ -1,7 +1,9 @@
 require 'bundler/setup'
 require 'rake/testtask'
 
-Rake::TestTask.new("test" => ["test:app", "test:rss", "test:pod_twitter"])
+Rake::TestTask.new do |t|
+  t.pattern = "test/**/*.rb"
+end
 
 Rake::TestTask.new("test:app") do |t|
   t.pattern = "test/app_test.rb"

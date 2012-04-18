@@ -7,10 +7,10 @@ class RSSTest < Test::Unit::TestCase
     unless @rss
       @sets = []
       json_kit = Pod::Source.search(Pod::Dependency.new('JSONKit'))
-      json_kit.stubs(:required_version).returns(Pod::Version.new('1.4'))
+      json_kit.stubs(:versions).returns([Pod::Version.new('1.4')])
       @sets << json_kit
       ss_zip_archive = Pod::Source.search(Pod::Dependency.new('SSZipArchive'))
-      ss_zip_archive.stubs(:required_version).returns(Pod::Version.new('0.1.2'))
+      ss_zip_archive.stubs(:versions).returns([Pod::Version.new('0.1.2')])
       @sets << ss_zip_archive
 
       @pods = @sets.map { |set| Pod::Command::Presenter::CocoaPod.new(set) }
@@ -46,8 +46,7 @@ class RSSTest < Test::Unit::TestCase
     description = REXML::Document.new("<root>#{item.elements['description'].text}</root>").root
     assert_equal 'SSZipArchive is a simple utility class for zipping and unzipping files on iOS and Mac.', description.elements['p[1]'].text
     assert_equal "<p>[ by Sam Soffes | available at: <a href='#{homepage}.git'>github.com</a> ]</p>", description.elements['p[2]'].to_s
-    # TODO why is this not 0.1.2?
-    #assert_equal "Latest version: 0.1.2", description.elements['ul/li[1]'].text
+    assert_equal "Latest version: 0.1.2", description.elements['ul/li[1]'].text
     assert_equal "Platform: iOS - OS X", description.elements['ul/li[2]'].text
     assert_match /Watchers: \d+/, description.elements['ul/li[3]'].text
     assert_match /Forks: \d+/, description.elements['ul/li[4]'].text

@@ -27,4 +27,35 @@ class PodTwitterTest < Test::Unit::TestCase
     Twitter.expects(:update).with(expected)
     CocoapodFeed::PodTwitter.tweet(@pod)
   end
+
+  def perfrom_trailing_string_truncation_test (tested_string)
+    name           = '[JSONKit] '
+    link           = 'https://github.com/johnezang/JSONKit'
+    link_length    = 21     # expected shortened https link length
+    ellipsis       = '… '   # notice the space
+    x_length       = 140 -
+                     tested_string.length -
+                     name.length -
+                     link_length -
+                     ellipsis.length
+
+    summary        = 'x' * x_length + "#{tested_string} truncated part"
+    status         = name + 'x' * x_length + ellipsis + link
+
+    @pod.stubs(:summary).returns(summary)
+    Twitter.expects(:update).with(status)
+    CocoapodFeed::PodTwitter.tweet(@pod)
+  end
+
+  def test_it_removes_trailing_spaces_in_truncation
+    perfrom_trailing_string_truncation_test ' '
+  end
+
+  def test_it_removes_trailing_comas_in_truncation
+    perfrom_trailing_string_truncation_test ','
+  end
+
+  def test_it_removes_trailing_dots_in_truncation
+    perfrom_trailing_string_truncation_test '.'
+  end
 end

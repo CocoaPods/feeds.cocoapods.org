@@ -22,12 +22,11 @@ class CocoapodFeed
       puts "[!] Tweet failed - #{e.message}".red
     end
 
-    # TODO please add tests for these regexps, at a glance I don't know what they do.
     def self.status(pod)
       text = "[#{pod.name}] #{pod.summary}"
       text << '.' unless text =~ /\.$/
       if text.length >= MAX_LENGTH
-        text = text[0..MAX_LENGTH-2].gsub(/('s)?( )?\.?,?$/,'') + '…'
+        text = text[0..MAX_LENGTH-2].gsub(/( )?\.?,?$/,'') + '…'
       end
       text
     end

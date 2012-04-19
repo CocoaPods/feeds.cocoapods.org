@@ -1,4 +1,4 @@
-# RSS and Twitter updates for new Pods
+# RSS and Twitter notifications for new Pods
 [![Build Status](https://secure.travis-ci.org/CocoaPods/feeds.cocoapods.org.png)](http://travis-ci.org/CocoaPods/feeds.cocoapods.org)
 
 This application creates and updates an RSS feed containing the
@@ -8,8 +8,8 @@ During each update it tweets the new pods.
 ## Application
 
 - Running on Ruby 1.9.2/3.
-- Procfile-based Sinatra application.
-- Requires a host caplable of managing a git repository.
+- Procfile-based Sinatra application. 
+- Requires a host capable of managing a git repository.
 - Available at http://feeds.cocoapods.org [Not working yet].
 - Based on [CocoaPods/CocoaPods.org](https://github.com/CocoaPods/CocoaPods.org).
 

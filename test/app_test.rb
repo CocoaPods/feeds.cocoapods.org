@@ -5,13 +5,13 @@ class AppTest < Test::Unit::TestCase
 
   def setup
     super
+    FileUtils.rm_f CocoaPodsAppriser::RSS_FILE
     CocoaPodsAppriser::Twitter.stubs(:tweet)
   end
 
   def teardown
     super
     #puts last_response.errors
-    FileUtils.rm_f CocoaPodsAppriser::RSS_FILE
   end
 
   def app

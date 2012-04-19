@@ -6,9 +6,9 @@ source :rubygems
 
 # Gems required by CocoaPods.
 #
-gem 'open4'
+#gem 'open4'
 gem 'colored'
-gem 'escape'
+#gem 'escape'
 gem 'json'
 gem 'octokit'
 gem 'rake'

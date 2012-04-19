@@ -8,7 +8,7 @@ require 'awesome_print'
 require 'sinatra/reloader'
 require 'json'
 
-class CocoaPodsAppriser < Sinatra::Application
+class CocoaPodsNotifier < Sinatra::Application
   RSS_FILE = File.expand_path('../public/new-pods.rss', __FILE__)
 
   require File.expand_path '../lib/repo', __FILE__

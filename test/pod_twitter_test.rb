@@ -11,7 +11,7 @@ class TwitterTest < Test::Unit::TestCase
 
   def test_it_creates_a_tweet_for_a_new_tweet
     Twitter.expects(:update).with('[JSONKit] A Very High Performance Objective-C JSON Library. https://github.com/johnezang/JSONKit')
-    CocoaPodsAppriser::Twitter.tweet(@pod)
+    CocoaPodsNotifier::Twitter.tweet(@pod)
   end
 
   def test_it_truncates_the_summary_if_the_complete_text_would_be_over_140_chars
@@ -25,7 +25,7 @@ class TwitterTest < Test::Unit::TestCase
     assert_equal 140, (expected.size - @pod.homepage.size + 21)
 
     Twitter.expects(:update).with(expected)
-    CocoaPodsAppriser::Twitter.tweet(@pod)
+    CocoaPodsNotifier::Twitter.tweet(@pod)
   end
 
   def perfrom_trailing_string_truncation_test (tested_string)
@@ -44,7 +44,7 @@ class TwitterTest < Test::Unit::TestCase
 
     @pod.stubs(:summary).returns(summary)
     Twitter.expects(:update).with(status)
-    CocoaPodsAppriser::Twitter.tweet(@pod)
+    CocoaPodsNotifier::Twitter.tweet(@pod)
   end
 
   def test_it_removes_trailing_spaces_in_truncation

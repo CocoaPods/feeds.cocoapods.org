@@ -1,6 +1,6 @@
 require 'rss/maker'
 
-class CocoaPodsAppriser
+class CocoaPodsNotifier
   class RSS
     def initialize (pods, creation_dates)
       @pods = pods

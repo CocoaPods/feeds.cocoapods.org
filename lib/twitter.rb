@@ -8,7 +8,7 @@ Twitter.configure do |config|
   config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
 end
 
-class CocoaPodsAppriser
+class CocoaPodsNotifier
   class Twitter
     # Twitter shortens urls to 20 characters
     # for http and 21 for https

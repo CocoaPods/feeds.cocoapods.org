@@ -9,4 +9,4 @@ require 'rack/test'
 
 ENV['RACK_ENV'] = 'test'
 
-CocoaPodsAppriser::Repo.new.setup
+CocoaPodsNotifier::Repo.new.setup

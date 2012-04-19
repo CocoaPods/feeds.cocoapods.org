@@ -37,13 +37,13 @@ class CocoaPodsNotifier < Sinatra::Application
     if feed
       feed = RSS.new(pods, repo.creation_dates).feed
       File.open(RSS_FILE, 'w') { |f| f.write(feed) }
-      puts '-> RSS feed created'.yellow
+      puts '-> RSS feed created'.blue
     end
 
     if tweet
       delta = pods - old
       delta.each { |pod| Twitter.tweet(pod) }
-      puts "-> Tweeted #{delta.length} pods".yellow
+      puts "-> Tweeted #{delta.length} pods".blue
     end
   end
 

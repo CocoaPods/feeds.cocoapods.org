@@ -9,12 +9,12 @@ class CocoaPodsNotifier
     def setup
       return if (@repos_dir + 'master').exist?
       @repos_dir.mkpath
-      puts '-> Cloning Specs Repo'.green
+      puts '-> Cloning Specs Repo'.blue
       Dir.chdir(@repos_dir) { `git clone '#{ENV['SPECS_URL']}' master` }
     end
 
     def update
-      puts '-> Updating Specs Repo'.green
+      puts '-> Updating Specs Repo'.blue
       Dir.chdir(@repos_dir + 'master') { `git pull` }
     end
 

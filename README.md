@@ -1,5 +1,5 @@
 # RSS and Twitter updates for new Pods
-[![Build Status](https://secure.travis-ci.org/irrationalfab/feeds.cocoapods.org.png)](http://travis-ci.org/irrationalfab/feeds.cocoapods.org)
+[![Build Status](https://secure.travis-ci.org/CocoaPods/feeds.cocoapods.org.png)](http://travis-ci.org/CocoaPods/feeds.cocoapods.org)
 
 This application creates and updates an RSS feed containing the
 last 30 pods added to [CocoaPods/specs](https://github.com/CocoaPods/specs).

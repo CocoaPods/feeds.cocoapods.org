@@ -1,4 +1,5 @@
-# feeds.cocoapods.org - RSS and Twitter updates for new pods
+# RSS and Twitter updates for new Pods
+[![Build Status](https://secure.travis-ci.org/irrationalfab/feeds.cocoapods.org.png)](http://travis-ci.org/irrationalfab/feeds.cocoapods.org)
 
 This application creates and updates an RSS feed containing the
 last 30 pods added to [CocoaPods/specs](https://github.com/CocoaPods/specs).
@@ -19,6 +20,12 @@ $ cp .env.sample .env
 $ vim .env
 $ bundle install
 $ foreman start
+```
+
+Run Tests:
+
+```shell
+$ rake
 ```
 
 Test GitHub [post-receive hook](http://help.github.com/post-receive-hooks/):

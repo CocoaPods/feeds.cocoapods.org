@@ -11,7 +11,7 @@ During each update it tweets the new pods.
 - Procfile-based Sinatra application.
 - Requires a host caplable of managing a git repository.
 - Available at http://feeds.cocoapods.org [Not working yet].
-- Based on [cococapods.org](https://github.com/CocoaPods/CocoaPods.org).
+- Based on [CocoaPods/CocoaPods.org](https://github.com/CocoaPods/CocoaPods.org).
 
 ## Setup
 
@@ -34,6 +34,14 @@ Test GitHub [post-receive hook](http://help.github.com/post-receive-hooks/):
 $ curl -d 'payload={"ref":"refs/heads/master"}' http://localhost:5000/hook
 ```
 
+
+## License and Contributions
+
+This application and CocoaPods are available under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
+
+Contributing to the [CocoaPods projects](https://github.com/CocoaPods) is really easy and gratifying. 
+You even get push access when one of your patches is accepted.
+
 ## Events
 
 - Initialization:
@@ -43,7 +51,3 @@ $ curl -d 'payload={"ref":"refs/heads/master"}' http://localhost:5000/hook
     1. the specs repo is updated.
     2. the feed is recreated.
     3. tweets for the new pods.
-
-## License
-
-This application and CocoaPods are available under the [MIT license](http://www.opensource.org/licenses/mit-license.php).

@@ -1,4 +1,4 @@
-class CocoapodFeed
+class CocoaPodsAppriser
   class Repo
     def initialize
       @repos_dir = Pathname.new(File.expand_path("../../tmp/.cocoapods", __FILE__))

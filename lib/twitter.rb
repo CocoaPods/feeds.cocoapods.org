@@ -8,8 +8,8 @@ Twitter.configure do |config|
   config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
 end
 
-class CocoapodFeed
-  class PodTwitter
+class CocoaPodsAppriser
+  class Twitter
     # Twitter shortens urls to 20 characters
     # for http and 21 for https
     #
@@ -17,7 +17,7 @@ class CocoapodFeed
 
     def self.tweet(pod)
       status = status(pod) << " #{pod.homepage}"
-      Twitter.update(status)
+      ::Twitter.update(status)
     rescue StandardError => e
       puts "[!] Tweet failed - #{e.message}".red
     end

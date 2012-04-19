@@ -1,7 +1,7 @@
 require 'rss/maker'
 
-class CocoapodFeed
-  class Rss
+class CocoaPodsAppriser
+  class RSS
     def initialize (pods, creation_dates)
       @pods = pods
       @creation_dates = creation_dates
@@ -12,7 +12,7 @@ class CocoapodFeed
     end
 
     def feed
-      rss = RSS::Maker.make('2.0') do |m|
+      rss = ::RSS::Maker.make('2.0') do |m|
         m.channel.title         = "CocoaPods"
         m.channel.link          = "http://www.cocoapods.org"
         m.channel.description   = "CocoaPods new added pods feed"

@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require File.expand_path('../test_helper', __FILE__)
 
-class PodTwitterTest < Test::Unit::TestCase
+class TwitterTest < Test::Unit::TestCase
   def setup
     super
     set = Pod::Source.search(Pod::Dependency.new('JSONKit'))
@@ -11,7 +11,7 @@ class PodTwitterTest < Test::Unit::TestCase
 
   def test_it_creates_a_tweet_for_a_new_tweet
     Twitter.expects(:update).with('[JSONKit] A Very High Performance Objective-C JSON Library. https://github.com/johnezang/JSONKit')
-    CocoapodFeed::PodTwitter.tweet(@pod)
+    CocoaPodsAppriser::Twitter.tweet(@pod)
   end
 
   def test_it_truncates_the_summary_if_the_complete_text_would_be_over_140_chars
@@ -25,7 +25,7 @@ class PodTwitterTest < Test::Unit::TestCase
     assert_equal 140, (expected.size - @pod.homepage.size + 21)
 
     Twitter.expects(:update).with(expected)
-    CocoapodFeed::PodTwitter.tweet(@pod)
+    CocoaPodsAppriser::Twitter.tweet(@pod)
   end
 
   def perfrom_trailing_string_truncation_test (tested_string)
@@ -44,7 +44,7 @@ class PodTwitterTest < Test::Unit::TestCase
 
     @pod.stubs(:summary).returns(summary)
     Twitter.expects(:update).with(status)
-    CocoapodFeed::PodTwitter.tweet(@pod)
+    CocoaPodsAppriser::Twitter.tweet(@pod)
   end
 
   def test_it_removes_trailing_spaces_in_truncation

@@ -22,7 +22,7 @@ class RSSTest < Test::Unit::TestCase
         'SSZipArchive' => Time.now - 30,
       }
 
-      @rss   = CocoapodFeed::Rss.new(@pods, @creation_dates)
+      @rss   = CocoaPodsAppriser::RSS.new(@pods, @creation_dates)
       @root  = REXML::Document.new(@rss.feed).root
       item1  = @root.elements['channel/item[1]']
       item2  = @root.elements['channel/item[2]']

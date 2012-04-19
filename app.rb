@@ -8,12 +8,12 @@ require 'awesome_print'
 require 'sinatra/reloader'
 require 'json'
 
-class CocoapodFeed < Sinatra::Application
+class CocoaPodsAppriser < Sinatra::Application
   RSS_FILE = File.expand_path('../public/new-pods.rss', __FILE__)
 
   require File.expand_path '../lib/repo', __FILE__
   require File.expand_path '../lib/rss', __FILE__
-  require File.expand_path '../lib/pod_twitter', __FILE__
+  require File.expand_path '../lib/twitter', __FILE__
 
   configure do
     set :haml, :format => :html5
@@ -35,14 +35,14 @@ class CocoapodFeed < Sinatra::Application
     pods  = repo.pods
 
     if feed
-      feed = Rss.new(pods, repo.creation_dates).feed
+      feed = RSS.new(pods, repo.creation_dates).feed
       File.open(RSS_FILE, 'w') { |f| f.write(feed) }
       puts '-> RSS feed created'.yellow
     end
 
     if tweet
       delta = pods - old
-      delta.each { |pod| PodTwitter.tweet(pod) }
+      delta.each { |pod| Twitter.tweet(pod) }
       puts "-> Tweeted #{delta.length} pods".yellow
     end
   end
@@ -52,9 +52,9 @@ class CocoapodFeed < Sinatra::Application
     pods = repo.pods
     @creation_dates = repo.creation_dates
     @pods_count     = pods.length
-    @new_pods       = Rss.new(pods, @creation_dates).feed_pods
+    @new_pods       = RSS.new(pods, @creation_dates).feed_pods
     @pods_tweets    = {}
-    @new_pods.each { |pod| @pods_tweets[pod.name] = PodTwitter.status(pod) }
+    @new_pods.each { |pod| @pods_tweets[pod.name] = Twitter.status(pod) }
     haml :index
   end
 

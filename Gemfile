@@ -4,6 +4,20 @@
 
 source :rubygems
 
+gem 'thin'
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'haml'
+gem 'twitter'
+gem 'exceptio-ruby'
+
+group :development do
+  gem 'awesome_print'
+  gem 'foreman'
+  gem 'rack-test'
+  gem 'mocha'
+end
+
 # Gems required by CocoaPods.
 #
 #gem 'open4'
@@ -12,16 +26,3 @@ gem 'colored'
 gem 'json'
 gem 'octokit'
 gem 'rake'
-
-gem 'thin'
-gem 'sinatra'
-gem 'sinatra-contrib'
-gem 'haml'
-gem 'twitter'
-
-group :development do
-  gem 'awesome_print'
-  gem 'foreman'
-  gem 'rack-test'
-  gem 'mocha'
-end

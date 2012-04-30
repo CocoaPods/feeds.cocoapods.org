@@ -18,8 +18,6 @@ class CocoaPodsNotifier
     def self.tweet(pod)
       status = status(pod) << " #{pod.homepage}"
       ::Twitter.update(status)
-    rescue StandardError => e
-      puts "[!] Tweet failed - #{e.message}".red
     end
 
     def self.status(pod)

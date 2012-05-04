@@ -66,12 +66,19 @@ class RSSTest < Test::Unit::TestCase
     assert_equal value2, 'A Very High Performance Objective-C JSON Library.'
   end
 
-  def test_it_shows_the_pod_author_and_the_repo_link
+  def test_it_shows_the_pod_author
     value1 = @desc1.elements['p[2]'].to_s
     value2 = @desc2.elements['p[2]'].to_s
-    assert_equal value1.to_s, "<p>[ by Sam Soffes | available at: <a href='https://github.com/samsoffes/ssziparchive.git'>github.com</a> ]</p>"
-    assert_equal value2.to_s, "<p>[ by John Engelhart | available at: <a href='https://github.com/johnezang/JSONKit.git'>github.com</a> ]</p>"
+    assert_equal value1.to_s, "<p>Authored by Sam Soffes.</p>"
+    assert_equal value2.to_s, "<p>Authored by John Engelhart.</p>"
 
+  end
+
+  def test_it_shows_the_repo_link
+    value1 = @desc1.elements['p[3]'].to_s
+    value2 = @desc2.elements['p[3]'].to_s
+    assert_equal value1.to_s, "<p>[ Available at: <a href='https://github.com/samsoffes/ssziparchive.git'>https://github.com/samsoffes/ssziparchive.git</a> ]</p>"
+    assert_equal value2.to_s, "<p>[ Available at: <a href='https://github.com/johnezang/JSONKit.git'>https://github.com/johnezang/JSONKit.git</a> ]</p>"
   end
 
   def test_it_shows_the_pod_description
@@ -113,5 +120,4 @@ class RSSTest < Test::Unit::TestCase
   def test_it_generates_the_CocoaPods_channel
     assert_equal 'CocoaPods', @root.elements['channel/title'].text
   end
-
 end

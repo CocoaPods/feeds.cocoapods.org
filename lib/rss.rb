@@ -34,7 +34,8 @@ class CocoaPodsNotifier
 
     def item_description(pod)
       s =  "<p>#{pod.description}</p>"
-      s << "<p>[ by #{pod.authors} | available at: <a href=\"#{pod.source_url}\">#{URI.parse(pod.source_url).host}</a> ]</p>"
+      s << "<p>Authored by #{pod.authors}</p>"
+      s << "<p>[ Available at: <a href=\"#{pod.source_url}\">#{pod.source_url}</a> ]</p>"
       s << "<ul>"
       s << "<li>Latest version: #{pod.version}</li>"
       s << "<li>Platform: #{pod.platform}</li>"

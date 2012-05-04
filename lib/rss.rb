@@ -33,7 +33,7 @@ class CocoaPodsNotifier
     end
 
     def item_description(pod)
-      s =  "<p>#{pod.description}</p>"
+      s =  "<p>#{pod.description.gsub(/\n/, "<br>")}</p>"
       s << "<p>Authored by #{pod.authors}.</p>"
       s << "<p>[ Available at: <a href=\"#{pod.source_url}\">#{pod.source_url}</a> ]</p>"
       s << "<ul>"

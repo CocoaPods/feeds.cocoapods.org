@@ -5,7 +5,6 @@ require 'sinatra'
 require 'haml'
 require 'cocoapods'
 require 'awesome_print'
-require 'sinatra/reloader'
 require 'json'
 require 'exceptio-ruby'
 
@@ -22,6 +21,7 @@ class CocoaPodsNotifier < Sinatra::Application
   end
 
   configure :development do
+    require 'sinatra/reloader'
     register Sinatra::Reloader
   end
 

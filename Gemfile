@@ -5,13 +5,13 @@
 source :rubygems
 
 gem 'sinatra'
-gem 'sinatra-contrib'
 gem 'haml'
 gem 'twitter'
 gem 'exceptio-ruby'
 
 group :development do
   gem 'thin'
+  gem 'sinatra-contrib'
   gem 'awesome_print'
   gem 'foreman'
   gem 'rack-test'

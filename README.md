@@ -7,7 +7,7 @@ During each update it tweets the new pods.
 
 ## Application
 
-- Running on Ruby 1.9.2/3.
+- Running on Ruby 1.8.7, 1.9.2, and 1.9.3.
 - Procfile-based Sinatra application. 
 - Requires a host capable of managing a git repository.
 - Available at http://feeds.cocoapods.org [Not working yet].

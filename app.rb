@@ -4,7 +4,6 @@ $:.unshift File.expand_path('../vendor/Xcodeproj/lib', __FILE__)
 require 'sinatra'
 require 'haml'
 require 'cocoapods'
-require 'awesome_print'
 require 'json'
 require 'exceptio-ruby'
 
@@ -21,6 +20,7 @@ class CocoaPodsNotifier < Sinatra::Application
   end
 
   configure :development do
+    require 'awesome_print'
     require 'sinatra/reloader'
     register Sinatra::Reloader
   end

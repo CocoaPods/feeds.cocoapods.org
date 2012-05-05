@@ -1,6 +1,12 @@
 require 'bundler/setup'
 require 'rake/testtask'
 
+desc "Install dependencies"
+task :bootstrap do
+  sh "git submodule update --init"
+  sh "bundle install"
+end
+
 Rake::TestTask.new do |t|
   t.pattern = "test/**/*.rb"
 end

@@ -107,14 +107,14 @@ class RSSTest < Test::Unit::TestCase
 
   def test_it_shows_the_pod_github_watchers
     value1, value2 = check_description_values('ul/li[3]', 'ul/li[4]')
-    assert_match value1, /Watchers: \d+/
-    assert_match value2, /Watchers: \d+/
+    assert_match /Watchers: \d+/, value1
+    assert_match /Watchers: \d+/, value2
   end
 
    def test_it_shows_the_pod_github_forks
     value1, value2 = check_description_values('ul/li[4]', 'ul/li[5]')
-    assert_match value1, /Forks: \d+/
-    assert_match value2, /Forks: \d+/
+    assert_match /Forks: \d+/, value1
+    assert_match /Forks: \d+/, value2
   end
 
   def test_it_generates_the_CocoaPods_channel

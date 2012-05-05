@@ -23,8 +23,9 @@ class CocoaPodsNotifier
     def self.status(pod)
       text = "[#{pod.name}] #{pod.summary}"
       text << '.' unless text =~ /\.$/
-      if text.length >= MAX_LENGTH
-        text = text[0..MAX_LENGTH-2].gsub(/( )?\.?,?$/,'') + '…'
+      chars = text.scan(/./mu)
+      if chars.length >= MAX_LENGTH
+        text = chars[0..MAX_LENGTH-2].join.gsub(/( )?\.?,?$/,'') + '…'
       end
       text
     end

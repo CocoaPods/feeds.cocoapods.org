@@ -21,8 +21,11 @@ class TwitterTest < Test::Unit::TestCase
     expected = '[JSONKit] This is a message which is waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaay ' \
                'too long and will get truncated here… https://github.com/johnezang/JSONKit'
 
+    # This is to correctly count (Unicode) chars on Ruby 1.8 as well.
+    char_size = expected.unpack("U*").size
+
     # This is because the link can be any size, but will be shortened to 21 chars (because it's https).
-    assert_equal 140, (expected.size - @pod.homepage.size + 21)
+    assert_equal 140, (char_size - @pod.homepage.size + 21)
 
     Twitter.expects(:update).with(expected)
     CocoaPodsNotifier::Twitter.tweet(@pod)
@@ -37,7 +40,7 @@ class TwitterTest < Test::Unit::TestCase
                      tested_string.length -
                      name.length -
                      link_length -
-                     ellipsis.length
+                     2 # ellipsis
 
     summary        = 'x' * x_length + "#{tested_string} truncated part"
     status         = name + 'x' * x_length + ellipsis + link

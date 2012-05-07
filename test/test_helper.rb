@@ -8,7 +8,7 @@ require 'mocha'
 require 'rack/test'
 
 ENV['RACK_ENV'] = 'test'
+$silent = true
 
 CocoaPodsNotifier::Repo.new.setup
 
-$silent = true

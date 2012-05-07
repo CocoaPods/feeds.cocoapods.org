@@ -15,12 +15,12 @@ class CocoaPodsNotifier
     def setup
       return if (master_dir).exist?
       @repos_dir.mkpath
-      puts '-> Cloning Specs Repo'.blue
-      Dir.chdir(repos_dir) { `git clone '#{ENV['SPECS_URL']}' master` }
+      puts '-> Cloning Specs Repo'.blue unless $silent
+      Dir.chdir(@repos_dir) { `git clone '#{ENV['SPECS_URL']}' master` }
     end
 
     def git_pull
-      puts '-> Updating Specs Repo'.blue
+      puts '-> Updating Specs Repo'.blue unless $silent
       Dir.chdir(master_dir) { `git pull` }
       raise 'Git failed to pull the repo' unless $?.exitstatus == 0
     end

@@ -37,12 +37,12 @@ class CocoaPodsNotifier < Sinatra::Application
     if feed
       feed = RSS.new(repo.pods, repo.creation_dates).feed
       File.open(RSS_FILE, 'w') { |f| f.write(feed) }
-      puts '-> RSS feed created'.cyan
+      puts '-> RSS feed created'.cyan unless $silent
     end
 
     if tweet
       repo.new_pods.each { |pod| Twitter.tweet(pod) }
-      puts "-> Tweeted #{repo.new_pods.count} pods".cyan
+      puts "-> Tweeted #{repo.new_pods.count} pods".cyan unless $silent
     end
 
   rescue Exception => e

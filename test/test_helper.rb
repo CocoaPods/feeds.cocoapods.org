@@ -10,3 +10,5 @@ require 'rack/test'
 ENV['RACK_ENV'] = 'test'
 
 CocoaPodsNotifier::Repo.new.setup
+
+$silent = true

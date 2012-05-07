@@ -32,21 +32,17 @@ class CocoaPodsNotifier < Sinatra::Application
 
   def self.update(feed = true, tweet = false)
 
-    repo  = Repo.new
-    old   = repo.pods
-    repo.update
-    pods  = repo.pods
+    repo = Repo.new.tap { |r| r.update }
 
     if feed
-      feed = RSS.new(pods, repo.creation_dates).feed
+      feed = RSS.new(repo.pods, repo.creation_dates).feed
       File.open(RSS_FILE, 'w') { |f| f.write(feed) }
       puts '-> RSS feed created'.cyan
     end
 
     if tweet
-      delta = pods - old
-      delta.each { |pod| Twitter.tweet(pod) }
-      puts "-> Tweeted #{delta.length} pods".cyan
+      repo.new_pods.each { |pod| Twitter.tweet(pod) }
+      puts "-> Tweeted #{repo.new_pods.count} pods".cyan
     end
 
   rescue Exception => e

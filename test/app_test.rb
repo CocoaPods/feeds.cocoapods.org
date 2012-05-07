@@ -30,4 +30,12 @@ class AppTest < Test::Unit::TestCase
     assert !File.exist?(CocoaPodsNotifier::RSS_FILE)
   end
 
+  def test_it_identifies_the_pods_added_by_an_update
+    post "/#{HOOK_PATH}", :payload => { 'ref' => 'refs/heads/master' }.to_json
+    assert_equal 201, last_response.status
+    CocoaPodsNotifier::Twitter.stubs(:tweet)
+    CocoaPodsNotifier::Twitter.stubs(:tweet)
+
+  end
+
 end

@@ -1,21 +1,34 @@
 class CocoaPodsNotifier
   class Repo
+    attr_reader :new_pods
+
     def initialize
       @repos_dir = Pathname.new(File.expand_path("../../tmp/.cocoapods", __FILE__))
       Pod::Config.instance.repos_dir = @repos_dir
       Pod::Specification::Statistics.instance.cache_expiration = Time.mktime(2012,1,1).to_i
     end
 
+    def master_dir
+      @repos_dir + 'master'
+    end
+
     def setup
-      return if (@repos_dir + 'master').exist?
+      return if (master_dir).exist?
       @repos_dir.mkpath
       puts '-> Cloning Specs Repo'.blue
-      Dir.chdir(@repos_dir) { `git clone '#{ENV['SPECS_URL']}' master` }
+      Dir.chdir(repos_dir) { `git clone '#{ENV['SPECS_URL']}' master` }
+    end
+
+    def git_pull
+      puts '-> Updating Specs Repo'.blue
+      Dir.chdir(master_dir) { `git pull` }
+      raise 'Git failed to pull the repo' unless $?.exitstatus == 0
     end
 
     def update
-      puts '-> Updating Specs Repo'.blue
-      Dir.chdir(@repos_dir + 'master') { `git pull` }
+      old_pods = pods
+      git_pull
+      @new_pods = pods - old_pods
     end
 
     def sets
@@ -23,11 +36,11 @@ class CocoaPodsNotifier
     end
 
     def pods
-      sets.map { |set| Pod::Command::Presenter::CocoaPod.new(set) }
+      sets.map { |set| Pod::Command::Presenter::CocoaPod.new(set) }.sort_by(&:name)
     end
 
     def pod_named(name)
-      pods.select { |pod| pod.name == name }[0]
+      pods.find { |pod| pod.name == name }
     end
 
     def creation_dates

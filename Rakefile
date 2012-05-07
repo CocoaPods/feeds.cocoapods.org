@@ -15,12 +15,16 @@ Rake::TestTask.new("test:app") do |t|
   t.pattern = "test/app_test.rb"
 end
 
+Rake::TestTask.new("test:repo") do |t|
+  t.pattern = "test/repo_test.rb"
+end
+
 Rake::TestTask.new("test:rss") do |t|
   t.pattern = "test/rss_test.rb"
 end
 
-Rake::TestTask.new("test:pod_twitter") do |t|
-  t.pattern = "test/pod_twitter_test.rb"
+Rake::TestTask.new("test:twitter") do |t|
+  t.pattern = "test/twitter_test.rb"
 end
 
 task :default => :test

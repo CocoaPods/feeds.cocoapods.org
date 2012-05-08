@@ -26,24 +26,19 @@ class CocoaPodsNotifier < Sinatra::Application
   end
 
   def self.init
-    Repo.new.setup
-    update(true, false)
+    is_new = Repo.new.setup
+    update
   end
 
-  def self.update(feed = true, tweet = false)
-
+  def self.update
     repo = Repo.new.tap { |r| r.update }
 
-    if feed
-      feed = RSS.new(repo.pods, repo.creation_dates).feed
-      File.open(RSS_FILE, 'w') { |f| f.write(feed) }
-      puts '-> RSS feed created'.cyan unless $silent
-    end
+    feed = RSS.new(repo.pods, repo.creation_dates).feed
+    File.open(RSS_FILE, 'w') { |f| f.write(feed) }
+    puts '-> RSS feed created'.cyan unless $silent
 
-    if tweet
-      repo.new_pods.each { |pod| Twitter.tweet(pod) }
-      puts "-> Tweeted #{repo.new_pods.count} pods".cyan unless $silent
-    end
+    repo.new_pods.each { |pod| Twitter.tweet(pod) }
+    puts "-> Tweeted #{repo.new_pods.count} pods".cyan unless $silent
 
   rescue Exception => e
     puts "[!] update failed".red
@@ -71,7 +66,7 @@ class CocoaPodsNotifier < Sinatra::Application
       start_time = Time.now
       payload    = JSON.parse(params[:payload])
       if payload['ref'] == "refs/heads/master"
-        self.class.update(true, true)
+        self.class.update
         status 201
         body "REINDEXED - #{(Time.now - start_time).to_i} seconds"
       else

@@ -16,7 +16,7 @@ class CocoaPodsNotifier < Sinatra::Application
 
   configure do
     set :haml, :format => :html5
-    ExceptIO::Client.configure "cocoapods-feeds-cocoapods-org", ENV['EXCEPTIO_KEY']
+    ExceptIO::Client.configure "cocoapods-feeds-cocoapods-org", ENV['EXCEPTIO_KEY'] if ENV['RACK_ENV'] == 'production'
   end
 
   configure :development do

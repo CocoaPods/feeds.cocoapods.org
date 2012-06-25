@@ -1,7 +1,6 @@
 source :rubygems
 
-gem "xcodeproj", :git => "git://github.com/CocoaPods/Xcodeproj.git", :branch => "develop"
-gem "cocoapods", :git => "git://github.com/CocoaPods/CocoaPods.git", :branch => "develop"
+gem 'cocoapods', '>=0.6.0.rc2'
 gem 'sinatra'
 gem 'haml'
 gem 'twitter'

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/CocoaPods/CocoaPods.git
-  revision: 5334e67b262a31acd298b377c16c97023df4993c
+  revision: f715cb5b45f5881c77546da1114fb51bc61972ba
   branch: develop
   specs:
     cocoapods (0.6.0.rc2)
@@ -97,6 +97,7 @@ DEPENDENCIES
   haml
   mocha
   rack-test
+  rake
   sinatra
   sinatra-contrib
   thin

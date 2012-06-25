@@ -14,4 +14,5 @@ group :development do
   gem 'foreman'
   gem 'rack-test'
   gem 'mocha'
+  gem 'rake'
 end

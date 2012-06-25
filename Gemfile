@@ -6,6 +6,7 @@ gem 'sinatra'
 gem 'haml'
 gem 'twitter'
 gem 'exceptio-ruby'
+gem 'rake'
 
 group :development do
   gem 'thin'
@@ -14,5 +15,4 @@ group :development do
   gem 'foreman'
   gem 'rack-test'
   gem 'mocha'
-  gem 'rake'
 end

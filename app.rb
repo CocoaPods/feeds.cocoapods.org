@@ -1,6 +1,3 @@
-$:.unshift File.expand_path('../vendor/CocoaPods/lib', __FILE__)
-$:.unshift File.expand_path('../vendor/Xcodeproj/lib', __FILE__)
-
 require 'sinatra'
 require 'haml'
 require 'cocoapods'

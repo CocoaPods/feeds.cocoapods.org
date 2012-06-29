@@ -26,6 +26,4 @@
               %td= pod.name
               %td= @creation_dates[pod.name].strftime("%Y/%m/%d")
               %td
-                - if @pods_tweets[pod.name].length > 119
-                  %span.label.label-warning=@pods_tweets[pod.name].length
                 =@pods_tweets[pod.name]

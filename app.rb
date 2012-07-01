@@ -1,8 +1,11 @@
 require 'sinatra'
 require 'haml'
-require 'cocoapods'
 require 'json'
 require 'exceptio-ruby'
+
+$:.unshift File.expand_path('../vendor/Xcodeproj/lib', __FILE__)
+$:.unshift File.expand_path('../vendor/CocoaPods/lib', __FILE__)
+require 'cocoapods'
 
 class CocoaPodsNotifier < Sinatra::Application
   RSS_FILE = File.expand_path('../public/new-pods.rss', __FILE__)

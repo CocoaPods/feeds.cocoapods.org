@@ -1,6 +1,10 @@
 source :rubygems
 
-gem 'cocoapods', '>= 0.6.0.rc5'
+#gem 'cocoapods', '>= 0.6.0.rc5'
+gem 'json'
+gem 'colored'
+gem 'octokit'
+
 gem 'sinatra'
 gem 'haml'
 gem 'twitter'

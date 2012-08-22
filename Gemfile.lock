@@ -1,6 +1,9 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    active_support (3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
     addressable (2.2.8)
     awesome_print (1.0.2)
     backports (2.6.1)
@@ -66,6 +69,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_support
   awesome_print
   colored
   exceptio-ruby

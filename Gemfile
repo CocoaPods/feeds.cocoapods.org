@@ -4,6 +4,7 @@ source :rubygems
 gem 'json'
 gem 'colored'
 gem 'octokit'
+gem 'active_support'
 
 gem 'sinatra'
 gem 'haml'

@@ -13,7 +13,7 @@ class RSSTest < Test::Unit::TestCase
       ss_zip_archive.stubs(:versions).returns([Pod::Version.new('0.1.2')])
       @sets << ss_zip_archive
 
-      @pods = @sets.map { |set| Pod::Command::Presenter::CocoaPod.new(set) }
+      @pods = @sets.map { |set| Pod::UI::UIPod.new(set) }
 
       # SSZipArchive has been created most recently, so comes first
       # JSONKit has been created earlier, so comes last

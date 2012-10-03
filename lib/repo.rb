@@ -37,7 +37,7 @@ class CocoaPodsNotifier
     end
 
     def pods
-      sets.map { |set| Pod::Command::Presenter::CocoaPod.new(set) }.sort_by(&:name)
+      sets.map { |set| Pod::UI::UIPod.new(set) }.sort_by(&:name)
     end
 
     def pod_named(name)

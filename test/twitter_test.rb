@@ -6,7 +6,7 @@ class TwitterTest < Test::Unit::TestCase
     super
     set = Pod::Source.search(Pod::Dependency.new('JSONKit'))
     set.stubs(:required_version).returns(Pod::Version.new('1.4'))
-    @pod = Pod::Command::Presenter::CocoaPod.new(set)
+    @pod = Pod::UI::UIPod.new(set)
   end
 
   def test_it_creates_a_tweet_for_a_new_tweet

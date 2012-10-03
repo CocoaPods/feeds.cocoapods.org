@@ -39,9 +39,8 @@ class CocoaPodsNotifier < Sinatra::Application
 
     repo.new_pods.each { |pod| Twitter.tweet(pod) }
     puts "-> Tweeted #{repo.new_pods.count} pods".cyan unless $silent
-
   rescue Exception => e
-    puts "[!] update failed".red
+    puts "[!] update failed\n#{e}".red
     ExceptIO::Client.log e, ENV['RACK_ENV']
   end
 

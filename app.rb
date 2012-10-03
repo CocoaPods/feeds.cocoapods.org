@@ -40,7 +40,8 @@ class CocoaPodsNotifier < Sinatra::Application
     repo.new_pods.each { |pod| Twitter.tweet(pod) }
     puts "-> Tweeted #{repo.new_pods.count} pods".cyan unless $silent
   rescue Exception => e
-    puts "[!] update failed\n#{e}".red
+    puts "[!] update failed: #{e}".red
+    puts e.backtrace.join("\n")
     ExceptIO::Client.log e, ENV['RACK_ENV']
   end
 
@@ -55,6 +56,8 @@ class CocoaPodsNotifier < Sinatra::Application
       @new_pods.each { |pod| @pods_tweets[pod.name] = Twitter.status(pod) }
       haml :index
     rescue Exception => e
+      puts "[!] get / failed: #{e}".red
+      puts e.backtrace.join("\n")
       ExceptIO::Client.log e, ENV['RACK_ENV']
       status 500
     end
@@ -73,6 +76,8 @@ class CocoaPodsNotifier < Sinatra::Application
         body "NO UPDATES - #{(Time.now - start_time).to_i} seconds"
       end
     rescue Exception => e
+      puts "[!] get /HOOK_PATH failed: #{e}".red
+      puts e.backtrace.join("\n")
       ExceptIO::Client.log e, ENV['RACK_ENV']
       status 500
     end

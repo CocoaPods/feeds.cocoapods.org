@@ -3,7 +3,7 @@ class CocoaPodsNotifier
     attr_reader :new_pods
 
     def initialize
-      @repos_dir = Pathname.new(File.expand_path("../../tmp/.cocoapods", __FILE__))
+      @repos_dir = Pathname.new(File.join(ROOT, 'tmp/.cocoapods', __FILE__))
       Pod::Config.instance.repos_dir = @repos_dir
       Pod::Specification::Statistics.instance.cache_expiration = Time.mktime(2012,1,1).to_i
     end

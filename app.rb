@@ -1,20 +1,31 @@
 require 'sinatra'
+require 'sinatra/cache'
 require 'haml'
 require 'json'
 require 'exceptio-ruby'
 
-$:.unshift File.expand_path('../vendor/Xcodeproj/lib', __FILE__)
-$:.unshift File.expand_path('../vendor/CocoaPods/lib', __FILE__)
-require 'cocoapods'
-
 class CocoaPodsNotifier < Sinatra::Application
-  RSS_FILE = File.expand_path('../public/new-pods.rss', __FILE__)
+end
 
-  require File.expand_path '../lib/repo', __FILE__
-  require File.expand_path '../lib/rss', __FILE__
-  require File.expand_path '../lib/twitter', __FILE__
+ROOT = File.expand_path('../', __FILE__)
+
+$:.unshift File.join(ROOT, 'lib')
+$:.unshift File.join(ROOT, 'vendor/Xcodeproj/lib')
+$:.unshift File.join(ROOT, 'vendor/CocoaPods/lib')
+require 'cocoapods'
+require 'repo'
+require 'rss'
+require 'twitter_notifier'
+
+class CocoaPodsNotifier
+  RSS_FILE = File.join(ROOT, 'public/new-pods.rss')
 
   configure do
+    set :root, ROOT
+    register Sinatra::Cache
+    set :cache_output_dir, File.join(ROOT, 'public')
+    set :cache_enabled, true
+
     set :haml, :format => :html5
     ExceptIO::Client.configure "cocoapods-feeds-cocoapods-org", ENV['EXCEPTIO_KEY'] if ENV['RACK_ENV'] == 'production'
   end
@@ -69,6 +80,7 @@ class CocoaPodsNotifier < Sinatra::Application
       payload    = JSON.parse(params[:payload])
       if payload['ref'] == "refs/heads/master"
         self.class.update
+        cache_expire('/index')
         status 201
         body "REINDEXED - #{(Time.now - start_time).to_i} seconds"
       else

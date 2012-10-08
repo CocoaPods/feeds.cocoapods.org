@@ -7,6 +7,7 @@ gem 'octokit'
 gem 'active_support'
 
 gem 'sinatra'
+gem 'sinatra-cache'
 gem 'haml'
 gem 'twitter'
 gem 'exceptio-ruby'
@@ -16,6 +17,7 @@ group :development do
   gem 'thin'
   gem 'sinatra-contrib'
   gem 'awesome_print'
+
   gem 'foreman'
   gem 'rack-test'
   gem 'mocha'

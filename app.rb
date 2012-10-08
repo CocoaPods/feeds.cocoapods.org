@@ -3,6 +3,7 @@ require 'sinatra/cache'
 require 'haml'
 require 'json'
 require 'exceptio-ruby'
+require 'colored'
 
 class CocoaPodsNotifier < Sinatra::Application
 end

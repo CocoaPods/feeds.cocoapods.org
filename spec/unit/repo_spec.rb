@@ -40,7 +40,7 @@ describe CocoaPodsNotifier::Repo do
     end
 
     it "returns the creation dates of the Pods" do
-      @sut.creation_dates['AFNetworking'].should == Time.new(2011,9,18, 21,2,31, '+02:00')
+      @sut.creation_dates['AFNetworking'].should == Time.parse('2011-09-18 21:2:31 +02:00')
     end
 
   end

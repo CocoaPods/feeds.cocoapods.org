@@ -9,8 +9,8 @@ describe CocoaPodsNotifier::RSS do
     @mb_progress_hud = repo.pod_named('MBProgressHUD')
     pods = [@af_netowrking, @mb_progress_hud]
     creation_dates = {
-      'AFNetworking' => Time.new(2012, 01, 01),
-      'MBProgressHUD' => Time.new(2012, 01, 02)
+      'AFNetworking'  => Time.parse('2012-01-01'),
+      'MBProgressHUD' => Time.parse('2012-01-02')
     }
     @sut = CocoaPodsNotifier::RSS.new(pods, creation_dates)
   end

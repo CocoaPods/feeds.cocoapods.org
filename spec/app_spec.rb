@@ -16,9 +16,13 @@ describe 'The CocoaPods Notifier App' do
   end
 
   before do
+    Pod::Specification::Set::Statistics.instance.cache_expiration = 60 * 60 * 24 * 365
+    Pod::Specification::Set::Statistics.instance.cache_file = ROOT + 'caches/statistics.yml'
     FileUtils.rm_f app::RSS_FILE
     Twitter.stubs(:tweet)
   end
+
+  #---------------------------------------------------------------------------#
 
   it "returns a preview of the tweets" do
     get '/'

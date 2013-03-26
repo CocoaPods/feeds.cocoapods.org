@@ -54,13 +54,14 @@ module CocoaPodsNotifier
       config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
     end
 
-
+    Pod::Specification::Set::Statistics.instance.cache_expiration = 60 * 60 * 24
+    Pod::Specification::Set::Statistics.instance.cache_file = APP_ROOT + 'caches/statistics.yml'
 
     # Repo Actions
     #-------------------------------------------------------------------------#
 
     def self.master_repo
-      @master_repo ||= Repo.new(APP_ROOT + 'tmp/.cocoapods/master', APP_ROOT + 'caches/statistics.yml')
+      @master_repo ||= Repo.new(APP_ROOT + 'tmp/.cocoapods/master')
     end
 
     # Clones the master repo from the remote and generates the feeds and
@@ -84,7 +85,7 @@ module CocoaPodsNotifier
       puts '-> RSS feed created'.cyan unless $silent
 
       master_repo.new_pod_names.each { |pod_name| Twitter.tweet(master_repo.pod_named(pod_name)) }
-      puts "-> Tweeted #{master_repo.new_pods.count} pods".cyan unless $silent
+      puts "-> Tweeted #{master_repo.new_pod_names.count} pods".cyan unless $silent
     rescue Exception => e
       puts "[!] update failed: #{e}".red
       puts e.backtrace.join("\n")

@@ -8,11 +8,6 @@ module CocoaPodsNotifier
     #
     attr_reader :master_repo_dir
 
-    # @return [Pod::Specification::Set::Statistics] The client to use for
-    #         accessing the statistics of the Pods.
-    #
-    attr_reader :statistics_client
-
     # @param  [Pathname] master_repo_dir @see master_repo_dir
     #
     # @param  [Pathname] statistics_cache_file
@@ -20,11 +15,8 @@ module CocoaPodsNotifier
     #         used because computing the creation dates from the git meta-data
     #         is computationally expensive.
     #
-    def initialize(master_repo_dir, statistics_cache_file = nil)
+    def initialize(master_repo_dir)
       @master_repo_dir = master_repo_dir
-      @statistics_client = Pod::Specification::Set::Statistics.new
-      @statistics_client.cache_expiration = 0
-      @statistics_client.cache_file = statistics_cache_file
     end
 
     # @return [String]
@@ -73,7 +65,7 @@ module CocoaPodsNotifier
     #         each Pod appeared for the first time in the master repo.
     #
     def creation_dates
-      statistics_client.creation_dates(sets)
+      Pod::Specification::Set::Statistics.instance.creation_dates(sets)
     end
 
     public
@@ -85,8 +77,9 @@ module CocoaPodsNotifier
     #
     def setup_if_needed
       return if (master_repo_dir).exist?
-      title('Cloning Specs Repo')
+      title("Cloning Specs Repo (in #{master_repo_dir})")
       master_repo_dir.dirname.mkpath
+      title("Done")
       git("clone '#{master_repo_url}' '#{master_repo_dir}'")
     end
 
@@ -98,9 +91,10 @@ module CocoaPodsNotifier
     #
     def update
       old_pod_names = pod_names
-      title('Updating Specs Repo')
+      title("Updating Specs Repo (in #{master_repo_dir})")
       git('pull', master_repo_dir)
       @new_pod_names = pod_names - old_pod_names
+      title("New Pods: #{@new_pod_names}")
     end
 
     # @return [Array<String>] The names of the new pods after the update.

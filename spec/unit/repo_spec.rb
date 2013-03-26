@@ -2,11 +2,13 @@ require File.expand_path('../../spec_helper', __FILE__)
 
 describe CocoaPodsNotifier::Repo do
 
-  describe "In general" do
-
     before do
+      Pod::Specification::Set::Statistics.instance.cache_file = ROOT + 'caches/statistics.yml'
       @sut = CocoaPodsNotifier::Repo.new(ROOT + 'spec/fixtures/master_repo')
+      @sut.silent = true
     end
+
+    describe "In general" do
 
     it "returns the directory of the master repo" do
       @sut.master_repo_dir.class.should == Pathname
@@ -18,12 +20,6 @@ describe CocoaPodsNotifier::Repo do
   #---------------------------------------------------------------------------#
 
   describe "Pods" do
-
-    before do
-      repos_dir = ROOT + 'spec/fixtures/master_repo'
-      statistics_cache_file = ROOT + 'caches/statistics.yml'
-      @sut = CocoaPodsNotifier::Repo.new(repos_dir, statistics_cache_file)
-    end
 
     it "returns the list of the available sets" do
       sets = @sut.sets
@@ -53,16 +49,10 @@ describe CocoaPodsNotifier::Repo do
 
   describe "Initialization & Update" do
 
-    before do
-      @repo_dir = ROOT + 'tmp/spec_master_repo'
-      @sut = CocoaPodsNotifier::Repo.new(@repo_dir)
-      @sut.silent = true
-    end
-
     it "sets up the master repo if the directory doesn't exists" do
       @sut.stubs(:master_repo_url).returns(ROOT + 'spec/fixtures/master_repo')
       @sut.setup_if_needed
-      test_path = @repo_dir + 'AFNetworking/1.2.0/AFNetworking.podspec'
+      test_path = @sut.master_repo_dir + 'AFNetworking/1.2.0/AFNetworking.podspec'
       test_path.should.exist
     end
 

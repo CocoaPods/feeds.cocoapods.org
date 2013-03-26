@@ -1,15 +1,11 @@
 require 'rss/maker'
+require 'redcarpet'
 
 module CocoaPodsNotifier
 
   # Creates the RSS feed.
   #
   class RSS
-
-
-    # TODO
-    # cache for 1h
-    Pod::Specification::Set::Statistics.instance.cache_expiration = 60 * 60
 
     # @return [Array<Pod::Specification::Set::Presenter>] The list of all the
     #         Pods available in the master repo.
@@ -33,14 +29,16 @@ module CocoaPodsNotifier
     #
     def feed
       rss = ::RSS::Maker.make('2.0') do |m|
+        # m.xml_stylesheets.new_child.href = "rss.css"
         m.channel.title         = "CocoaPods"
         m.channel.link          = "http://www.cocoapods.org"
         m.channel.description   = "CocoaPods new pods feed"
         m.channel.language      = "en"
         m.channel.lastBuildDate = Time.now
         m.items.do_sort         = true
-
-        pods_for_feed.each { |pod| configure_rss_item(m.items.new_item, pod) }
+        pods_for_feed.each do |pod|
+          configure_rss_item(m.items.new_item, pod)
+        end
       end
       rss.to_s
     end
@@ -79,16 +77,45 @@ module CocoaPodsNotifier
     # @return [String] the description for the RSS item.
     #
     def rss_item_description(pod)
-      s =  "<p>#{pod.description.gsub(/\n/, "<br>")}</p>"
+      github_watchers = Pod::Specification::Set::Statistics.instance.github_watchers(pod.set)
+      github_forks = Pod::Specification::Set::Statistics.instance.github_forks(pod.set)
+
+      s =  "<p>#{markdown(pod.description)}</p>"
       s << "<p>Authored by #{pod.authors}.</p>"
       s << "<p>[ Available at: <a href=\"#{pod.source_url}\">#{pod.source_url}</a> ]</p>"
       s << "<ul>"
       s << "<li>Latest version: #{pod.version}</li>"
       s << "<li>Platform: #{pod.platform}</li>"
       s << "<li>License: #{pod.license}</li>" if pod.license
-      s << "<li>Stargazers: #{pod.github_watchers}</li>" if pod.github_watchers
-      s << "<li>Forks: #{pod.github_forks}</li>" if pod.github_forks
+      s << "<li>Stargazers: #{github_watchers}</li>" if github_watchers
+      s << "<li>Forks: #{github_forks}</li>" if github_forks
       s << "</ul>"
+
+      pod.spec.screenshots.each do |screenshot_url|
+        s << "<img src='#{screenshot_url}'>"
+      end
+      s
     end
+
+    # @param  [String]
+    # @return [String]
+    #
+    def markdown(input)
+      markdown_renderer.render(input)
+    end
+
+    # @return [Redcarpet::Markdown]
+    #
+    def markdown_renderer
+      @markdown_instance ||= Redcarpet::Markdown.new(Class.new(Redcarpet::Render::HTML) do
+        def block_code(code, lang)
+          lang ||= 'ruby'
+          HTMLHelpers.syntax_highlight(code, :language => lang)
+        end
+      end, :autolink => true, :space_after_headers => true, :no_intra_emphasis => true)
+    end
+
+    #-------------------------------------------------------------------------#
+
   end
 end

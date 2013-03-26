@@ -84,7 +84,7 @@ module CocoaPodsNotifier
       File.open(RSS_FILE, 'w') { |f| f.write(feed) }
       puts '-> RSS feed created'.cyan unless $silent
 
-      master_repo.new_pod_names.each { |pod_name| Twitter.tweet(master_repo.pod_named(pod_name)) }
+      master_repo.new_pod_names.each { |pod_name| Twitter.new(::Twitter).tweet(master_repo.pod_named(pod_name)) }
       puts "-> Tweeted #{master_repo.new_pod_names.count} pods".cyan unless $silent
     rescue Exception => e
       puts "[!] update failed: #{e}".red

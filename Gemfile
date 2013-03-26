@@ -1,17 +1,17 @@
-source :rubygems
+source 'https://rubygems.org'
 
-#gem 'cocoapods', '>= 0.6.0.rc5'
+gem 'cocoapods-core', :git => 'https://github.com/CocoaPods/Core.git'
 gem 'json'
 gem 'colored'
 gem 'octokit'
-gem 'active_support'
+gem 'activesupport'
+gem 'redcarpet'
 
 gem 'sinatra'
 gem 'sinatra-cache'
 gem 'haml'
 gem 'twitter'
 gem 'exceptio-ruby'
-gem 'rake'
 
 group :development do
   gem 'thin'
@@ -21,4 +21,12 @@ group :development do
   gem 'foreman'
   gem 'rack-test'
   gem 'mocha'
+end
+
+group :specs do
+  gem "mocha"
+  gem "bacon"
+  gem "mocha-on-bacon"
+  gem "rake"
+  gem 'coveralls', :require => false
 end

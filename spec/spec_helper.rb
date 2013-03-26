@@ -13,5 +13,5 @@ def fixutre_repo
   CocoaPodsNotifier::Repo.new(ROOT + 'spec/fixtures/master_repo')
 end
 
-# CocoaPodsNotifier::Repo.new.setup
+fixutre_repo.setup_if_needed
 

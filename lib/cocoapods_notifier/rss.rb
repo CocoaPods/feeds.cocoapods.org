@@ -6,6 +6,11 @@ module CocoaPodsNotifier
   #
   class RSS
 
+
+    # TODO
+    # cache for 1h
+    Pod::Specification::Set::Statistics.instance.cache_expiration = 60 * 60
+
     # @return [Array<Pod::Specification::Set::Presenter>] The list of all the
     #         Pods available in the master repo.
     #

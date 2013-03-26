@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/CocoaPods/Core.git
-  revision: f34dda7b9700fcfdf3f7a0c2adc1e5c700b29253
+  revision: 6350175c3d9340f86f58fe45a7a2c206f899721a
   specs:
-    cocoapods-core (0.17.0.rc6)
-      activesupport (~> 3.2.6)
+    cocoapods-core (0.17.0.rc7)
+      activesupport (~> 3.2.13)
       faraday (~> 0.8.1)
       octokit (~> 1.7)
       rake (~> 10.0.0)
@@ -95,7 +95,7 @@ GEM
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
-    thor (0.17.0)
+    thor (0.18.0)
     tilt (1.3.6)
     twitter (4.6.2)
       faraday (~> 0.8, < 0.10)

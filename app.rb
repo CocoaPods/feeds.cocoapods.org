@@ -16,7 +16,7 @@ module CocoaPodsNotifier
   class CocoaPodsNotifierApp < Sinatra::Application
 
     # Setup
-    #---------------------------------------------------------------------------#
+    #-------------------------------------------------------------------------#
 
     # The path of the RSS file. Served statically as it is located in the public
     # folder.
@@ -54,10 +54,12 @@ module CocoaPodsNotifier
       config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
     end
 
+
+
     # Repo Actions
     #-------------------------------------------------------------------------#
 
-    def master_repo
+    def self.master_repo
       @master_repo ||= Repo.new(APP_ROOT + 'tmp/.cocoapods/master', APP_ROOT + 'caches/statistics.yml')
     end
 
@@ -81,7 +83,7 @@ module CocoaPodsNotifier
       File.open(RSS_FILE, 'w') { |f| f.write(feed) }
       puts '-> RSS feed created'.cyan unless $silent
 
-      master_repo.new_pods.each { |pod| Twitter.tweet(pod) }
+      master_repo.new_pod_names.each { |pod_name| Twitter.tweet(master_repo.pod_named(pod_name)) }
       puts "-> Tweeted #{master_repo.new_pods.count} pods".cyan unless $silent
     rescue Exception => e
       puts "[!] update failed: #{e}".red
@@ -97,8 +99,8 @@ module CocoaPodsNotifier
     #
     get '/' do
       begin
-        pods = master_repo.pods
-        @creation_dates = master_repo.creation_dates
+        pods = self.class.master_repo.pods
+        @creation_dates = self.class.master_repo.creation_dates
         @pods_count = pods.length
         @new_pods = RSS.new(pods, @creation_dates).pods_for_feed
         @pods_tweets = {}
@@ -140,7 +142,7 @@ module CocoaPodsNotifier
       end
     end
 
-    #---------------------------------------------------------------------------#
+    #-------------------------------------------------------------------------#
 
   end
 

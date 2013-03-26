@@ -70,7 +70,7 @@ describe CocoaPodsNotifier::RSS do
       end
 
       it "uses the creation date of the Pod as the item publication date" do
-        @item.pubDate.should == Time.new(2012, 01, 01)
+        @item.pubDate.should == Time.parse('2012-01-01')
       end
 
       it "uses the description of the Pod as the item description" do

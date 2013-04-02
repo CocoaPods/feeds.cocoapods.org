@@ -81,18 +81,23 @@ module CocoaPodsNotifier
       github_forks = Pod::Specification::Set::Statistics.instance.github_forks(pod.set)
 
       s =  "<p>#{markdown(pod.description)}</p>"
-      s << "<p>Authored by #{pod.authors}.</p>"
-      s << "<p>[ Available at: <a href=\"#{pod.source_url}\">#{pod.source_url}</a> ]</p>"
-      s << "<ul>"
-      s << "<li>Latest version: #{pod.version}</li>"
-      s << "<li>Platform: #{pod.platform}</li>"
-      s << "<li>License: #{pod.license}</li>" if pod.license
-      s << "<li>Stargazers: #{github_watchers}</li>" if github_watchers
-      s << "<li>Forks: #{github_forks}</li>" if github_forks
-      s << "</ul>"
+      s << "\n<p>Authored by #{pod.authors}.</p>"
+      s << "\n<p>[ Available at: <a href=\"#{pod.source_url}\">#{pod.source_url}</a> ]</p>"
+      s << "\n<ul>"
+      s << "\n  <li>Latest version: #{pod.version}</li>"
+      s << "\n  <li>Platform: #{pod.platform}</li>"
+      s << "\n  <li>License: #{pod.license}</li>" if pod.license
+      s << "\n  <li>Stargazers: #{github_watchers}</li>" if github_watchers
+      s << "\n  <li>Forks: #{github_forks}</li>" if github_forks
+      s << "\n</ul>"
 
       pod.spec.screenshots.each do |screenshot_url|
-        s << "<img src='#{screenshot_url}'>"
+        style =  "border:1px solid #aaa;"
+        style << "min-width:44px; min-height:44px;"
+        style << "margin: 22px 22px 0 0; padding: 4px;"
+        style << "box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);"
+        style << "border: 1px solid rgba(0, 0, 0, 0.2);"
+        s << "\n  <img src='#{screenshot_url}' style='#{style}'>"
       end
       s
     end

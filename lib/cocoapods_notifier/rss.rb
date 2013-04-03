@@ -91,15 +91,16 @@ module CocoaPodsNotifier
       s << "\n  <li>Forks: #{github_forks}</li>" if github_forks
       s << "\n</ul>"
 
-      pod.spec.screenshots.each do |screenshot_url|
+      # TODO: Fix nil in 1.8.7 in CocoaPods Core.
+      pod.spec.screenshots.compact.each do |screenshot_url|
         style =  "border:1px solid #aaa;"
         style << "min-width:44px; min-height:44px;"
         style << "margin: 22px 22px 0 0; padding: 4px;"
         style << "box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);"
         style << "border: 1px solid rgba(0, 0, 0, 0.2);"
-        s << "\n  <img src='#{screenshot_url}' style='#{style}'>"
+        s << "\n<img src='#{screenshot_url}' style='#{style}'>"
       end
-      s
+      s << "\n"
     end
 
     # @param  [String]

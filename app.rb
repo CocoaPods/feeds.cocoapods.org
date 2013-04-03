@@ -7,7 +7,7 @@ require 'colored'
 require 'cocoapods-core'
 
 APP_ROOT = Pathname.new(File.expand_path('../', __FILE__))
-$:.unshift (APP_ROOT + 'lib').to_s
+$:.unshift((APP_ROOT + 'lib').to_s)
 
 require 'cocoapods_notifier'
 

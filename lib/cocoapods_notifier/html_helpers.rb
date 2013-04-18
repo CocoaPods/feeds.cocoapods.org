@@ -1,5 +1,7 @@
 # Vendored from https://github.com/CocoaPods/cocoapods.github.com/blob/develop/lib/html_helpers.rb
-#
+
+require 'pygments'
+
 module HTMLHelpers
   # Converts a markdown string to HTML.
   #

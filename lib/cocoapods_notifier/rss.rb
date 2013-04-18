@@ -1,5 +1,6 @@
 require 'rss/maker'
 require 'redcarpet'
+require 'cocoapods_notifier/html_helpers'
 
 module CocoaPodsNotifier
 

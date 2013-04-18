@@ -6,6 +6,7 @@ gem 'colored'
 gem 'octokit'
 gem 'activesupport'
 gem 'redcarpet'
+gem 'pygments.rb'
 
 gem 'sinatra'
 gem 'sinatra-cache'

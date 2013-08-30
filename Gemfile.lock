@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/CocoaPods/Core.git
-  revision: e41d277a60b2ff96ff851750ee99135c2d7ecd13
+  revision: cdcd8debaf2faef61e7987fadd4e508ee557f223
   specs:
-    cocoapods-core (0.22.1)
+    cocoapods-core (0.23.0)
       activesupport (~> 3.2.13)
       json (~> 1.8.0)
       nap (~> 0.5.1)
@@ -10,10 +10,9 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (3.2.13)
-      i18n (= 0.6.1)
+    activesupport (3.2.14)
+      i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
-    addressable (2.3.5)
     awesome_print (1.1.0)
     backports (3.3.3)
     bacon (1.2.0)
@@ -26,45 +25,36 @@ GEM
       simplecov (>= 0.7)
       thor
     daemons (1.1.9)
-    dotenv (0.8.0)
+    dotenv (0.9.0)
     eventmachine (1.0.3)
     exceptio-ruby (0.1.5)
       httparty (~> 0.8.1)
-    faraday (0.8.7)
-      multipart-post (~> 1.1)
-    faraday_middleware (0.9.0)
-      faraday (>= 0.7.4, < 0.9)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
     haml (4.0.3)
       tilt
-    hashie (2.0.5)
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
-    i18n (0.6.1)
+    i18n (0.6.5)
     json (1.8.0)
     metaclass (0.0.1)
-    mime-types (1.23)
+    mime-types (1.25)
     mocha (0.14.0)
       metaclass (~> 0.0.1)
     mocha-on-bacon (0.2.2)
       mocha (>= 0.13.0)
-    multi_json (1.7.7)
-    multi_xml (0.5.4)
+    multi_json (1.7.9)
+    multi_xml (0.5.5)
     multipart-post (1.2.0)
     nap (0.5.1)
-    netrc (0.7.7)
-    octokit (1.25.0)
-      addressable (~> 2.2)
-      faraday (~> 0.8)
-      faraday_middleware (~> 0.9)
-      hashie (~> 2.0)
-      multi_json (~> 1.3)
-      netrc (~> 0.7.7)
+    octokit (2.0.0)
+      sawyer (~> 0.3.0)
     posix-spawn (0.3.6)
-    pygments.rb (0.5.1)
+    pygments.rb (0.5.2)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
     rack (1.5.2)
@@ -73,9 +63,12 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     rake (10.1.0)
-    redcarpet (2.3.0)
+    redcarpet (3.0.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    sawyer (0.3.0)
+      faraday (~> 0.8, < 0.10)
+      uri_template (~> 0.5.0)
     simple_oauth (0.2.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
@@ -88,12 +81,12 @@ GEM
     sinatra-cache (0.3.7)
       sinatra (>= 1.1.0)
       sinatra-outputbuffer (>= 0.1.0)
-    sinatra-contrib (1.4.0)
+    sinatra-contrib (1.4.1)
       backports (>= 2.0)
-      eventmachine
+      multi_json
       rack-protection
       rack-test
-      sinatra (~> 1.4.2)
+      sinatra (~> 1.4.0)
       tilt (~> 1.3)
     sinatra-outputbuffer (0.1.0)
       sinatra (>= 1.0.a)
@@ -107,6 +100,7 @@ GEM
       faraday (~> 0.8, < 0.10)
       multi_json (~> 1.0)
       simple_oauth (~> 0.2)
+    uri_template (0.5.3)
     yajl-ruby (1.1.0)
 
 PLATFORMS

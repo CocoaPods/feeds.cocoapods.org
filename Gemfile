@@ -5,7 +5,7 @@ gem 'json'
 gem 'colored'
 gem 'octokit'
 gem 'activesupport'
-gem 'redcarpet'
+gem 'redcarpet', '< 3.0.0'
 gem 'pygments.rb'
 
 gem 'sinatra'

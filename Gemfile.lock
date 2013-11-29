@@ -55,7 +55,7 @@ GEM
     memoizable (0.2.0)
       thread_safe (~> 0.1.3)
     metaclass (0.0.1)
-    mime-types (2.0)
+    mime-types (1.25.1)
     mocha (0.14.0)
       metaclass (~> 0.0.1)
     mocha-on-bacon (0.2.2)
@@ -142,6 +142,7 @@ DEPENDENCIES
   foreman
   haml
   json
+  mime-types (< 2.0)
   mocha
   mocha-on-bacon
   octokit

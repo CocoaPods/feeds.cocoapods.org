@@ -7,6 +7,7 @@ gem 'octokit'
 gem 'activesupport'
 gem 'redcarpet', '< 3.0.0'
 gem 'pygments.rb'
+gem 'mime-types', '< 2.0' # Ruby 1.8.7
 
 gem 'sinatra'
 gem 'sinatra-cache'

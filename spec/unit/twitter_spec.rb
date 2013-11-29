@@ -22,28 +22,66 @@ describe CocoaPodsNotifier::TwitterNotifier do
 
   end
 
-  #---------------------------------------------------------------------------#
+  describe "#make_status" do
 
-  describe "Private Helpers" do
+    it "generates a status for a Pod" do
+      name = 'Pod'
+      summary = 'A short description.'
+      homepage = 'www.example.com'
+      social_media_url = 'https://twitter.com/cocoapods'
+      result = @sut.make_status(name, summary, homepage, social_media_url)
+      result.should == "[Pod by @cocoapods] A short description. www.example.com"
+    end
 
-    describe "#make_status" do
+    it "doesn't modifies short messages" do
+      result = @sut.send(:make_status, 'Pod', "A short description.", 'www.example.com', nil)
+      result.should == "[Pod] A short description. www.example.com"
+    end
 
-      it "doesn't modifies short messages" do
-        result = @sut.send(:make_status, 'Pod', "A short description.", 'www.example.com')
+    it "truncates a long messages" do
+      summary = "A short description"
+      summary << "#" * 140
+      result = @sut.send(:make_status, 'Pod', summary, 'www.example.com', nil)
+      result.gsub('www.example.com', '').length.should == 119
+      result.should.match /\[Pod\] A short description.+ www.example.com/
+    end
+
+    describe "social media URL" do
+
+      before do
+        @name = 'Pod'
+        @summary = 'A short description.'
+        @homepage = 'www.example.com'
+      end
+
+      it "supports URLs with the twitter domain using the https protocol" do
+        social_media_url = 'https://twitter.com/cocoapods'
+        result = @sut.make_status(@name, @summary, @homepage, social_media_url)
+        result.should == "[Pod by @cocoapods] A short description. www.example.com"
+      end
+
+      it "supports URLs with the twitter domain using the http protocol" do
+        social_media_url = 'http://twitter.com/cocoapods'
+        result = @sut.make_status(@name, @summary, @homepage, social_media_url)
+        result.should == "[Pod by @cocoapods] A short description. www.example.com"
+      end
+
+      it "is not confused by URLs not relative to twitter" do
+        social_media_url = 'http://facebook.com/cocoapods'
+        result = @sut.make_status(@name, @summary, @homepage, social_media_url)
         result.should == "[Pod] A short description. www.example.com"
       end
 
-      it "truncates a long messages" do
-        pod_summary = "A short description"
-        pod_summary << "#" * 140
-        result = @sut.send(:make_status, 'Pod', pod_summary, 'www.example.com')
-        result.gsub('www.example.com', '').length.should == 119
-        result.should.match /\[Pod\] A short description.+ www.example.com/
+      it "handles nil social media URLs" do
+        result = @sut.make_status(@name, @summary, @homepage, nil)
+        result.should == "[Pod] A short description. www.example.com"
       end
-
     end
+  end
 
-    #--------------------------------------#
+  #---------------------------------------------------------------------------#
+
+  describe "Private Helpers" do
 
     describe "#truncate_message" do
 

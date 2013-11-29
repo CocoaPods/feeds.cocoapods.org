@@ -29,7 +29,8 @@ module CocoaPodsNotifier
     # @return [String]
     #
     def status_for_pod(pod)
-      make_status(pod.name, pod.summary, pod.homepage)
+      social_media_url = pod.spec.social_media_url
+      make_status(pod.name, pod.summary, pod.homepage, social_media_url)
     end
 
     # Returns the body for the tweet of the given Pod taking into account
@@ -41,14 +42,27 @@ module CocoaPodsNotifier
     #
     # @return [String] The body of the tweet.
     #
-    def make_status(pod_name, pod_summary, pod_homepage)
-      message = "[#{pod_name}] #{pod_summary}"
+    def make_status(name, summary, homepage, social_media_url)
+      account = account_for_social_media_url(social_media_url)
+      if account
+        message = "[#{name} by #{account}] #{summary}"
+      else
+        message = "[#{name}] #{summary}"
+      end
       if message.length > message_max_length
-        message = truncate_message(message, message_max_length, ELLIPSIS_STRING)
+        max_lenght = message_max_length
+        message = truncate_message(message, max_lenght, ELLIPSIS_STRING)
       end
       message << LINK_SEPARATOR_STRING
-      message << pod_homepage
+      message << homepage
       message
+    end
+
+    def account_for_social_media_url(url)
+      return nil unless url
+      reg_ex = %r[\Ahttps?://twitter.com/([^/]+)\z]
+      match_data = reg_ex.match(url)
+      "@#{match_data[1]}" if match_data
     end
 
     private

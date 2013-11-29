@@ -26,17 +26,17 @@ describe CocoaPodsNotifier::TwitterNotifier do
 
   describe "Private Helpers" do
 
-    describe "#message_for_pod" do
+    describe "#make_status" do
 
       it "doesn't modifies short messages" do
-        result = @sut.send(:message_for_pod, 'Pod', "A short description.", 'www.example.com')
+        result = @sut.send(:make_status, 'Pod', "A short description.", 'www.example.com')
         result.should == "[Pod] A short description. www.example.com"
       end
 
       it "truncates a long messages" do
         pod_summary = "A short description"
         pod_summary << "#" * 140
-        result = @sut.send(:message_for_pod, 'Pod', pod_summary, 'www.example.com')
+        result = @sut.send(:make_status, 'Pod', pod_summary, 'www.example.com')
         result.gsub('www.example.com', '').length.should == 119
         result.should.match /\[Pod\] A short description.+ www.example.com/
       end

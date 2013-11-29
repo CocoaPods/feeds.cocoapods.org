@@ -97,7 +97,7 @@ module CocoaPodsNotifier
         @pods_count = pods.length
         @new_pods = RSS.new(pods, @creation_dates).pods_for_feed
         @pods_tweets = {}
-        @new_pods.each { |pod| @pods_tweets[pod.name] = TwitterNotifier.new.tweet_preview(pod) }
+        @new_pods.each { |pod| @pods_tweets[pod.name] = TwitterNotifier.new.status_for_pod(pod) }
         haml :index
 
       rescue Exception => e

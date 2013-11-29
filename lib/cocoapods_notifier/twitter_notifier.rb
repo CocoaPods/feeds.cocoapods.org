@@ -22,18 +22,15 @@ module CocoaPodsNotifier
     # @return [void]
     #
     def tweet(pod)
-      status = message_for_pod(pod.name, pod.summary, pod.homepage)
+      status = status_for_pod(pod)
       client.update(status)
     end
 
-    def tweet_preview(pod)
-      message_for_pod(pod.name, pod.summary, pod.homepage)
+    # @return [String]
+    #
+    def status_for_pod(pod)
+      make_status(pod.name, pod.summary, pod.homepage)
     end
-
-    private
-
-    # Private Helpers
-    #-------------------------------------------------------------------------#
 
     # Returns the body for the tweet of the given Pod taking into account
     # to truncate the summary.
@@ -44,7 +41,7 @@ module CocoaPodsNotifier
     #
     # @return [String] The body of the tweet.
     #
-    def message_for_pod(pod_name, pod_summary, pod_homepage)
+    def make_status(pod_name, pod_summary, pod_homepage)
       message = "[#{pod_name}] #{pod_summary}"
       if message.length > message_max_length
         message = truncate_message(message, message_max_length, ELLIPSIS_STRING)
@@ -53,6 +50,11 @@ module CocoaPodsNotifier
       message << pod_homepage
       message
     end
+
+    private
+
+    # Private Helpers
+    #-------------------------------------------------------------------------#
 
     # Truncates the given message to the given length using the given ellipsis
     # string. Trailing whitespace, comas and punctuation is removed.

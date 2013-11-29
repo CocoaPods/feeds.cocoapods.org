@@ -45,17 +45,22 @@ module CocoaPodsNotifier
     def make_status(name, summary, homepage, social_media_url)
       account = account_for_social_media_url(social_media_url)
       if account
-        message = "[#{name} by #{account}] #{summary}"
+        status = "[#{name} by #{account}] #{summary}"
       else
-        message = "[#{name}] #{summary}"
+        status = "[#{name}] #{summary}"
       end
-      if message.length > message_max_length
+      if status.length > message_max_length
         max_lenght = message_max_length
-        message = truncate_message(message, max_lenght, ELLIPSIS_STRING)
+        status = truncate_message(status, max_lenght, ELLIPSIS_STRING)
       end
-      message << LINK_SEPARATOR_STRING
-      message << homepage
-      message
+      status << LINK_SEPARATOR_STRING
+      status << homepage
+
+      if status.length > 140
+        puts "[!] Status too long: `#{status}`".yellow unless $silent
+      end
+
+      status
     end
 
     def account_for_social_media_url(url)

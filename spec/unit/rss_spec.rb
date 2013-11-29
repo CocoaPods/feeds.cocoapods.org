@@ -92,7 +92,7 @@ describe CocoaPodsNotifier::RSS do
       end
 
       it "includes the list of the authors" do
-        @desc.should.include('<p>Authored by Mattt Thompson and Scott Raymond.</p>')
+        @desc.should.include('<p>Authored by Mattt Thompson.</p>')
       end
 
       it "includes the link to the source" do
@@ -100,11 +100,11 @@ describe CocoaPodsNotifier::RSS do
       end
 
       it "includes the latest version" do
-        @desc.should.include('<li>Latest version: 1.2.0</li>')
+        @desc.should.include('<li>Latest version: 2.0.3</li>')
       end
 
       it "includes the latest platforms" do
-        @desc.should.include('<li>Platform: iOS 5.0 - OS X 10.7</li>')
+        @desc.should.include('<li>Platform: iOS 6.0 - OS X 10.8</li>')
       end
 
       it "includes the license" do

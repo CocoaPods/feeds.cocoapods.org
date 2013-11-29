@@ -1,17 +1,20 @@
 # encoding: UTF-8
+require "twitter"
 
 module CocoaPodsNotifier
 
   # Posts tweets about Pods.
   #
-  class Twitter
+  class TwitterNotifier
 
-    attr_accessor :twitter_client
-
-    # @param [#update] The client to use for the update
+    # @return [Twitter::REST::Client]
     #
-    def initialize(twitter_client)
-      @twitter_client = twitter_client
+    attr_accessor :client
+
+    # @param [Twitter::REST::Client] client
+    #
+    def initialize(client = nil)
+      @client = client || default_client
     end
 
     # @param  [] pod
@@ -20,7 +23,7 @@ module CocoaPodsNotifier
     #
     def tweet(pod)
       status = message_for_pod(pod.name, pod.summary, pod.homepage)
-      twitter_client.update(status)
+      client.update(status)
     end
 
     def tweet_preview(pod)
@@ -70,7 +73,7 @@ module CocoaPodsNotifier
       chars = message.scan(/./mu)
       max_lenght_with_ellipsis = length - ellipsis_string.length - 1
       allowed_chars = chars[0..max_lenght_with_ellipsis]
-      allowed_chars.join.gsub(/ ?\.?,?$/,'') + ellipsis_string
+      allowed_chars.join.gsub(/ ?\.?,?$/, '') + ellipsis_string
     end
 
     # @return [Fixnum] The maximum length of the message for the tweet.
@@ -80,6 +83,17 @@ module CocoaPodsNotifier
     end
 
     private
+
+    # @return [Twitter::REST::Client]
+    #
+    def default_client
+      Twitter::REST::Client.new do |config|
+        config.consumer_key       = ENV['CONSUMER_KEY']
+        config.consumer_secret    = ENV['CONSUMER_SECRET']
+        config.oauth_token        = ENV['OAUTH_TOKEN']
+        config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
+      end
+    end
 
     # Constants
     #-------------------------------------------------------------------------#

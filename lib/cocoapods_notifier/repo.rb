@@ -35,7 +35,9 @@ module CocoaPodsNotifier
     # @return [Array<Pod::Specification::Set>]
     #
     def sets
-      Pod::Source.new(master_repo_dir).pod_sets.sort_by { |set| set.name.downcase }
+      Pod::Source.new(master_repo_dir).pod_sets.sort_by do |set|
+        set.name.downcase
+      end
     end
 
     # @return [Array<Pod::Specification::Set::Presenter>] the list of all
@@ -46,7 +48,9 @@ module CocoaPodsNotifier
     #         experience.
     #
     def pods
-      sets.map { |set| Pod::Specification::Set::Presenter.new(set) }.sort_by(&:name)
+      sets.map do |set|
+        Pod::Specification::Set::Presenter.new(set)
+      end.sort_by(&:name)
     end
 
     # @return [Array<String>] The names of the pods.
@@ -133,7 +137,7 @@ module CocoaPodsNotifier
     #
     def title(string)
       unless silent
-        puts "-> \033[0;36m#{string}\e[0m" 
+        puts "-> \033[0;36m#{string}\e[0m"
       end
     end
 

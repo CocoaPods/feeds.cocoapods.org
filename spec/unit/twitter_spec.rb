@@ -2,13 +2,13 @@
 require File.expand_path('../../spec_helper', __FILE__)
 
 
-describe CocoaPodsNotifier::Twitter do
+describe CocoaPodsNotifier::TwitterNotifier do
 
   before do
     repo = CocoaPodsNotifier::Repo.new(ROOT + 'tmp/.cocoapods/master')
     @pod = repo.pod_named('AFNetworking')
     @twitter_client = stub()
-    @sut = CocoaPodsNotifier::Twitter.new(@twitter_client)
+    @sut = CocoaPodsNotifier::TwitterNotifier.new(@twitter_client)
   end
 
   #---------------------------------------------------------------------------#

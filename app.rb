@@ -46,14 +46,6 @@ module CocoaPodsNotifier
       register Sinatra::Reloader
     end
 
-    require "twitter"
-    ::Twitter.configure do |config|
-      config.consumer_key       = ENV['CONSUMER_KEY']
-      config.consumer_secret    = ENV['CONSUMER_SECRET']
-      config.oauth_token        = ENV['OAUTH_TOKEN']
-      config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
-    end
-
     Pod::Specification::Set::Statistics.instance.cache_expiration = 60 * 60 * 24
     Pod::Specification::Set::Statistics.instance.cache_file = APP_ROOT + 'caches/statistics.yml'
 
@@ -84,7 +76,7 @@ module CocoaPodsNotifier
       File.open(RSS_FILE, 'w') { |f| f.write(feed) }
       puts '-> RSS feed created'.cyan unless $silent
 
-      master_repo.new_pod_names.each { |pod_name| Twitter.new(::Twitter).tweet(master_repo.pod_named(pod_name)) }
+      master_repo.new_pod_names.each { |pod_name| TwitterNotifier.new.tweet(master_repo.pod_named(pod_name)) }
       puts "-> Tweeted #{master_repo.new_pod_names.count} pods".cyan unless $silent
     rescue Exception => e
       puts "[!] update failed: #{e}".red
@@ -105,7 +97,7 @@ module CocoaPodsNotifier
         @pods_count = pods.length
         @new_pods = RSS.new(pods, @creation_dates).pods_for_feed
         @pods_tweets = {}
-        @new_pods.each { |pod| @pods_tweets[pod.name] = Twitter.new(nil).tweet_preview(pod) }
+        @new_pods.each { |pod| @pods_tweets[pod.name] = TwitterNotifier.new.tweet_preview(pod) }
         haml :index
 
       rescue Exception => e

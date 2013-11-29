@@ -5,6 +5,5 @@ module CocoaPodsNotifier
 
   require 'cocoapods_notifier/repo'
   require 'cocoapods_notifier/rss'
-  require 'cocoapods_notifier/twitter'
-
+  require 'cocoapods_notifier/twitter_notifier'
 end

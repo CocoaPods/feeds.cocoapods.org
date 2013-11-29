@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'cocoapods-core', :git => 'https://github.com/CocoaPods/Core.git'
+gem 'cocoapods-core', :git => 'https://github.com/CocoaPods/Core.git', :branch => 'master'
 gem 'json'
 gem 'colored'
 gem 'octokit'

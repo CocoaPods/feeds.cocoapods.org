@@ -55,11 +55,6 @@ module CocoaPodsNotifier
       end
       status << LINK_SEPARATOR_STRING
       status << homepage
-
-      if status.length > 140
-        puts "[!] Status too long: `#{status}`".yellow unless $silent
-      end
-
       status
     end
 

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/CocoaPods/Core.git
-  revision: 4ed00ac1d09befa6a309d90d31cb4fafb3a08f65
+  revision: d8c3e60563ac94a1abd7e6c6a6cf09f092ae835a
   branch: master
   specs:
     cocoapods-core (0.28.0)
@@ -12,7 +12,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (3.2.15)
+    activesupport (3.2.16)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.3.5)
@@ -32,7 +32,7 @@ GEM
     descendants_tracker (0.0.3)
     docile (1.1.1)
     dotenv (0.9.0)
-    equalizer (0.0.7)
+    equalizer (0.0.8)
     eventmachine (1.0.3)
     exceptio-ruby (0.1.6)
       httparty (~> 0.8.1)
@@ -50,7 +50,7 @@ GEM
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
-    i18n (0.6.5)
+    i18n (0.6.9)
     json (1.8.1)
     memoizable (0.2.0)
       thread_safe (~> 0.1.3)
@@ -63,8 +63,8 @@ GEM
     multi_json (1.8.2)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
-    nap (0.5.1)
-    octokit (2.6.1)
+    nap (0.6.0)
+    octokit (2.6.2)
       sawyer (~> 0.5.1)
     posix-spawn (0.3.6)
     pygments.rb (0.5.4)
@@ -95,7 +95,7 @@ GEM
     sinatra-cache (0.3.7)
       sinatra (>= 1.1.0)
       sinatra-outputbuffer (>= 0.1.0)
-    sinatra-contrib (1.4.1)
+    sinatra-contrib (1.4.2)
       backports (>= 2.0)
       multi_json
       rack-protection

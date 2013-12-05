@@ -6089,16 +6089,16 @@ Chocobo:
   :creation_date: 2013-12-03 20:00:30.000000000 +01:00
   :gh_watchers: 0
   :gh_forks: 0
-  :pushed_at: '2013-12-03T20:00:34Z'
-  :gh_date: 2013-12-04 17:24:37.938188000 +01:00
+  :pushed_at: '2013-12-04T23:43:12Z'
+  :gh_date: 2013-12-05 20:45:28.621736000 +01:00
 DCScrollView:
   :creation_date: 2013-12-02 13:37:47.000000000 +01:00
 DHSmartScreenshot:
   :creation_date: 2013-12-03 20:14:57.000000000 +01:00
-  :gh_watchers: 2
-  :gh_forks: 0
+  :gh_watchers: 3
+  :gh_forks: 1
   :pushed_at: '2013-12-03T18:52:18Z'
-  :gh_date: 2013-12-04 17:24:37.221292000 +01:00
+  :gh_date: 2013-12-05 20:45:27.830934000 +01:00
 EHTapGestureRecognizer:
   :creation_date: 2013-12-02 13:37:47.000000000 +01:00
   :gh_watchers: 0
@@ -6119,10 +6119,10 @@ EPChecker:
   :gh_date: 2013-12-04 17:24:42.030950000 +01:00
 FactoryKit:
   :creation_date: 2013-12-04 09:12:00.000000000 +01:00
-  :gh_watchers: 4
+  :gh_watchers: 14
   :gh_forks: 0
-  :pushed_at: '2013-12-04T08:09:49Z'
-  :gh_date: 2013-12-04 17:24:33.333582000 +01:00
+  :pushed_at: '2013-12-05T14:15:19Z'
+  :gh_date: 2013-12-05 20:45:24.215420000 +01:00
 FISWebViewPreloader:
   :creation_date: 2013-12-03 18:56:36.000000000 +01:00
   :gh_watchers: 6
@@ -6137,10 +6137,10 @@ HeyWatch:
   :gh_date: 2013-12-04 17:24:50.162087000 +01:00
 IFVideoPicker:
   :creation_date: 2013-12-04 17:03:59.000000000 +01:00
-  :gh_watchers: 0
+  :gh_watchers: 1
   :gh_forks: 0
   :pushed_at: '2013-12-03T14:09:21Z'
-  :gh_date: 2013-12-04 17:24:27.326779000 +01:00
+  :gh_date: 2013-12-05 20:45:18.186156000 +01:00
 IPaZipArchive:
   :creation_date: 2013-12-02 13:37:47.000000000 +01:00
 JGScrollableTableViewCell:
@@ -6162,7 +6162,7 @@ librtmp-iOS:
   :gh_watchers: 0
   :gh_forks: 1
   :pushed_at: '2013-12-03T10:55:56Z'
-  :gh_date: 2013-12-04 17:24:28.126181000 +01:00
+  :gh_date: 2013-12-05 20:45:19.122998000 +01:00
 LLARateLimiter:
   :creation_date: 2013-12-03 16:54:15.000000000 +01:00
   :gh_watchers: 2
@@ -6181,10 +6181,10 @@ nanopb:
   :creation_date: 2013-12-03 16:54:15.000000000 +01:00
 NSharpDate:
   :creation_date: 2013-12-04 03:01:36.000000000 +01:00
-  :gh_watchers: 2
+  :gh_watchers: 4
   :gh_forks: 0
   :pushed_at: '2013-12-03T20:20:18Z'
-  :gh_date: 2013-12-04 17:24:34.742333000 +01:00
+  :gh_date: 2013-12-05 20:45:25.951680000 +01:00
 OTMRWLock:
   :creation_date: 2013-12-02 13:37:47.000000000 +01:00
 PBGroupScrollController:
@@ -6195,32 +6195,32 @@ PBGroupScrollController:
   :gh_date: 2013-12-04 17:24:51.158642000 +01:00
 Pdef:
   :creation_date: 2013-12-04 15:23:30.000000000 +01:00
-  :gh_watchers: 0
+  :gh_watchers: 1
   :gh_forks: 0
   :pushed_at: '2013-12-04T12:57:48Z'
-  :gh_date: 2013-12-04 17:24:30.896389000 +01:00
+  :gh_date: 2013-12-05 20:45:21.649681000 +01:00
 RebtelSDK:
   :creation_date: 2013-12-02 13:37:47.000000000 +01:00
 RFMarkdownTextView:
   :creation_date: 2013-12-02 13:37:47.000000000 +01:00
 rtmp-wrapper:
   :creation_date: 2013-12-04 17:03:59.000000000 +01:00
-  :gh_watchers: 0
+  :gh_watchers: 1
   :gh_forks: 1
   :pushed_at: '2013-12-03T16:32:13Z'
-  :gh_date: 2013-12-04 17:24:29.038221000 +01:00
+  :gh_date: 2013-12-05 20:45:19.990259000 +01:00
 ScanditSDK:
   :creation_date: 2013-12-04 16:58:20.000000000 +01:00
   :gh_watchers: 0
   :gh_forks: 0
-  :pushed_at: '2013-12-04T15:57:39Z'
-  :gh_date: 2013-12-04 17:24:29.964765000 +01:00
+  :pushed_at: '2013-12-04T17:03:07Z'
+  :gh_date: 2013-12-05 20:45:20.769218000 +01:00
 SGProxyingURLProtocol:
   :creation_date: 2013-12-04 15:20:51.000000000 +01:00
-  :gh_watchers: 0
+  :gh_watchers: 2
   :gh_forks: 0
   :pushed_at: '2013-12-04T06:26:47Z'
-  :gh_date: 2013-12-04 17:24:32.457103000 +01:00
+  :gh_date: 2013-12-05 20:45:23.331482000 +01:00
 SimpleSyncService:
   :creation_date: 2013-12-02 13:37:47.000000000 +01:00
 SLCountryPicker:
@@ -6257,10 +6257,10 @@ TSValidatedTextField:
   :gh_date: 2013-12-04 17:24:47.799857000 +01:00
 uidevice-extension:
   :creation_date: 2013-12-04 02:56:22.000000000 +01:00
-  :gh_watchers: 0
+  :gh_watchers: 1
   :gh_forks: 0
   :pushed_at: '2013-12-02T06:48:50Z'
-  :gh_date: 2013-12-04 17:24:35.510972000 +01:00
+  :gh_date: 2013-12-05 20:45:26.874807000 +01:00
 UIFontWDCustomLoader:
   :creation_date: 2013-12-03 16:54:15.000000000 +01:00
   :gh_watchers: 3
@@ -6269,13 +6269,109 @@ UIFontWDCustomLoader:
   :gh_date: 2013-12-04 17:24:41.335673000 +01:00
 WeixinActivity:
   :creation_date: 2013-12-04 15:21:17.000000000 +01:00
-  :gh_watchers: 0
+  :gh_watchers: 1
   :gh_forks: 0
-  :pushed_at: '2013-12-04T06:43:15Z'
-  :gh_date: 2013-12-04 17:24:31.558030000 +01:00
+  :pushed_at: '2013-12-05T14:33:04Z'
+  :gh_date: 2013-12-05 20:45:22.532332000 +01:00
 YmsCoreBluetooth:
   :creation_date: 2013-12-04 05:00:30.000000000 +01:00
   :gh_watchers: 0
   :gh_forks: 0
   :pushed_at: '2013-12-03T13:57:36Z'
-  :gh_date: 2013-12-04 17:24:34.013086000 +01:00
+  :gh_date: 2013-12-05 20:45:25.135594000 +01:00
+AWSS3:
+  :creation_date: 2013-12-04 19:24:07.000000000 +01:00
+  :gh_watchers: 0
+  :gh_forks: 0
+  :pushed_at: '2013-12-04T18:10:47Z'
+  :gh_date: 2013-12-05 20:45:16.461800000 +01:00
+Gravity:
+  :creation_date: 2013-12-04 19:14:44.000000000 +01:00
+  :gh_watchers: 8
+  :gh_forks: 3
+  :pushed_at: '2013-12-05T17:39:53Z'
+  :gh_date: 2013-12-05 20:45:17.371515000 +01:00
+MPMoviePlayerController-Subtitles:
+  :creation_date: 2013-12-04 19:33:21.000000000 +01:00
+  :gh_watchers: 17
+  :gh_forks: 0
+  :pushed_at: '2013-12-04T20:39:21Z'
+  :gh_date: 2013-12-05 20:45:15.541160000 +01:00
+BugButton:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 2
+  :gh_forks: 0
+  :pushed_at: '2013-12-04T05:54:33Z'
+  :gh_date: 2013-12-05 20:45:05.181961000 +01:00
+Canvas:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 371
+  :gh_forks: 10
+  :pushed_at: '2013-12-05T11:21:46Z'
+  :gh_date: 2013-12-05 20:45:09.589929000 +01:00
+CardFlight:
+  :creation_date: 2013-12-05 17:56:40.000000000 +01:00
+  :gh_watchers: 0
+  :gh_forks: 1
+  :pushed_at: '2013-12-05T17:39:54Z'
+  :gh_date: 2013-12-05 20:45:01.575294000 +01:00
+FileDrone:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 8
+  :gh_forks: 0
+  :pushed_at: '2013-12-05T06:51:49Z'
+  :gh_date: 2013-12-05 20:45:14.692138000 +01:00
+FWTPushNotifications:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 2
+  :gh_forks: 0
+  :pushed_at: '2013-10-18T10:45:19Z'
+  :gh_date: 2013-12-05 20:45:08.647648000 +01:00
+GBVersionTracking:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 23
+  :gh_forks: 1
+  :pushed_at: '2013-11-19T06:10:43Z'
+  :gh_date: 2013-12-05 20:45:06.980011000 +01:00
+HLLDropDownQuickView:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 1
+  :gh_forks: 0
+  :pushed_at: '2013-12-05T02:26:10Z'
+  :gh_date: 2013-12-05 20:45:07.760834000 +01:00
+KPAViewControllerTestHelper:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 1
+  :gh_forks: 0
+  :pushed_at: '2013-12-05T00:59:10Z'
+  :gh_date: 2013-12-05 20:45:13.795009000 +01:00
+MKDevice:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 3
+  :gh_forks: 0
+  :pushed_at: '2013-12-04T20:25:19Z'
+  :gh_date: 2013-12-05 20:45:04.156559000 +01:00
+PMEDatePicker:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 2
+  :gh_forks: 0
+  :pushed_at: '2013-12-04T22:17:17Z'
+  :gh_date: 2013-12-05 20:45:02.967040000 +01:00
+RoboReaderPDF:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 85
+  :gh_forks: 20
+  :pushed_at: '2013-12-05T09:46:02Z'
+  :gh_date: 2013-12-05 20:45:11.319437000 +01:00
+Snappy:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 6
+  :gh_forks: 0
+  :pushed_at: '2013-12-05T17:11:15Z'
+  :gh_date: 2013-12-05 20:45:06.041996000 +01:00
+ThermodoSDK:
+  :creation_date: 2013-12-05 14:46:26.000000000 +01:00
+  :gh_watchers: 6
+  :gh_forks: 0
+  :pushed_at: '2013-12-05T15:46:13Z'
+  :gh_date: 2013-12-05 20:45:10.493922000 +01:00

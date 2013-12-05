@@ -11,9 +11,10 @@ gem 'mime-types', '< 2.0' # Ruby 1.8.7
 
 gem 'sinatra'
 gem 'sinatra-cache'
-gem 'haml'
 gem 'twitter'
 gem 'exceptio-ruby'
+
+gem 'slim'
 
 group :development do
   gem 'thin'

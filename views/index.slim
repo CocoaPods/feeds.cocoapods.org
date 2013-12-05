@@ -1,6 +1,6 @@
 ruby:
   header = Slim::Template.new('shared/includes/header.slim').render(nil)
-  
+  footer = Slim::Template.new('shared/includes/footer.slim').render(nil)
 
 html
   head
@@ -43,3 +43,4 @@ html
                   td= @creation_dates[pod.name].strftime("%Y/%m/%d")
                   td
                     =@pods_tweets[pod.name]
+    == footer  

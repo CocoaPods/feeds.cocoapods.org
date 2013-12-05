@@ -1,10 +1,10 @@
 require 'sinatra'
 require 'sinatra/cache'
-require 'haml'
 require 'json'
 require 'exceptio-ruby'
 require 'colored'
 require 'cocoapods-core'
+require 'slim'
 
 APP_ROOT = Pathname.new(File.expand_path('../', __FILE__))
 $:.unshift((APP_ROOT + 'lib').to_s)
@@ -27,7 +27,6 @@ module CocoaPodsNotifier
     #
     configure do
       set :root, APP_ROOT.to_s
-      set :haml, :format => :html5
 
       register Sinatra::Cache
       set :cache_output_dir, File.join(APP_ROOT, 'public')
@@ -98,8 +97,10 @@ module CocoaPodsNotifier
         @new_pods = RSS.new(pods, @creation_dates).pods_for_feed
         @pods_tweets = {}
         @new_pods.each { |pod| @pods_tweets[pod.name] = TwitterNotifier.new.status_for_pod(pod) }
-        haml :index
-
+        
+        slim :index
+        
+        
       rescue Exception => e
         puts "[!] get / failed: #{e}".red
         puts e.backtrace.join("\n")
@@ -134,9 +135,6 @@ module CocoaPodsNotifier
         status 500
       end
     end
-
-    #-------------------------------------------------------------------------#
-
   end
 
 end

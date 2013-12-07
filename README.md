@@ -19,7 +19,7 @@ During each update it tweets the new pods.
 ```shell
 $ cp .env.sample .env
 $ vim .env
-$ bundle install
+$ rake bootstrap
 $ foreman start
 ```
 

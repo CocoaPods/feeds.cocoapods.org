@@ -1,5 +1,5 @@
 
-task :default => 'spec:all'
+task :default => :spec
 
 #--------------------------------------#
 
@@ -14,6 +14,8 @@ namespace :spec do
     sh "bundle exec bacon #{specs('unit/**')}"
   end
 end
+
+task :spec => 'spec:all'
 
 def specs(dir)
   FileList["spec/#{dir}/*_spec.rb"].shuffle.join(' ')

@@ -10,6 +10,7 @@ end
 # Production configuration
 #
 configure :production do
+
   log_path = APP_ROOT + 'log/sinatra.log'
   FileUtils.mkdir_p(log_path.dirname)
   log = File.new(log_path, "a")

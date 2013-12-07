@@ -1,11 +1,4 @@
 require File.expand_path('../spec_helper', __FILE__)
-
-ENV['SPECS_URL'] = 'git://github.com/CocoaPods/Specs.git'
-ENV['RACK_ENV'] = 'test'
-HOOK_PATH = ENV['HOOK_PATH'] = 'secret'
-$silent = true
-
-require 'rack/test'
 require File.expand_path('../../app', __FILE__)
 
 describe 'The CocoaPods Notifier App' do
@@ -16,9 +9,10 @@ describe 'The CocoaPods Notifier App' do
   end
 
   before do
-    Pod::Specification::Set::Statistics.instance.cache_expiration = 60 * 60 * 24 * 365
-    Pod::Specification::Set::Statistics.instance.cache_file = ROOT + 'caches/statistics.yml'
     FileUtils.rm_f app::RSS_FILE
+
+    # Do not make any HTTP calls!
+    Pod::Specification::Set::Statistics.instance.stubs(:github_stats_if_needed)
     Twitter.stubs(:tweet)
   end
 

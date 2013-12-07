@@ -4,7 +4,7 @@ require 'rexml/document'
 describe CocoaPodsNotifier::RSS do
 
   before do
-    repo = fixutre_repo
+    repo = create_fixture_repo
     @af_netowrking = repo.pod_named('AFNetworking')
     @mb_progress_hud = repo.pod_named('MBProgressHUD')
     pods = [@af_netowrking, @mb_progress_hud]

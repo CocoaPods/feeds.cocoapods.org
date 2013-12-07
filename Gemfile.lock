@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/CocoaPods/Core.git
-  revision: 3f71c7e99a4e7919053ff00787974638fd1fdc16
+  revision: 88f665e11b1e9632e328aeee1b244a68adff89a3
   branch: master
   specs:
     cocoapods-core (0.28.0)
@@ -62,9 +62,9 @@ GEM
     multi_xml (0.5.5)
     multipart-post (1.2.0)
     nap (0.6.0)
-    octokit (2.6.2)
+    octokit (2.6.3)
       sawyer (~> 0.5.1)
-    posix-spawn (0.3.6)
+    posix-spawn (0.3.8)
     pygments.rb (0.5.4)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)

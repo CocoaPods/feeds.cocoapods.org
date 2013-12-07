@@ -4,4 +4,4 @@
 public/*.rss
 tmp/*
 log/*
-statistics.yml
+caches/statistics.yml

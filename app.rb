@@ -31,28 +31,33 @@ module CocoaPodsNotifier
       register Sinatra::Cache
       set :cache_output_dir, File.join(APP_ROOT, 'public')
       set :cache_enabled, true
-
-      if ENV['RACK_ENV'] == 'production'
-        ExceptIO::Client.configure "cocoapods-feeds-cocoapods-org", ENV['EXCEPTIO_KEY']
-      end
     end
 
-    # Development configurations.
-    #
     configure :development do
       require 'awesome_print'
       require 'sinatra/reloader'
       register Sinatra::Reloader
     end
 
-    Pod::Specification::Set::Statistics.instance.cache_expiration = 60 * 60 * 24
-    Pod::Specification::Set::Statistics.instance.cache_file = APP_ROOT + 'caches/statistics.yml'
+    configure :production do
+      ExceptIO::Client.configure "cocoapods-feeds-cocoapods-org", ENV['EXCEPTIO_KEY']
+    end
+
+    configure :development, :production do
+      $silent = false
+      Pod::Specification::Set::Statistics.instance.cache_expiration = 60 * 60 * 24
+      Pod::Specification::Set::Statistics.instance.cache_file = APP_ROOT + 'caches/statistics.yml'
+    end
 
     # Repo Actions
     #-------------------------------------------------------------------------#
 
     def self.master_repo
-      @master_repo ||= Repo.new(APP_ROOT + 'tmp/.cocoapods/master')
+      @master_repo ||= begin
+        repo = Repo.new(APP_ROOT + 'tmp/.cocoapods/master')
+        repo.silent = $silent
+        repo
+      end
     end
 
     # Clones the master repo from the remote and generates the feeds and
@@ -99,7 +104,6 @@ module CocoaPodsNotifier
         @new_pods.each { |pod| @pods_tweets[pod.name] = TwitterNotifier.new.status_for_pod(pod) }
         
         slim :index
-        
         
       rescue Exception => e
         puts "[!] get / failed: #{e}".red

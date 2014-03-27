@@ -100,7 +100,7 @@ describe CocoaPodsNotifier::RSS do
       end
 
       it "includes the latest version" do
-        @desc.should.include('<li>Latest version: 2.0.3</li>')
+        @desc.should.include('<li>Latest version: 2.2.1</li>')
       end
 
       it "includes the latest platforms" do

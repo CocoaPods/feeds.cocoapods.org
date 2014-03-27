@@ -15,7 +15,7 @@ describe CocoaPodsNotifier::TwitterNotifier do
   describe "In general" do
 
     it "posts a tweet for the given Pod" do
-      @twitter_client.expects(:update).with('[AFNetworking] A delightful iOS and OS X networking framework. https://github.com/AFNetworking/AFNetworking')
+      @twitter_client.expects(:update).with('[AFNetworking by @AFNetworking] A delightful iOS and OS X networking framework. https://github.com/AFNetworking/AFNetworking')
       @sut.tweet(@pod)
     end
 

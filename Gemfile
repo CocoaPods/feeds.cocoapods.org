@@ -23,7 +23,6 @@ group :development do
 
   gem 'foreman'
   gem 'rack-test'
-  gem 'mocha'
 end
 
 group :specs do

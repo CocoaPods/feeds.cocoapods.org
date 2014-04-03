@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'cocoapods-core', :git => 'https://github.com/CocoaPods/Core.git', :branch => 'master'
 gem 'json'
 gem 'colored'
-gem 'octokit'
+gem 'octokit', '~> 2.6' # Ruby 1.8.7
 gem 'activesupport'
 gem 'redcarpet', '< 3.0.0'
 gem 'pygments.rb'

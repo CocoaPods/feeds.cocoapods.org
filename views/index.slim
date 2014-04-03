@@ -1,6 +1,6 @@
 ruby:
-  header = Slim::Template.new('shared/includes/header.slim').render(nil)
-  footer = Slim::Template.new('shared/includes/footer.slim').render(nil)
+  header = Slim::Template.new('shared/includes/header.slim').render(Object.new)
+  footer = Slim::Template.new('shared/includes/footer.slim').render(Object.new)
 
   def render_pod(pod, stats = true)
     template = Slim::Template.new('views/pod.slim')
@@ -14,8 +14,6 @@ html
     script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.js" language="javascript" type="text/javascript"
 
     css:
-
-
 
       .container_background {
         background-color: #F5F5F5;
@@ -33,21 +31,18 @@ html
       }
 
       .pod {
-        width: 283px;
-        height: 162px;
+        width: 288px;
         margin-bottom: 32px;
         padding:16px;
+        padding-bottom:48px;
 
         background-color:white;
       }
 
-      .pod.h2x {
-        height: 356px;
-      }
-
       .pod h3 {
-        font-size:14px;
+        font-size:16px;
         margin: 0 0 16px;
+        word-break:break-all; 
       }
 
       .pod p {
@@ -68,7 +63,7 @@ html
       }
 
       .pod .text_container {
-        height: 76px;
+        bottom-margin: 16px;
       }
 
       .pod .images_container {
@@ -79,7 +74,7 @@ html
       .pod img {
         max-width:100px;
         max-height:160px;
-        display:inline-block;
+        height:160px;
         margin:0 10px;
         padding: 1px;
         border: 1px dashed #D3D3D3;

@@ -105,7 +105,7 @@ module CocoaPodsNotifier
         limit_24h = Time.now - 60 * 60 * 24
         limit_48h = Time.now - 60 * 60 * 24 * 2
         limit_01w = Time.now - 60 * 60 * 24 * 7
-        pods.sort_by! { |pod| p creation_dates[pod.name] }.reverse
+        pods.sort_by! { |pod| creation_dates[pod.name] }.reverse
         pods.each do |pod|
           if creation_dates[pod.name] > limit_24h
             @last_24h_pods << pod

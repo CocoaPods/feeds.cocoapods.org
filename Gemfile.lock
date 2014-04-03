@@ -63,8 +63,8 @@ GEM
     multipart-post (2.0.0)
     nap (0.6.0)
     naught (1.0.0)
-    octokit (3.0.0)
-      sawyer (~> 0.5.3)
+    octokit (2.6.3)
+      sawyer (~> 0.5.1)
     posix-spawn (0.3.8)
     pygments.rb (0.5.4)
       posix-spawn (~> 0.3.6)
@@ -147,7 +147,7 @@ DEPENDENCIES
   mime-types (< 2.0)
   mocha
   mocha-on-bacon
-  octokit
+  octokit (~> 2.6)
   pygments.rb
   rack-test
   rake

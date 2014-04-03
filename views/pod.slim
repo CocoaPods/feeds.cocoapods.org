@@ -1,0 +1,34 @@
+ruby:
+  def watchers(pod)
+    Pod::Specification::Set::Statistics.instance.github_watchers(pod.set)
+  end
+
+  def has_screenshot(pod)
+    !pod.spec.screenshots.compact.empty?
+  end
+
+  def box_class(pod)
+    if has_screenshot(pod)
+      { :class => "card double_height" }
+    else
+      { :class => "card" }
+    end
+  end
+
+.col-sm-4.col-xs-6.dev-team
+  *box_class(pod)
+    a href = pod.source_url
+      h3 = pod.name
+    .text_container
+      p = pod.summary
+    - if has_screenshot(pod)
+      .images_container
+        - pod.spec.screenshots.compact.each do |screenshot_url|
+          a href=screenshot_url
+            img.twitter_avatar src=screenshot_url
+    - if stats
+      p.stats ★ #{watchers(pod)}<br>
+    - if pod.spec.social_media_url
+      a.social_media href=pod.spec.social_media_url
+        p == "@#{pod.spec.social_media_url.split('/').last}"
+

@@ -10,74 +10,79 @@ ruby:
 html
   head
     link rel="stylesheet" href="http://guides.cocoapods.org/stylesheets/app.css"
+    script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js" language="javascript" type="text/javascript"
+    script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.js" language="javascript" type="text/javascript"
 
     css:
 
-      #content-wrapper {
-        margin-top:32px;
-        padding:16px 0;
+
+
+      .container_background {
+        background-color: #F5F5F5;
+        padding: 0 32px;
       }
 
-      .headline h2 {
-        margin-top:55px;
-        font-weight:normal;
-        font-size:32px;
+      h2 {
+        margin: 128px 0 32px;
+        text-align: center;
       }
 
-      .dev-team {
-        margin:16px 0;
+      .masonry {
+        margin: 0 auto;
+        padding-top:32px;
       }
 
-      .card {
-        background-color:white;
-        padding:16px;
-        position:relative;
+      .pod {
+        width: 283px;
         height: 162px;
+        margin-bottom: 32px;
+        padding:16px;
+
+        background-color:white;
       }
 
-      .card.double_height {
+      .pod.h2x {
         height: 356px;
       }
 
-      #content-wrapper .card h3 {
+      .pod h3 {
         font-size:14px;
         margin: 0 0 16px;
       }
 
-      .card p {
+      .pod p {
         font-size: 14px;
         margin: 0px;
       }
 
-      .card .social_media {
+      .pod .social_media {
         position:absolute;
         bottom:16px;
         left:16px;
       }
 
-      .card .stats {
+      .pod .stats {
         position:absolute;
         bottom:16px;
         right:16px;
       }
 
-      .card .text_container {
+      .pod .text_container {
         height: 76px;
       }
 
-      .card .images_container {
+      .pod .images_container {
         margin-top:10px;
         text-align:center;
       }
 
-      .card img {
-        max-width:136px;
+      .pod img {
+        max-width:100px;
         max-height:160px;
         display:inline-block;
         margin:0 10px;
-        padding: 2px;
-        border:1px solid rgb(251, 0, 6);
-
+        padding: 1px;
+        border: 1px dashed #D3D3D3;
       }
 
   body
@@ -95,26 +100,34 @@ html
         .col-md-8.col-lg-8.col-sm-8.col-md-offset-2.col-lg-offset-2.col-sm-offset-2
           p.text-center This is the home of feed new CocoaPods. Subscribe via <a href="/new-pods.rss">RSS</a> or follow <a href='http://twitter.com/CocoaPodsFeed'>@CocoaPodsFeed</a> and never miss a pod again!
 
-      .row
-        h2.col-md-12 Pods added in the last 24 hours
-        div.guide#content-wrapper
-          section.container
-            - @last_24h_pods.each do |pod|
-              == render_pod(pod)
+    h2 Pods added in the last 12 hours
+    .container_background
+      #12h_section.masonry
+        - @last_12h_pods.each do |pod|
+          == render_pod(pod)
 
-      .row
-        h2 Pods added in the last 48 hours
-        div.guide#content-wrapper
-          section.container
-            - @last_48h_pods.each do |pod|
-              == render_pod(pod)
+    h2 Pods added in the last 24 hours
+    .container_background
+      #24h_section.masonry
+        - @last_24h_pods.each do |pod|
+          == render_pod(pod)
 
-
-      .row
-        h2 Pods added in the last 7 days
-        div.guide#content-wrapper
-          section.container
-            - @last_01w_pods.each do |pod|
-              == render_pod(pod, false)
+    h2 Pods added in the last 48 hours
+    .container_background
+      #48h_section.masonry
+        - @last_48h_pods.each do |pod|
+          == render_pod(pod, false)
 
     == footer
+
+    javascript:
+      $(document).ready(function () {
+        options = {
+          itemSelector: '.pod',
+          "gutter": 32,
+          "isFitWidth": true
+        }
+        $("#12h_section").masonry(options);
+        $("#24h_section").masonry(options);
+        $("#48h_section").masonry(options);
+      });

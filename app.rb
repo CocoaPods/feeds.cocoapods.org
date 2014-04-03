@@ -99,20 +99,20 @@ module CocoaPodsNotifier
         pods = self.class.master_repo.pods
         creation_dates = self.class.master_repo.creation_dates
         @pods_count = pods.length
+        @last_12h_pods = []
         @last_24h_pods = []
         @last_48h_pods = []
-        @last_01w_pods = []
+        limit_12h = Time.now - 60 * 60 * 12
         limit_24h = Time.now - 60 * 60 * 24
-        limit_48h = Time.now - 60 * 60 * 24 * 2
-        limit_01w = Time.now - 60 * 60 * 24 * 7
+        limit_48h = Time.now - 60 * 60 * 48
         pods.sort_by! { |pod| creation_dates[pod.name] }.reverse
         pods.each do |pod|
-          if creation_dates[pod.name] > limit_24h
+          if creation_dates[pod.name] > limit_12h
+            @last_12h_pods << pod
+          elsif creation_dates[pod.name] > limit_24h
             @last_24h_pods << pod
           elsif creation_dates[pod.name] > limit_48h
             @last_48h_pods << pod
-          elsif creation_dates[pod.name] > limit_01w
-            @last_01w_pods << pod
           end
         end
 

@@ -107,13 +107,26 @@ module CocoaPodsNotifier
         limit_48h = Time.now - 60 * 60 * 48
         pods = pods.sort_by { |pod| creation_dates[pod.name] }.reverse
         pods.each do |pod|
+          did_load = false
           if creation_dates[pod.name] > limit_12h
             @last_12h_pods << pod
+            did_load = true
           elsif creation_dates[pod.name] > limit_24h
             @last_24h_pods << pod
+            did_load = true
           elsif creation_dates[pod.name] > limit_48h
             @last_48h_pods << pod
+            did_load = true
           end
+
+          if did_load
+            if !self.class.tmp_screenshots(pod).empty? && pod.spec.social_media_url
+              if @featured.nil? || creation_dates[pod.name] > creation_dates[@featured.name]
+                @featured = pod
+              end
+            end
+          end
+
         end
 
         slim :index
@@ -124,6 +137,22 @@ module CocoaPodsNotifier
         ExceptIO::Client.log e, ENV['RACK_ENV']
         status 500
       end
+    end
+
+    # TODO: Improve validation on CP
+    def self.tmp_screenshots(pod)
+      sanitized = pod.spec.screenshots.compact.map do |url|
+        if url.is_a?(String)
+          if url.start_with?('www.example.com')
+            nil
+          elsif url.start_with?('www')
+            "http://#{url}"
+          else
+            url
+          end
+        end
+      end
+      sanitized.compact[0...2]
     end
 
     # The secret (TM) hook used by GitHub to trigger an update of the repo.

@@ -20,15 +20,7 @@ ruby:
     sanitized.compact[0...2]
   end
 
-  def box_class(pod)
-    if has_screenshot(pod)
-      { :class => "pod h2x" }
-    else
-      { :class => "pod" }
-    end
-  end
-
-*box_class(pod)
+.pod
   a href = pod.source_url
     h3 = pod.name
   .text_container

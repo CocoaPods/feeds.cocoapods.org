@@ -1,46 +1,128 @@
 ruby:
-  header = Slim::Template.new('shared/includes/header.slim').render(nil)
-  footer = Slim::Template.new('shared/includes/footer.slim').render(nil)
+  header = Slim::Template.new('shared/includes/_header.slim').render(Object.new)
+  footer = Slim::Template.new('shared/includes/_footer.slim').render(Object.new)
+
+  def render_pod(pod, stats = true)
+    template = Slim::Template.new('views/pod.slim')
+    template.render(Object.new, :pod => pod, :stats => stats)
+  end
 
 html
   head
     link rel="stylesheet" href="http://guides.cocoapods.org/stylesheets/app.css"
-    
-    css: 
-      .headline h2 {
-        margin-top:55px;
-        font-weight:normal;
-        font-size:32px;
+    script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js" language="javascript" type="text/javascript"
+    script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.js" language="javascript" type="text/javascript"
+
+    css:
+
+      .container_background {
+        background-color: #F5F5F5;
+        padding: 0 32px;
       }
-        
+
+      h2 {
+        margin: 128px 0 32px;
+        text-align: center;
+      }
+
+      .masonry {
+        margin: 0 auto;
+        padding-top:32px;
+      }
+
+      .pod {
+        width: 288px;
+        margin-bottom: 32px;
+        padding:16px;
+        padding-bottom:48px;
+
+        background-color:white;
+      }
+
+      .pod h3 {
+        font-size:16px;
+        margin: 0 0 16px;
+        word-break:break-all; 
+      }
+
+      .pod p {
+        font-size: 14px;
+        margin: 0px;
+      }
+
+      .pod .social_media {
+        position:absolute;
+        bottom:16px;
+        left:16px;
+      }
+
+      .pod .stats {
+        position:absolute;
+        bottom:16px;
+        right:16px;
+      }
+
+      .pod .text_container {
+        bottom-margin: 16px;
+      }
+
+      .pod .images_container {
+        margin-top:10px;
+        text-align:center;
+      }
+
+      .pod img {
+        max-width:100px;
+        max-height:160px;
+        height:160px;
+        margin:0 10px;
+        padding: 1px;
+        border: 1px dashed #D3D3D3;
+      }
+
   body
-    == header  
+    == header
     section.container
       .row
         header.col-md-12.headline.index
           h1 CocoaPods Feeds
-  
-          <div class="horizontal-divider"><div class="arrow-down"></div><div class="enclosed-arrow-down"></div></div>
-  
-          h2 #{@pods_count} CocoaPods
-  
-    div.guide#content-wrapper
-      section.container
-        .row
 
+          <div class="horizontal-divider"><div class="arrow-down"></div><div class="enclosed-arrow-down"></div></div>
+
+          h2 #{@pods_count} CocoaPods
+
+      .row
+        .col-md-8.col-lg-8.col-sm-8.col-md-offset-2.col-lg-offset-2.col-sm-offset-2
           p.text-center This is the home of feed new CocoaPods. Subscribe via <a href="/new-pods.rss">RSS</a> or follow <a href='http://twitter.com/CocoaPodsFeed'>@CocoaPodsFeed</a> and never miss a pod again!
-        
-          table.table.table-striped.table-bordered
-            thead
-              tr
-                th="Name"
-                th="Date"
-                th="Tweet Preview"
-            tbody
-              - @new_pods.each do |pod|
-                tr
-                  td= pod.name
-                  td= @creation_dates[pod.name].strftime("%Y/%m/%d")
-                  td
-                    =@pods_tweets[pod.name]
-    == footer  
+
+    h2 Pods added in the last 12 hours
+    .container_background
+      #12h_section.masonry
+        - @last_12h_pods.each do |pod|
+          == render_pod(pod)
+
+    h2 Pods added in the last 24 hours
+    .container_background
+      #24h_section.masonry
+        - @last_24h_pods.each do |pod|
+          == render_pod(pod)
+
+    h2 Pods added in the last 48 hours
+    .container_background
+      #48h_section.masonry
+        - @last_48h_pods.each do |pod|
+          == render_pod(pod, false)
+
+    == footer
+
+    javascript:
+      $(document).ready(function () {
+        options = {
+          itemSelector: '.pod',
+          "gutter": 32,
+          "isFitWidth": true
+        }
+        $("#12h_section").masonry(options);
+        $("#24h_section").masonry(options);
+        $("#48h_section").masonry(options);
+      });

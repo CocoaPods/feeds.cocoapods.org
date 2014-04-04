@@ -97,14 +97,27 @@ module CocoaPodsNotifier
     get '/' do
       begin
         pods = self.class.master_repo.pods
-        @creation_dates = self.class.master_repo.creation_dates
+        creation_dates = self.class.master_repo.creation_dates
         @pods_count = pods.length
-        @new_pods = RSS.new(pods, @creation_dates).pods_for_feed
-        @pods_tweets = {}
-        @new_pods.each { |pod| @pods_tweets[pod.name] = TwitterNotifier.new.status_for_pod(pod) }
-        
+        @last_12h_pods = []
+        @last_24h_pods = []
+        @last_48h_pods = []
+        limit_12h = Time.now - 60 * 60 * 12
+        limit_24h = Time.now - 60 * 60 * 24
+        limit_48h = Time.now - 60 * 60 * 48
+        pods = pods.sort_by { |pod| creation_dates[pod.name] }.reverse
+        pods.each do |pod|
+          if creation_dates[pod.name] > limit_12h
+            @last_12h_pods << pod
+          elsif creation_dates[pod.name] > limit_24h
+            @last_24h_pods << pod
+          elsif creation_dates[pod.name] > limit_48h
+            @last_48h_pods << pod
+          end
+        end
+
         slim :index
-        
+
       rescue Exception => e
         puts "[!] get / failed: #{e}".red
         puts e.backtrace.join("\n")

@@ -1,0 +1,46 @@
+ruby:
+  def watchers(pod)
+    Pod::Specification::Set::Statistics.instance.github_watchers(pod.set)
+  end
+
+  def has_screenshot(pod)
+    !screenshots(pod).empty?
+  end
+
+  def screenshots(pod)
+    sanitized = pod.spec.screenshots.compact.map do |url|
+      if url.start_with?('www.example.com')
+        nil
+      elsif url.start_with?('www')
+        "http://#{url}"
+      else
+        url
+      end
+    end
+    sanitized.compact[0...2]
+  end
+
+  def box_class(pod)
+    if has_screenshot(pod)
+      { :class => "pod h2x" }
+    else
+      { :class => "pod" }
+    end
+  end
+
+*box_class(pod)
+  a href = pod.source_url
+    h3 = pod.name
+  .text_container
+    p = pod.summary
+  - if has_screenshot(pod)
+    .images_container
+      - screenshots(pod).each do |screenshot_url|
+        a href=screenshot_url
+          img.twitter_avatar src=screenshot_url
+  - if stats
+    p.stats ★ #{watchers(pod)}<br>
+  - if pod.spec.social_media_url
+    a.social_media href=pod.spec.social_media_url
+      p == "@#{pod.spec.social_media_url.split('/').last}"
+

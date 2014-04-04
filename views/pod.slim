@@ -8,7 +8,7 @@ ruby:
   end
 
   def screenshots(pod)
-    sanitized = pod.spec.screenshots.map do |url|
+    sanitized = pod.spec.screenshots.compact.map do |url|
       if url.start_with?('www.example.com')
         nil
       elsif url.start_with?('www')

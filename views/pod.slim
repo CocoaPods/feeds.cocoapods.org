@@ -38,7 +38,7 @@ ruby:
       - screenshots(pod).each do |screenshot_url|
         a href=screenshot_url
           img.twitter_avatar src=screenshot_url
-  - if stats && !watchers(pod).zero?
+  - if stats && watchers(pod) && !watchers(pod).zero?
     p.stats ★ #{watchers(pod)}<br>
   - if pod.spec.social_media_url
     a.social_media href=pod.spec.social_media_url

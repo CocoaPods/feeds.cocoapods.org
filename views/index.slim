@@ -1,6 +1,6 @@
 ruby:
-  header = Slim::Template.new('shared/includes/header.slim').render(Object.new)
-  footer = Slim::Template.new('shared/includes/footer.slim').render(Object.new)
+  header = Slim::Template.new('shared/includes/_header.slim').render(Object.new)
+  footer = Slim::Template.new('shared/includes/_footer.slim').render(Object.new)
 
   def render_pod(pod, stats = true)
     template = Slim::Template.new('views/pod.slim')

@@ -50,7 +50,7 @@ def execute_command(command)
     sh(command)
   else
     output = `#{command} 2>&1`
-    raise output unless $CHILD_STATUS.success?
+    raise output unless $?.success?
   end
 end
 

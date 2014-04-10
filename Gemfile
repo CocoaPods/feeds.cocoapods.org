@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'activesupport'
-gem 'cocoapods-core', :git => 'https://github.com/CocoaPods/Core.git', :branch => 'master'
+gem 'cocoapods-core'
 gem 'colored'
 gem 'exceptio-ruby'
 gem 'json'

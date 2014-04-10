@@ -1,14 +1,3 @@
-GIT
-  remote: https://github.com/CocoaPods/Core.git
-  revision: e33565de148fc7560e58ac82c1bc2bc37b20b2f7
-  branch: master
-  specs:
-    cocoapods-core (0.31.1)
-      activesupport (>= 3.2.15, < 4)
-      fuzzy_match (~> 2.0.4)
-      json_pure (~> 1.8)
-      nap (~> 0.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -20,6 +9,11 @@ GEM
     backports (3.6.0)
     bacon (1.2.0)
     buftok (0.2.0)
+    cocoapods-core (0.31.1)
+      activesupport (>= 3.2.15, < 4)
+      fuzzy_match (~> 2.0.4)
+      json_pure (~> 1.8)
+      nap (~> 0.5)
     colored (1.2)
     coveralls (0.7.0)
       multi_json (~> 1.3)
@@ -150,7 +144,7 @@ DEPENDENCIES
   activesupport
   awesome_print
   bacon
-  cocoapods-core!
+  cocoapods-core
   colored
   coveralls
   exceptio-ruby

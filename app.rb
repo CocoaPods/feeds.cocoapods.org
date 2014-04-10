@@ -8,8 +8,10 @@ require 'slim'
 
 APP_ROOT = Pathname.new(File.expand_path('../', __FILE__))
 $LOAD_PATH.unshift((APP_ROOT + 'lib').to_s)
+$LOAD_PATH.unshift((APP_ROOT).to_s)
 
 require 'cocoapods_notifier'
+require 'config/init'
 
 module CocoaPodsNotifier
   class CocoaPodsNotifierApp < Sinatra::Application

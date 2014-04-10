@@ -4,9 +4,10 @@ gem 'activesupport'
 gem 'cocoapods-core'
 gem 'colored'
 gem 'exceptio-ruby'
+gem 'faraday-http-cache'
 gem 'json'
 gem 'mime-types', '< 2.0' # Ruby 1.8.7
-gem 'octokit', '~> 2.6' # Ruby 1.8.7
+gem 'octokit', '~> 2.7'   # Ruby 1.8.7
 gem 'pygments.rb'
 gem 'redcarpet', '< 3.0.0'
 gem 'sinatra'
@@ -24,9 +25,10 @@ group :development do
 end
 
 group :specs do
-  gem "bacon"
-  gem "mocha"
-  gem "mocha-on-bacon"
-  gem "rake"
+  gem 'bacon'
+  gem 'prettybacon'
+  gem 'mocha'
+  gem 'mocha-on-bacon'
+  gem 'rake'
   gem 'coveralls', :require => false
 end

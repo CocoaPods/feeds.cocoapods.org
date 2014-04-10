@@ -30,6 +30,8 @@ GEM
       httparty (~> 0.8.1)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    faraday-http-cache (0.4.0)
+      faraday (~> 0.8)
     ffi (1.9.3)
     foreman (0.63.0)
       dotenv (>= 0.7)
@@ -68,6 +70,8 @@ GEM
     octokit (2.7.2)
       sawyer (~> 0.5.2)
     posix-spawn (0.3.8)
+    prettybacon (0.0.2)
+      bacon (~> 1.2)
     pygments.rb (0.5.4)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
@@ -148,13 +152,15 @@ DEPENDENCIES
   colored
   coveralls
   exceptio-ruby
+  faraday-http-cache
   foreman
   json
   kicker
   mime-types (< 2.0)
   mocha
   mocha-on-bacon
-  octokit (~> 2.6)
+  octokit (~> 2.7)
+  prettybacon
   pygments.rb
   rack-test
   rake

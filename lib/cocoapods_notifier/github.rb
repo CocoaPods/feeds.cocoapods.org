@@ -16,10 +16,10 @@ module CocoaPodsNotifier
     #         request.
     #
     def self.get_stargazer_count(url, client = nil)
-      if github_url?(url)
+      if repo_id = repo_id_from_url(url)
         client ||=  Octokit::Client.new
         begin
-          repo = client.repo(url)
+          repo = client.repo(repo_id)
           repo['stargazers_count']
         rescue Octokit::NotFound
           nil
@@ -29,14 +29,17 @@ module CocoaPodsNotifier
 
     private
 
-    # @return [Bool] Wether the given url is a github repo.
+    # Returns the repo ID given it's URL.
     #
-    # @param  [String] url The URL of the repo.
+    # @param [String] url
+    #        The URL of the repo.
     #
-    def self.github_url?(url)
-      if url
-        url.include?('github.com')
-      end
+    # @return [String] the repo ID.
+    # @return [Nil] if the given url is not a valid github repo url.
+    #
+    def self.repo_id_from_url(url)
+      result = url[%r{github.com/([^/]*/[^/]*)\.*}, 1]
+      result.sub(/.git$/, '') if result
     end
   end
 end

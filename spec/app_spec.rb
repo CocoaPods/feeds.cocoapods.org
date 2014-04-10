@@ -14,6 +14,7 @@ describe 'The CocoaPods Notifier App' do
     # Do not make any HTTP calls!
     Pod::Specification::Set::Statistics.instance.stubs(:github_stats_if_needed)
     Twitter.stubs(:tweet)
+    Octokit::Client.any_instance.stubs(:repo).returns({ 'stargazers_count' => 3893 })
   end
 
   #---------------------------------------------------------------------------#

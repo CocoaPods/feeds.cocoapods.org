@@ -13,6 +13,7 @@ describe CocoaPodsNotifier::RSS do
       'MBProgressHUD' => Time.parse('2012-01-02')
     }
     @sut = CocoaPodsNotifier::RSS.new(pods, creation_dates)
+    Octokit::Client.any_instance.stubs(:repo).returns({ 'stargazers_count' => 3893 })
   end
 
   #---------------------------------------------------------------------------#
@@ -113,10 +114,6 @@ describe CocoaPodsNotifier::RSS do
 
       it 'includes the github stargazers' do
         @desc.should.match(/<li>Stargazers: .*<\/li>/)
-      end
-
-      it 'includes the github forks' do
-        @desc.should.match(/<li>Forks: .*<\/li>/)
       end
 
     end

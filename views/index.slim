@@ -111,7 +111,7 @@ html
     .container_background
       #48h_section.masonry
         - @last_48h_pods.each do |pod|
-          == render_pod(pod, false)
+          == render_pod(pod)
 
     == footer
 

@@ -76,8 +76,7 @@ module CocoaPodsNotifier
     # @return [String] the description for the RSS item.
     #
     def rss_item_description(pod)
-      github_watchers = Pod::Specification::Set::Statistics.instance.github_watchers(pod.set)
-      github_forks = Pod::Specification::Set::Statistics.instance.github_forks(pod.set)
+      github_watchers = Statistics.get_stargazer_count(pod)
 
       s =  "<p>#{markdown(pod.description)}</p>"
       s << "\n<p>Authored by #{pod.authors}.</p>"
@@ -87,7 +86,6 @@ module CocoaPodsNotifier
       s << "\n  <li>Platform: #{pod.platform}</li>"
       s << "\n  <li>License: #{pod.license}</li>" if pod.license
       s << "\n  <li>Stargazers: #{github_watchers}</li>" if github_watchers
-      s << "\n  <li>Forks: #{github_forks}</li>" if github_forks
       s << "\n</ul>"
 
       # TODO: Fix nil in 1.8.7 in CocoaPods Core.

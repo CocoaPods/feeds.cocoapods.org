@@ -1,6 +1,6 @@
 ruby:
   def watchers(pod)
-    Pod::Specification::Set::Statistics.instance.github_watchers(pod.set)
+    CocoaPodsNotifier::Statistics.get_stargazer_count(pod)
   end
 
   def has_screenshot(pod)

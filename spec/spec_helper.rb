@@ -12,8 +12,8 @@ $silent = true
 require 'rack/test'
 require 'bundler/setup'
 require 'bacon'
+require 'pretty_bacon'
 require 'mocha-on-bacon'
-require 'spec_helper/bacon'
 require 'spec_helper/http_mock'
 require 'cocoapods_notifier'
 

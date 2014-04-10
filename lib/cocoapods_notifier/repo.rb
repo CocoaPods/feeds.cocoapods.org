@@ -1,9 +1,7 @@
 module CocoaPodsNotifier
-
   # Interface for the CocoaPods master repo.
   #
   class Repo
-
     # @return [Pathname] The path where the master repo is stored.
     #
     attr_reader :master_repo_dir
@@ -22,7 +20,7 @@ module CocoaPodsNotifier
     # @return [String]
     #
     def master_repo_url
-      "https://github.com/CocoaPods/Specs.git"
+      'https://github.com/CocoaPods/Specs.git'
     end
 
     attr_accessor :silent
@@ -83,7 +81,7 @@ module CocoaPodsNotifier
       return if (master_repo_dir).exist?
       title("Cloning Specs Repo (in #{master_repo_dir})")
       master_repo_dir.dirname.mkpath
-      title("Done")
+      title('Done')
       git("clone '#{master_repo_url}' '#{master_repo_dir}'")
     end
 
@@ -123,7 +121,7 @@ module CocoaPodsNotifier
     def git(command, dir = Dir.pwd)
       Dir.chdir(dir) do
         output = `git #{command}`
-        unless $?.exitstatus.zero?
+        unless $CHILD_STATUS.exitstatus.zero?
           puts "git #{command} (in #{dir})"
           puts output
           raise 'Git command failed'
@@ -142,6 +140,5 @@ module CocoaPodsNotifier
     end
 
     #-------------------------------------------------------------------------#
-
   end
 end

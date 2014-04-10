@@ -1,12 +1,10 @@
 # encoding: UTF-8
-require "twitter"
+require 'twitter'
 
 module CocoaPodsNotifier
-
   # Posts tweets about Pods.
   #
   class TwitterNotifier
-
     # @return [Twitter::REST::Client]
     #
     attr_accessor :client
@@ -60,7 +58,7 @@ module CocoaPodsNotifier
 
     def account_for_social_media_url(url)
       return nil unless url
-      reg_ex = %r[\Ahttps?://twitter.com/([^/]+)\z]
+      reg_ex = %r{\Ahttps?://twitter.com/([^/]+)\z}
       match_data = reg_ex.match(url)
       "@#{match_data[1]}" if match_data
     end
@@ -132,6 +130,5 @@ module CocoaPodsNotifier
     ELLIPSIS_STRING = '…'
 
     #-------------------------------------------------------------------------#
-
   end
 end

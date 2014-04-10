@@ -18,13 +18,13 @@ describe 'The CocoaPods Notifier App' do
 
   #---------------------------------------------------------------------------#
 
-  it "returns a preview of the tweets" do
+  it 'returns a preview of the tweets' do
     get '/'
     last_response.should.be.ok
     # last_response.body.should.include
   end
 
-  it "generates the RSS for the master branch" do
+  it 'generates the RSS for the master branch' do
     post "/#{HOOK_PATH}", :payload => { 'ref' => 'refs/heads/master' }.to_json
     last_response.status.should == 201
   end

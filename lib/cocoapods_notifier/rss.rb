@@ -3,11 +3,9 @@ require 'redcarpet'
 require 'cocoapods_notifier/html_helpers'
 
 module CocoaPodsNotifier
-
   # Creates the RSS feed.
   #
   class RSS
-
     # @return [Array<Pod::Specification::Set::Presenter>] The list of all the
     #         Pods available in the master repo.
     #
@@ -21,7 +19,7 @@ module CocoaPodsNotifier
     # @param [Array<Pod::Specification::Set::Presenter>] @see pods
     # @param [Hash{String => Time}] @see creation_dates
     #
-    def initialize (pods, creation_dates)
+    def initialize(pods, creation_dates)
       @pods = pods
       @creation_dates = creation_dates
     end
@@ -31,10 +29,10 @@ module CocoaPodsNotifier
     def feed
       rss = ::RSS::Maker.make('2.0') do |m|
         # m.xml_stylesheets.new_child.href = "rss.css"
-        m.channel.title         = "CocoaPods"
-        m.channel.link          = "http://www.cocoapods.org"
-        m.channel.description   = "CocoaPods new pods feed"
-        m.channel.language      = "en"
+        m.channel.title         = 'CocoaPods'
+        m.channel.link          = 'http://www.cocoapods.org'
+        m.channel.description   = 'CocoaPods new pods feed'
+        m.channel.language      = 'en'
         m.channel.lastBuildDate = Time.now
         m.items.do_sort         = true
         pods_for_feed.each do |pod|
@@ -94,11 +92,11 @@ module CocoaPodsNotifier
 
       # TODO: Fix nil in 1.8.7 in CocoaPods Core.
       pod.spec.screenshots.compact.each do |screenshot_url|
-        style =  "border:1px solid #aaa;"
-        style << "min-width:44px; min-height:44px;"
-        style << "margin: 22px 22px 0 0; padding: 4px;"
-        style << "box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);"
-        style << "border: 1px solid rgba(0, 0, 0, 0.2);"
+        style =  'border:1px solid #aaa;'
+        style << 'min-width:44px; min-height:44px;'
+        style << 'margin: 22px 22px 0 0; padding: 4px;'
+        style << 'box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);'
+        style << 'border: 1px solid rgba(0, 0, 0, 0.2);'
         s << "\n<img src='#{screenshot_url}' style='#{style}'>"
       end
       s << "\n"
@@ -123,6 +121,5 @@ module CocoaPodsNotifier
     end
 
     #-------------------------------------------------------------------------#
-
   end
 end

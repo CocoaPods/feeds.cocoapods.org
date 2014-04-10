@@ -17,7 +17,7 @@ module HTMLHelpers
       end
     end, :autolink => true, :space_after_headers => true, :no_intra_emphasis => true)
     # TODO: experimental
-    input = (input.slice(0,1).capitalize || '') + (input.slice(1..-1) || '')
+    input = (input.slice(0, 1).capitalize || '') + (input.slice(1..-1) || '')
     result = @markdown_instance.render(input)
   end
 
@@ -26,7 +26,7 @@ module HTMLHelpers
   # @return [String]
   #
   def capitalize_first_letter(input)
-    (input.slice(0,1).capitalize || '') + (input.slice(1..-1) || '')
+    (input.slice(0, 1).capitalize || '') + (input.slice(1..-1) || '')
   end
 
   # Highlights with Pigments the give string.

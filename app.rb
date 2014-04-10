@@ -7,14 +7,12 @@ require 'cocoapods-core'
 require 'slim'
 
 APP_ROOT = Pathname.new(File.expand_path('../', __FILE__))
-$:.unshift((APP_ROOT + 'lib').to_s)
+$LOAD_PATH.unshift((APP_ROOT + 'lib').to_s)
 
 require 'cocoapods_notifier'
 
 module CocoaPodsNotifier
-
   class CocoaPodsNotifierApp < Sinatra::Application
-
     # Setup
     #-------------------------------------------------------------------------#
 
@@ -40,7 +38,7 @@ module CocoaPodsNotifier
     end
 
     configure :production do
-      ExceptIO::Client.configure "cocoapods-feeds-cocoapods-org", ENV['EXCEPTIO_KEY']
+      ExceptIO::Client.configure 'cocoapods-feeds-cocoapods-org', ENV['EXCEPTIO_KEY']
     end
 
     configure :development, :production do
@@ -135,7 +133,7 @@ module CocoaPodsNotifier
         start_time = Time.now
         payload = JSON.parse(params[:payload])
 
-        if payload['ref'] == "refs/heads/master"
+        if payload['ref'] == 'refs/heads/master'
           self.class.update
           cache_expire('/index')
           status 201
@@ -153,5 +151,4 @@ module CocoaPodsNotifier
       end
     end
   end
-
 end

@@ -25,7 +25,6 @@ module Bacon
   # which is available under the MIT License. Thanks YorickPeterse!
   #
   module SpecDoxOutput
-
     def handle_specification(name)
       if @needs_first_put
         @needs_first_put = false
@@ -60,13 +59,13 @@ module Bacon
       unless Counter[:disabled].zero?
         puts Bacon.color(:yellow, "#{Counter[:disabled]} disabled specifications\n")
       end
-      puts "%d specifications (%d requirements), %d failures, %d errors" %
+      puts '%d specifications (%d requirements), %d failures, %d errors' %
         Counter.values_at(:specifications, :requirements, :failed, :errors)
     end
 
     #:nodoc:
     def spaces
-      return '  ' * @specs_depth
+      '  ' * @specs_depth
     end
   end
 
@@ -75,13 +74,12 @@ module Bacon
   # Overrides the TestUnitOutput to provide colored result output.
   #
   module TestUnitOutput
-
     # Represents the specifications as `:`.
     #
     def handle_specification(name)
       indicator = Bacon.color(nil, ':')
       print indicator
-      @indicators||=''
+      @indicators ||= ''
       @indicators << indicator
       yield
     end
@@ -103,16 +101,16 @@ module Bacon
         if !error.empty?
           @first_error = true
           m = error[0..0]
-          c = (m == "E" ? :red : :yellow)
+          c = (m == 'E' ? :red : :yellow)
           indicator = Bacon.color(c, m)
         elsif disabled
-          indicator =  "D"
+          indicator =  'D'
         else
           indicator = Bacon.color(nil, '.')
         end
       end
       print indicator
-      @indicators||=''
+      @indicators ||= ''
       @indicators << indicator
     end
 
@@ -130,7 +128,7 @@ module Bacon
       unless Counter[:disabled].zero?
         puts Bacon.color(:yellow, "#{Counter[:disabled]} disabled specifications")
       end
-      result = "%d specifications (%d requirements), %d failures, %d errors" %
+      result = '%d specifications (%d requirements), %d failures, %d errors' %
         Counter.values_at(:specifications, :requirements, :failed, :errors)
       if Counter[:failed].zero?
         puts Bacon.color(:green, result)
@@ -138,7 +136,6 @@ module Bacon
         puts Bacon.color(:red, result)
       end
     end
-
   end
 
   #---------------------------------------------------------------------------#
@@ -157,12 +154,11 @@ module Bacon
   extend FilterBacktraces
 
   class Context
-
     # Add support for disabled specs
     #
     def xit(description, &block)
       Counter[:disabled] += 1
-      Bacon.handle_requirement(description, true) {[]}
+      Bacon.handle_requirement(description, true) { [] }
     end
 
     # Add support for running only focused specs
@@ -186,7 +182,7 @@ module Bacon
 
     # Add support for focused specs
     #
-    alias :origina_it :it
+    alias_method :origina_it, :it
     def it(description, &block)
       unless defined?(::BaconFocusedMode)
         origina_it(description, &block)
@@ -194,4 +190,3 @@ module Bacon
     end
   end
 end
-

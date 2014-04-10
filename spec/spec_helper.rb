@@ -1,7 +1,7 @@
 require 'pathname'
 ROOT = Pathname.new(File.expand_path('../../', __FILE__))
-$:.unshift((ROOT + 'lib').to_s)
-$:.unshift((ROOT + 'spec').to_s)
+$LOAD_PATH.unshift((ROOT + 'lib').to_s)
+$LOAD_PATH.unshift((ROOT + 'spec').to_s)
 
 ENV['SPECS_URL'] = 'git://github.com/CocoaPods/Specs.git'
 ENV['RACK_ENV'] = 'test'

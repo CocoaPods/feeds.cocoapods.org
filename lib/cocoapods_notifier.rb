@@ -1,5 +1,4 @@
 module CocoaPodsNotifier
-
   require 'cocoapods-core'
   Pod = ::Pod
 

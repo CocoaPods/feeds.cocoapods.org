@@ -5,7 +5,7 @@ AllCops:
     - lib/cocoapods-core/vendor/**
     - spec/fixtures/**
 
-# inherit_from: rubocop-todo.yml
+inherit_from: rubocop-todo.yml
 
 #- CocoaPods -----------------------------------------------------------------#
 

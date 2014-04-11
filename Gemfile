@@ -4,7 +4,7 @@ gem 'activesupport'
 gem 'cocoapods-core'
 gem 'colored'
 gem 'exceptio-ruby'
-gem 'faraday-http-cache'
+gem 'faraday-http-cache', '~> 0.3.0' # Ruby 1.8.7
 gem 'json'
 gem 'mime-types', '< 2.0' # Ruby 1.8.7
 gem 'octokit', '~> 2.7'   # Ruby 1.8.7

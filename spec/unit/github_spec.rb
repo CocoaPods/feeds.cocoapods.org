@@ -9,8 +9,8 @@ describe CocoaPodsNotifier::GitHub do
   it 'fetches the stargazers count of a repo' do
     url = 'http://github.com/CocoaPods/CocoaPods.git'
     response = { 'stargazers_count' => 3893 }
-    Octokit::Client.any_instance.expects(:repo).with('CocoaPods/CocoaPods')
-      .returns(response)
+    Octokit::Client.any_instance.
+      expects(:repo).with('CocoaPods/CocoaPods').returns(response)
     count = @subject.get_stargazer_count(url)
     count.should == 3893
   end
@@ -23,8 +23,8 @@ describe CocoaPodsNotifier::GitHub do
 
   it 'returns nil if the url could not be found' do
     url = 'http://github.com/CocoaPods/not_found'
-    Octokit::Client.any_instance.expects(:repo).with('CocoaPods/not_found')
-      .raises(Octokit::NotFound)
+    Octokit::Client.any_instance.expects(:repo).with('CocoaPods/not_found').
+      raises(Octokit::NotFound)
     count = @subject.get_stargazer_count(url)
     count.should.be.nil
   end

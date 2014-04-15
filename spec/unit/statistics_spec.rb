@@ -10,8 +10,8 @@ describe CocoaPodsNotifier::Statistics do
 
   it 'fetches the stargazers count of a pod' do
     url = 'https://github.com/AFNetworking/AFNetworking.git'
-    CocoaPodsNotifier::GitHub.expects(:get_stargazer_count)
-      .with(url, OCTOKIT_CLIENT).returns(100)
+    CocoaPodsNotifier::GitHub.expects(:get_stargazer_count).
+      with(url, OCTOKIT_CLIENT).returns(100)
     result = @subject.get_stargazer_count(@pod)
     result.should == 100
   end

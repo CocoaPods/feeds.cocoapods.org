@@ -80,6 +80,26 @@ html
         margin:0 10px;
         padding: 1px;
       }
+      
+      @media (max-width: 320px) { 
+        .masonry {
+          padding-bottom:10px;
+        }
+        
+        .headline {
+          height:auto; 
+        }
+        
+        h2 {
+          margin: 32px 0 12px;
+        }
+        
+        .pod {
+          width: 248px;
+          position:relative;
+        }
+      }
+      
 
   body
     == header
@@ -117,7 +137,10 @@ html
     == footer
 
     javascript:
+    
       $(document).ready(function () {
+        if (/Mobile/i.test(navigator.userAgent) return;
+        
         options = {
           itemSelector: '.pod',
           "gutter": 32,

@@ -146,7 +146,7 @@ html
     javascript:
 
       $(document).ready(function () {
-        if (/Mobile/i.test(navigator.userAgent)) return;
+        if (/iPhone/i.test(navigator.userAgent) || /iPod/i.test(navigator.userAgent)) return;
 
         options = {
           itemSelector: '.pod',

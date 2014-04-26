@@ -127,18 +127,27 @@ html
 
     h2 Pods added in the last 12 hours
     .container_background
+      - unless @last_12h_pods.any?
+        .text_container.masonry
+          p.text-center What?! People have taken a day off?
       #12h_section.masonry
         - @last_12h_pods.each do |pod|
           == render_pod(pod)
 
     h2 Pods added in the last 24 hours
     .container_background
+      - unless @last_24h_pods.any?
+        .text_container.masonry
+          p.text-center What?! People have taken a day off?
       #24h_section.masonry
         - @last_24h_pods.each do |pod|
           == render_pod(pod)
 
     h2 Pods added in the last 48 hours
     .container_background
+      - unless @last_48h_pods.any?
+        .text_container.masonry
+          p.text-center What?! People have taken a day off?
       #48h_section.masonry
         - @last_48h_pods.each do |pod|
           == render_pod(pod)

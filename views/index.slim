@@ -129,7 +129,7 @@ html
     .container_background
       - unless @last_12h_pods.any?
         .text_container.masonry
-          p.text-center What?! People have taken a day off?
+          p.text-center What?! People have taken an evening off?
       #12h_section.masonry
         - @last_12h_pods.each do |pod|
           == render_pod(pod)
@@ -147,7 +147,7 @@ html
     .container_background
       - unless @last_48h_pods.any?
         .text_container.masonry
-          p.text-center What?! People have taken a day off?
+          p.text-center What?! People have taken two days off?
       #48h_section.masonry
         - @last_48h_pods.each do |pod|
           == render_pod(pod)

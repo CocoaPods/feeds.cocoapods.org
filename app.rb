@@ -43,22 +43,8 @@ module CocoaPodsNotifier
       ExceptIO::Client.configure 'cocoapods-feeds-cocoapods-org', ENV['EXCEPTIO_KEY']
     end
 
-    configure :development, :production do
-      $silent = false
-      Pod::Specification::Set::Statistics.instance.cache_expiration = 60 * 60 * 24
-      Pod::Specification::Set::Statistics.instance.cache_file = APP_ROOT + 'caches/statistics.yml'
-    end
-
     # Repo Actions
     #-------------------------------------------------------------------------#
-
-    def self.master_repo
-      @master_repo ||= begin
-        repo = Repo.new(APP_ROOT + 'tmp/.cocoapods/master')
-        repo.silent = $silent
-        repo
-      end
-    end
 
     # Clones the master repo from the remote and generates the feeds and
     # sends the tweets for Pods of the last commit.
@@ -74,8 +60,6 @@ module CocoaPodsNotifier
     #
     #
     def self.update
-      master_repo.update
-
       feed = RSS.new(master_repo.pods, master_repo.creation_dates).feed
       File.open(RSS_FILE, 'w') { |f| f.write(feed) }
       puts '-> RSS feed created'.cyan unless $silent

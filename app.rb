@@ -14,7 +14,7 @@ require 'cocoapods_notifier'
 require 'config/init'
 
 module CocoaPodsNotifier
-  class CocoaPodsNotifierApp < Sinatra::Application
+  class App < Sinatra::Application
     # Setup
     #-------------------------------------------------------------------------#
 

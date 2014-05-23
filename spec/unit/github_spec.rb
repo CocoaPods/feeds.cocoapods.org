@@ -1,9 +1,9 @@
 require File.expand_path('../../spec_helper', __FILE__)
 
-describe CocoaPodsNotifier::GitHub do
+describe FeedsApp::GitHub do
 
   before do
-    @subject = CocoaPodsNotifier::GitHub
+    @subject = FeedsApp::GitHub
   end
 
   it 'fetches the stargazers count of a repo' do

@@ -1,7 +1,7 @@
 require File.expand_path('../../spec_helper', __FILE__)
 require 'rexml/document'
 
-describe CocoaPodsNotifier::RSS do
+describe FeedsApp::RSS do
 
   before do
     repo = create_fixture_repo
@@ -12,7 +12,7 @@ describe CocoaPodsNotifier::RSS do
       'AFNetworking'  => Time.parse('2012-01-01'),
       'MBProgressHUD' => Time.parse('2012-01-02')
     }
-    @sut = CocoaPodsNotifier::RSS.new(pods, creation_dates)
+    @sut = FeedsApp::RSS.new(pods, creation_dates)
     Octokit::Client.any_instance.stubs(:repo).returns({ 'stargazers_count' => 3893 })
   end
 

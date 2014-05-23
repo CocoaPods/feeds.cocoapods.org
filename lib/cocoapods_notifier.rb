@@ -1,4 +1,4 @@
-module CocoaPodsNotifier
+module FeedsApp
   require 'cocoapods-core'
   Pod = ::Pod
 
@@ -8,7 +8,6 @@ module CocoaPodsNotifier
 
   require 'cocoapods_notifier/statistics'
   require 'cocoapods_notifier/github'
-  require 'cocoapods_notifier/repo'
   require 'cocoapods_notifier/rss'
   require 'cocoapods_notifier/twitter_notifier'
 end

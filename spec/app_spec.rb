@@ -5,7 +5,7 @@ describe 'The CocoaPods Notifier App' do
   extend Rack::Test::Methods
 
   def app
-    CocoaPodsNotifier::App
+    FeedsApp::App
   end
 
   before do

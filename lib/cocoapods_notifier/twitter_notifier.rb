@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'twitter'
 
-module CocoaPodsNotifier
+module FeedsApp
   # Posts tweets about Pods.
   #
   class TwitterNotifier

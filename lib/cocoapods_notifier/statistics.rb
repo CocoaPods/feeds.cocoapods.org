@@ -1,7 +1,7 @@
 require 'config/init'
 require 'cocoapods_notifier/github'
 
-module CocoaPodsNotifier
+module FeedsApp
   module Statistics
     # Returns the stargazers count of a given URL.
     #

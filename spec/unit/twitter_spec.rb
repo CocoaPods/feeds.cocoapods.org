@@ -1,12 +1,12 @@
 # encoding: UTF-8
 require File.expand_path('../../spec_helper', __FILE__)
 
-describe CocoaPodsNotifier::TwitterNotifier do
+describe FeedsApp::TwitterNotifier do
 
   before do
-    @pod = create_fixture_repo.pod_named('AFNetworking')
+    # @pod = create_fixture_repo.pod_named('AFNetworking')
     @twitter_client = stub
-    @sut = CocoaPodsNotifier::TwitterNotifier.new(@twitter_client)
+    @sut = FeedsApp::TwitterNotifier.new(@twitter_client)
   end
 
   #---------------------------------------------------------------------------#

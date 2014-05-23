@@ -2,7 +2,7 @@ require 'rss/maker'
 require 'redcarpet'
 require 'cocoapods_notifier/html_helpers'
 
-module CocoaPodsNotifier
+module FeedsApp
   # Creates the RSS feed.
   #
   class RSS

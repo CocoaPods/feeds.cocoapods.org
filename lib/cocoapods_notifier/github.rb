@@ -1,6 +1,6 @@
 require 'octokit'
 
-module CocoaPodsNotifier
+module FeedsApp
   module GitHub
     # Returns the stargazers count of a given URL.
     #

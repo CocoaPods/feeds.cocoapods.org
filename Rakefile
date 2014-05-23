@@ -7,6 +7,7 @@ desc 'Initializes your working copy to run the specs'
 task :bootstrap do
   title 'Environment bootstrap'
   sh 'bundle install'
+  sh 'git submodule update --init'
 end
 
 #-- Run ----------------------------------------------------------------------#

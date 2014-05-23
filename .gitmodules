@@ -1,6 +1,3 @@
-[submodule "spec/fixtures/master_repo"]
-	path = spec/fixtures/master_repo
-	url = https://github.com/CocoaPods/Specs.git
 [submodule "shared"]
 	path = shared
 	url = https://github.com/CocoaPods/shared_resources.git

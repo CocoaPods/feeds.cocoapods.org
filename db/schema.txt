@@ -12,5 +12,6 @@ pods
 | name       | 25   | "text"                        | nil     | false      | true        | :string   | nil          |
 | created_at | 1114 | "timestamp without time zone" | nil     | true       | false       | :datetime | nil          |
 | tweet_sent | 16   | "boolean"                     | nil     | true       | false       | :boolean  | nil          |
+| spec       | 25   | "text"                        | nil     | true       | false       | :string   | nil          |
 +------------+------+-------------------------------+---------+------------+-------------+-----------+--------------+
 

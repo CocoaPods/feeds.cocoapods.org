@@ -28,18 +28,22 @@ module FeedsApp
         limit_12h = Time.now - 60 * 60 * 12
         limit_24h = Time.now - 60 * 60 * 24
         limit_48h = Time.now - 60 * 60 * 48
-        pods = pods.sort_by { |pod| pod.creation_date }.reverse
+        pods = pods.sort_by { |pod| pod.created_at }.reverse
         pods.each do |pod|
-          if pod.creation_date > limit_12h
+          if pod.created_at > limit_12h
             @last_12h_pods << pod
-          elsif pod.creation_date > limit_24h
+          elsif pod.created_at > limit_24h
             @last_24h_pods << pod
-          elsif pod.creation_date > limit_48h
+          elsif pod.created_at > limit_48h
             @last_48h_pods << pod
           end
         end
 
         slim :index
+      end
+
+      get '/new-pods.rss' do
+        RSS.new(master_repo.pods, master_repo.creation_dates).feed
       end
     end
   end

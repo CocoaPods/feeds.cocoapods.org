@@ -16,12 +16,31 @@ module FeedsApp
 
         pod = Models::Pod.find_or_create(:name => name)
         pod.spec = spec_for_pod(name)
-        pod.created_at = creation_date_pod(name)
+        pod.created_at = Date.new
         pod.save
         
         # send_missing_tweets
         200
       end
+      
+      trunk_notification_path = ENV['TRUNK_NOTIFICATION_PATH']
+      trunk_notification_path ||= ARGV[0]
+      abort "You need to give a Trunk webhook URL" unless trunk_notification_path
+
+      post "/trunk/" + trunk_notification_path do
+        data = JSON.parse(request.body.read)
+        puts "Got a webhook notification: " + data["type"] + " - " + data["action"]
+
+        spec_json = perform_request(data["data_url"])
+
+        pod = Models::Pod.find_or_create(:name => spec_json["name"])
+        pod.spec = spec_json
+        pod.created_at = Date.new
+        pod.save
+                
+        "{ success: true }"
+      end
+
 
       # @return [String] or nil
       #

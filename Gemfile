@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.3'
 
 # App
 group :app do
@@ -24,6 +24,7 @@ group :app do
   gem 'redcarpet'
   gem 'sinatra-cache'
   gem 'twitter'
+  gem 'nap'
 end
 
 group :heroku_plugins do

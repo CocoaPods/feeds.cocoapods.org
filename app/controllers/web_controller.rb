@@ -48,5 +48,3 @@ module FeedsApp
     end
   end
 end
-
-

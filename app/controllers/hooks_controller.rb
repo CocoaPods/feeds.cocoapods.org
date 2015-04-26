@@ -1,6 +1,7 @@
 require 'app/controllers/base_controller'
 require 'rest'
 require 'json'
+require 'cocoapods-core'
 
 module FeedsApp
   module Controllers
@@ -17,24 +18,26 @@ module FeedsApp
         pod.spec = spec_for_pod(name)
         pod.created_at = creation_date_pod(name)
         pod.save
+        
         # send_missing_tweets
         200
       end
 
-      # @return [Pod::Specification]
+      # @return [String] or nil
       #
       def spec_for_pod(name)
-        source = Pod::Source::GitHubDataProvider.new('CocoaPods/Specs')
-        versions = source.versions(name)
-        if versions
-          spec = source.specification(name, versions.last)
-        end
+        trunk_spec = REST.get "https://trunk.cocoapods.org/api/v1/pods/#{name}"
+        versions = JSON.parse(trunk_spec.body)["versions"]
+        versions = versions.map { |s| Pod::Version.new(s["name"]) }.sort.map { |semver| semver.version }
+
+        spec_url = "https://raw.githubusercontent.com/CocoaPods/Specs/master/Specs/#{ name }/#{ versions[-1] }/#{ name }.podspec.json"
+        perform_request(spec_url).to_s
       end
 
       def creation_date_pod(name)
         url = "https://trunk.cocoapods.org/api/v1/pods/#{name}"
         data = perform_request(url)
-        data['versions'].map { |version| version['created_at'] }.sort.last
+        data['versions'].map  { |s| Pod::Version.new(s["name"]) }.sort.map { |semver| semver.version }.last
       end
 
       def perform_request(url)

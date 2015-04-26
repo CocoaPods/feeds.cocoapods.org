@@ -10,10 +10,10 @@ task :bootstrap do
   sh 'git submodule update --init'
 end
 
-#-- Run ----------------------------------------------------------------------#
+#-- Serve ----------------------------------------------------------------------#
 
 desc 'Starts the process locally for development'
-task :run do
+task :serve do
   title 'Serving application on http://localhost:4567'
   sh 'env PORT=4567 RACK_ENV=development foreman start'
 end

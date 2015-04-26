@@ -3,7 +3,7 @@ ruby:
   footer = Slim::Template.new('shared/includes/_footer.slim').render(Object.new)
 
   def render_pod(pod, stats = true)
-    template = Slim::Template.new('views/pod.slim')
+    template = Slim::Template.new('app/views/pod.slim')
     template.render(Object.new, :pod => pod, :stats => stats)
   end
 

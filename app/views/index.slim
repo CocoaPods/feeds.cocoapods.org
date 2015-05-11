@@ -1,0 +1,175 @@
+ruby:
+  header = Slim::Template.new('shared/includes/_header.slim').render(Object.new)
+  footer = Slim::Template.new('shared/includes/_footer.slim').render(Object.new)
+
+  def render_pod(pod, stats = true)
+    template = Slim::Template.new('app/views/pod.slim')
+    template.render(Object.new, :pod => pod, :stats => stats)
+  end
+
+html
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width = device-width, user-scalable = no"
+    title CocoaPods Feeds
+    link rel="stylesheet" href="http://guides.cocoapods.org/stylesheets/app.css"
+    link rel="icon" type="image/png" href="/icon.png"
+    link rel="apple-touch-icon" href="/icon.png"
+    script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js" language="javascript" type="text/javascript"
+    script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js" language="javascript" type="text/javascript"
+    script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.js" language="javascript" type="text/javascript"
+
+    css:
+
+      .container_background {
+        background-color: #F5F5F5;
+        padding: 0 32px;
+      }
+
+      h2 {
+        margin: 128px 0 32px;
+        text-align: center;
+      }
+
+      .masonry {
+        margin: 0 auto;
+        padding-top:32px;
+      }
+
+      .pod {
+        width: 288px;
+        margin-bottom: 32px;
+        padding:16px;
+        padding-bottom:48px;
+        background-color:white;
+      }
+
+      .pod h3 {
+        font-size:16px;
+        margin: 0 0 16px;
+        word-break:break-all;
+      }
+
+      .pod p {
+        font-size: 14px;
+        margin: 0px;
+      }
+
+      .pod .social_media {
+        position:absolute;
+        bottom:16px;
+        left:16px;
+      }
+
+      .pod .stats {
+        position:absolute;
+        bottom:16px;
+        right:16px;
+      }
+
+      .pod .text_container {
+        bottom-margin: 16px;
+      }
+
+      .pod .images_container {
+        margin-top:16px;
+        text-align:center;
+      }
+
+      .pod img {
+        max-width:100px;
+        max-height:160px;
+        margin:0 10px;
+        padding: 1px;
+      }
+
+      @media (max-width: 320px) {
+        .masonry {
+          padding-bottom:1px;
+          padding-top:16px;
+        }
+
+        .headline {
+          height:auto;
+        }
+
+        h2 {
+          margin: 32px 0 12px;
+        }
+
+        .container_background {
+          background-color: #F5F5F5;
+          padding: 0 16px;
+        }
+
+        .pod {
+          width: 288px;
+          position:relative;
+          margin-bottom: 16px;
+        }
+      }
+
+
+  body
+    == header
+    section.container
+      .row
+        header.col-md-12.headline.index
+          h1 CocoaPods Feeds
+
+          <div class="horizontal-divider"><div class="arrow-down"></div><div class="enclosed-arrow-down"></div></div>
+
+          h2 #{@pods_count} CocoaPods
+
+      .row
+        .col-md-8.col-lg-8.col-sm-8.col-md-offset-2.col-lg-offset-2.col-sm-offset-2
+          p.text-center This is the home of the new CocoaPods feed. Subscribe via <a href="/new-pods.rss">RSS</a> or follow <a href='http://twitter.com/CocoaPodsFeed'>@CocoaPodsFeed</a> and never miss a pod again!
+
+    h2 Pods added in the last 12 hours
+    .container_background
+      - unless @last_12h_pods.any?
+        .text_container.masonry
+          p.text-center What?! People have taken an evening off?
+      #12h_section.masonry
+        - @last_12h_pods.each do |pod|
+          == render_pod(pod)
+
+    h2 Pods added in the last 24 hours
+    .container_background
+      - unless @last_24h_pods.any?
+        .text_container.masonry
+          p.text-center What?! People have taken a day off?
+      #24h_section.masonry
+        - @last_24h_pods.each do |pod|
+          == render_pod(pod)
+
+    h2 Pods added in the last 48 hours
+    .container_background
+      - unless @last_48h_pods.any?
+        .text_container.masonry
+          p.text-center What?! People have taken two days off?
+      #48h_section.masonry
+        - @last_48h_pods.each do |pod|
+          == render_pod(pod)
+
+    == footer
+
+    javascript:
+
+      $(document).ready(function () {
+        if (/iPhone/i.test(navigator.userAgent) || /iPod/i.test(navigator.userAgent)) return;
+
+        options = {
+          itemSelector: '.pod',
+          "gutter": 32,
+          "isFitWidth": true
+        }
+        var $12h_section = $("#12h_section").masonry(options);
+        var $24h_section = $("#24h_section").masonry(options);
+        var $48h_section = $("#48h_section").masonry(options);
+
+        // Relayout after the images have been loaded
+        $12h_section.imagesLoaded( function() { $12h_section.masonry(); });
+        $24h_section.imagesLoaded( function() { $24h_section.masonry(); });
+        $48h_section.imagesLoaded( function() { $48h_section.masonry(); });
+      });

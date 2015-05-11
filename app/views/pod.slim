@@ -1,0 +1,24 @@
+ruby:
+  def has_screenshot(pod)
+    !screenshots(pod).empty?
+  end
+
+  def screenshots(pod)
+    ""
+  end
+
+.pod
+  a href = pod.homepage
+    h3 = pod.name
+  .text_container
+    p = pod.summary
+    
+  - if has_screenshot(pod)
+    .images_container
+      - screenshots(pod).each do |screenshot_url|
+        a href=screenshot_url
+          img.twitter_avatar src=screenshot_url
+              
+  - if pod.social_media_url
+    a.social_media href=pod.spec.social_media_url
+      p == "@#{pod.spec.social_media_url.split('/').last}"

@@ -1,0 +1,8 @@
+.ruby-version
+.rvmrc
+.env
+.*.sw?
+public/*.rss
+tmp/*
+log/*
+caches/statistics.yml

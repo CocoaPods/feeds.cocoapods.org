@@ -9,7 +9,6 @@ During each update it tweets the new pods.
 
 - Running on Ruby 1.8.7, 1.9.2, and 1.9.3.
 - Procfile-based Sinatra application. 
-- Requires a host capable of managing a git repository.
 - Available at http://feeds.cocoapods.org.
 - Based on [CocoaPods/CocoaPods.org](https://github.com/CocoaPods/CocoaPods.org).
 - Exception tracking provided by [except.io](http://except.io/).
@@ -29,12 +28,6 @@ Run Tests:
 $ rake
 ```
 
-Test GitHub [post-receive hook](http://help.github.com/post-receive-hooks/):
-
-```shell
-$ curl -d 'payload={"ref":"refs/heads/master"}' http://localhost:5000/hook
-```
-
 
 ## License and Contributions
 
@@ -44,11 +37,6 @@ Contributing to the [CocoaPods projects](https://github.com/CocoaPods) is really
 You even get push access when one of your patches is accepted.
 
 ## Events
-
-- Initialization:
-    1. the specs repo is cloned or updated in `tmp/.cocoapods/master`.
-    2. the feed is created in `public/new-pods.rss`.
-- GitHub post-receive hook:
-    1. the specs repo is updated.
-    2. the feed is recreated.
-    3. tweets for the new pods.
+    
+- Trunk post-receive hook:
+    1. A pod is added or updated

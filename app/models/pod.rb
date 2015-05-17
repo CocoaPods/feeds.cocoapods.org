@@ -1,3 +1,4 @@
+
 module FeedsApp
   module Models
     class Pod < Sequel::Model

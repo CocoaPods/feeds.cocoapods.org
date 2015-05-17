@@ -23,6 +23,7 @@ group :app do
   gem 'sinatra-cache'
   gem 'twitter'
   gem 'nap'
+  gem 'pg'
 end
 
 group :heroku_plugins do
@@ -38,7 +39,7 @@ group :assets do
 end
 
 group :database do
-  gem 'pg'
+
   gem 'sequel'
 end
 

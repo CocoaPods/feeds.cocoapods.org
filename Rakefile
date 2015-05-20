@@ -50,35 +50,10 @@ namespace :db do
 
   desc 'Run migrations'
   task :migrate do
-    Rake::Task[:env].invoke
-    version = ENV['version'].to_i if ENV['version']
     migration_version = Sequel::Migrator.run(DB, File.join(ROOT, 'db/migrations'), target: version)
     puts "Migrated to version #{migration_version}"
     schema
     File.open('db/schema.txt', 'w') { |file| file.write(schema) }
-  end
-
-  desc 'Drop all DBs'
-  task :drop do
-    `dropdb pod_feeds_app_test`
-    `dropdb pod_feeds_app_development`
-    `dropdb pod_feeds_app_production`
-  end
-
-  desc 'Create all DBs'
-  task :create do
-    `createdb -h localhost pod_feeds_app_test -E UTF8`
-    `createdb -h localhost pod_feeds_app_development -E UTF8`
-    `createdb -h localhost pod_feeds_app_production -E UTF8`
-  end
-
-  desc 'Drop, create, and migrate all DBs'
-  task :bootstrap do
-    Rake::Task['db:drop'].invoke
-    Rake::Task['db:create'].invoke
-    %w(test development production).each do |env|
-      sh "env RACK_ENV=#{env} rake db:migrate"
-    end
   end
 end
 

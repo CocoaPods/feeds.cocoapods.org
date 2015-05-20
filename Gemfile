@@ -24,6 +24,11 @@ group :app do
   gem 'twitter'
   gem 'nap'
   gem 'pg'
+  
+  gem 'dm-core', require: true
+  gem 'dm-do-adapter', require: true
+  gem 'dm-postgres-adapter', require: true
+  
 end
 
 group :heroku_plugins do

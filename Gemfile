@@ -39,7 +39,6 @@ group :assets do
 end
 
 group :database do
-
   gem 'sequel'
 end
 

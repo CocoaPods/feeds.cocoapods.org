@@ -31,10 +31,11 @@ module FeedsApp
         data = JSON.parse(request.body.read)
         puts "Got a webhook notification: " + data["type"] + " - " + data["action"]
 
-        spec_json = perform_request(data["data_url"])
+        spec_string = perform_request(data["data_url"])
+        spec_json = JSON.parse(spec_string)
 
         pod = Models::Pod.find_or_create(:name => spec_json["name"])
-        pod.spec = spec_json
+        pod.spec = spec_string
         pod.created_at = Date.new
         pod.save
                 

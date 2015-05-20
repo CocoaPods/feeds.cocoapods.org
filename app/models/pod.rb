@@ -3,20 +3,24 @@ module FeedsApp
     class Pod < Sequel::Model
       unrestrict_primary_key
       
+      def json
+        @json ||= JSON.parse(spec)
+      end
+      
       def homepage     
-        JSON.parse(spec)["homepage"]
+        json["homepage"]
       end
       
       def summary
-        JSON.parse(spec)["summary"]
+        json["summary"]
       end
       
       def social_media_url
-        JSON.parse(spec)["social_media_url"]
+        json["social_media_url"]
       end
       
       def screenshots
-        JSON.parse(spec)["screenshots"]
+        json["screenshots"]
       end
       
     end

@@ -8,7 +8,7 @@ ruby:
   end
 
 .pod
-  a href = pod.homepage
+  a href = "http://cocoapods.org/pods/" + pod.name
     h3 = pod.name
   .text_container
     p = pod.summary
@@ -19,6 +19,6 @@ ruby:
         a href=screenshot_url
           img.twitter_avatar src=screenshot_url
               
-  - if pod.social_media_url
-    a.social_media href=pod.spec.social_media_url
-      p == "@#{pod.spec.social_media_url.split('/').last}"
+  / - if pod.social_media_url
+  /   a.social_media href=pod.spec.social_media_url
+  /     p == "@#{pod.spec.social_media_url.split('/').last}"

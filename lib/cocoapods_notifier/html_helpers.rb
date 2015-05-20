@@ -16,12 +16,12 @@ module HTMLHelpers
         HTMLHelpers.syntax_highlight(code, :language => lang)
       end
     end, :autolink => true, :space_after_headers => true, :no_intra_emphasis => true)
-    # TODO: experimental
-    input = (input.slice(0, 1).capitalize || '') + (input.slice(1..-1) || '')
+
+    input = input.capitalize_first_letter
     result = @markdown_instance.render(input)
   end
 
-  # Capitalizes the firs letter of a string.
+  # Capitalizes the first letter of a string.
   #
   # @return [String]
   #

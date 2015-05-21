@@ -8,10 +8,6 @@ describe 'The CocoaPods Notifier App' do
     FeedsApp::App
   end
 
-  before do
-    Twitter.stubs(:tweet)
-  end
-
   it 'returns a preview of the tweets' do
     get '/'
     last_response.should.be.ok

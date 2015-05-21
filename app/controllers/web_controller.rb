@@ -19,31 +19,39 @@ module FeedsApp
 
       # The homepage
       #
+      limit_12h = Time.now - 60 * 60 * 12
+      limit_24h = Time.now - 60 * 60 * 24
+      limit_48h = Time.now - 60 * 60 * 48
+      
+
+      STDOUT.sync = true
+    
       get '/' do
         pods = Models::Pod.all
         @pods_count = pods.length
-        @last_12h_pods = []
-        @last_24h_pods = []
-        @last_48h_pods = []
-        limit_12h = Time.now - 60 * 60 * 12
-        limit_24h = Time.now - 60 * 60 * 24
-        limit_48h = Time.now - 60 * 60 * 48
-        pods = pods.sort_by { |pod| pod.created_at }.reverse
-        pods.each do |pod|
-          if pod.created_at > limit_12h
-            @last_12h_pods << pod
-          elsif pod.created_at > limit_24h
-            @last_24h_pods << pod
-          elsif pod.created_at > limit_48h
-            @last_48h_pods << pod
-          end
-        end
-
+                
+        @last_12h_pods = DB.fetch(query("0", "12 HR")).to_a
+        @last_24h_pods = DB.fetch(query("12 HR", "24 HR")).to_a
+        @last_48h_pods = DB.fetch(query("24 HR", "48 HR")).to_a
+        
         slim :index
       end
 
       get '/new-pods.rss' do
         RSS.new(master_repo.pods, master_repo.creation_dates).feed
+      end
+    
+      def query before_date, after_date
+        query_format = <<-eos
+          SELECT * FROM pods 
+          INNER JOIN pod_versions ON pods.id=pod_versions.pod_id 
+          INNER JOIN commits ON pod_versions.id = commits.pod_version_id
+            WHERE pods.created_at BETWEEN NOW() - '__AFTER_DATE__'::INTERVAL AND NOW() - '__BEFORE_DATE__'::INTERVAL
+          AND pods.deleted IS FALSE  
+          ORDER BY pods.created_at DESC
+        eos
+      
+        query_format.gsub("__BEFORE_DATE__", before_date).gsub("__AFTER_DATE__", after_date.to_s)
       end
     end
   end

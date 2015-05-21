@@ -4,7 +4,7 @@ module FeedsApp
       unrestrict_primary_key
       
       def json
-        @json ||= JSON.parse(spec)
+        @json ||= JSON.parse(specification_data)
       end
       
       def homepage     

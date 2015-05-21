@@ -61,7 +61,7 @@ end
 
 desc 'Starts a interactive console with the model env loaded'
 task :console do
-  exec 'irb', '-I', File.expand_path('../', __FILE__), '-r', 'config/init'
+  exec 'irb', '-I', File.expand_path('../', __FILE__), '-r', 'config/init', '-r', 'app/models'
 end
 
 #-- Spec ---------------------------------------------------------------------#

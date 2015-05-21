@@ -1,4 +1,6 @@
 ruby:
+  spec = JSON.parse(pod[:specification_data])
+ 
   def has_screenshot(pod)
     !screenshots(pod).empty?
   end
@@ -8,16 +10,16 @@ ruby:
   end
 
 .pod
-  a href="http://cocoapods.org/pods/#{pod.name}"
-    h3 = pod.name
+  a href="http://cocoapods.org/pods/#{spec["name"]}"
+    h3 = spec["name"]
   .text_container
-    p = pod.summary
+    p = spec["summary"]
     
-  - if has_screenshot(pod)
-    .images_container
-      - screenshots(pod).each do |screenshot_url|
-        a href=screenshot_url
-          img.twitter_avatar src=screenshot_url
+  / - if has_screenshot(pod)
+  /   .images_container
+  /     - screenshots(pod).each do |screenshot_url|
+  /       a href=screenshot_url
+  /         img.twitter_avatar src=screenshot_url
               
   / - if pod.social_media_url
   /   a.social_media href=pod.spec.social_media_url

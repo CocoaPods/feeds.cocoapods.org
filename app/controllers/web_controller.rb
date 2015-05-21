@@ -43,10 +43,10 @@ module FeedsApp
     
       def query before_date, after_date
         query_format = <<-eos
-          SELECT * FROM pods 
+          SELECT * FROM pods
           INNER JOIN pod_versions ON pods.id=pod_versions.pod_id 
           INNER JOIN commits ON pod_versions.id = commits.pod_version_id
-            WHERE pods.created_at BETWEEN NOW() - '__AFTER_DATE__'::INTERVAL AND NOW() - '__BEFORE_DATE__'::INTERVAL
+          WHERE pods.created_at BETWEEN NOW() - '__AFTER_DATE__'::INTERVAL AND NOW() - '__BEFORE_DATE__'::INTERVAL
           AND pods.deleted IS FALSE  
           ORDER BY pods.created_at DESC
         eos

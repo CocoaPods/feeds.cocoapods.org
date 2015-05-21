@@ -2,11 +2,11 @@ ruby:
   spec = JSON.parse(pod[:specification_data])
  
   def has_screenshot(pod)
-    !screenshots(pod).empty?
+    screenshots(pod).length
   end
 
   def screenshots(pod)
-    ""
+    ([] << pod["screenshots"]).flatten
   end
 
 .pod
@@ -15,12 +15,12 @@ ruby:
   .text_container
     p = spec["summary"]
     
-  / - if has_screenshot(pod)
-  /   .images_container
-  /     - screenshots(pod).each do |screenshot_url|
-  /       a href=screenshot_url
-  /         img.twitter_avatar src=screenshot_url
-              
-  / - if pod.social_media_url
-  /   a.social_media href=pod.spec.social_media_url
-  /     p == "@#{pod.spec.social_media_url.split('/').last}"
+  - if has_screenshot(spec)
+    .images_container
+      - screenshots(spec).each do |screenshot_url|
+        a href=screenshot_url
+          img.twitter_avatar src=screenshot_url
+
+  - if spec["social_media_url"]
+    a.social_media href=spec["social_media_url"]
+      p == "@#{spec["social_media_url"].split('/').last}"

@@ -31,7 +31,8 @@ module FeedsApp
       end
 
       get '/new-pods.rss' do
-        RSS.new(master_repo.pods, master_repo.creation_dates).feed
+        #RSS.new(master_repo.pods, master_repo.creation_dates).feed
+        "<xml></xml>"
       end
     
       def query before_date, after_date

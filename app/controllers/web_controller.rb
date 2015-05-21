@@ -18,14 +18,7 @@ module FeedsApp
       end
 
       # The homepage
-      #
-      limit_12h = Time.now - 60 * 60 * 12
-      limit_24h = Time.now - 60 * 60 * 24
-      limit_48h = Time.now - 60 * 60 * 48
-      
-
-      STDOUT.sync = true
-    
+      #    
       get '/' do
         pods = Models::Pod.all
         @pods_count = pods.length

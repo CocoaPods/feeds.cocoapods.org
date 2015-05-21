@@ -18,9 +18,7 @@ module FeedsApp
         puts "Got a webhook notification: " + data["type"] + " - " + data["action"]
 
         spec_string = perform_request(data["data_url"])
-        spec_json = JSON.parse(spec_string)
-
-        pod = Models::Pod.find_or_create(:name => spec_json["name"])
+        pod = Pod::Specification.from_json spec_string
         TwitterNotifier.new.tweet(pod)
                         
         "{ success: true }"

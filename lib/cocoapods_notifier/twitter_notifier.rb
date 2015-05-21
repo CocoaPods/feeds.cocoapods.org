@@ -27,7 +27,7 @@ module FeedsApp
     # @return [String]
     #
     def status_for_pod(pod)
-      social_media_url = pod.spec.social_media_url
+      social_media_url = pod.social_media_url
       make_status(pod.name, pod.summary, pod.homepage, social_media_url)
     end
 

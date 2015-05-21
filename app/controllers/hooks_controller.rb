@@ -28,7 +28,7 @@ module FeedsApp
         headers = { 'User-Agent' => 'CocoaPods Feeds App' }
         response = REST.get(url, headers)
         if response.ok?
-          data
+          response.body
         end
       end
 

@@ -23,6 +23,14 @@ module FeedsApp
                         
         "{ success: true }"
       end
+      
+      def perform_request(url)
+        headers = { 'User-Agent' => 'CocoaPods Feeds App' }
+        response = REST.get(url, headers)
+        if response.ok?
+          data
+        end
+      end
 
     end
   end

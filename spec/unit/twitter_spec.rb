@@ -5,7 +5,12 @@ require File.expand_path('../../../app', __FILE__)
 describe FeedsApp::TwitterNotifier do
 
   before do
-    # @pod = 
+    @pod = Pod::Specification.new do |s|
+      s.name = 'AFNetworking'
+      s.social_media_url = 'https://twitter.com/AFNetworking'
+      s.homepage = 'http://afnetworking.com'
+      s.summary = 'A delightful iOS and OS X networking framework.'
+    end
     @twitter_client = stub
     @sut = FeedsApp::TwitterNotifier.new(@twitter_client)
   end
@@ -14,8 +19,8 @@ describe FeedsApp::TwitterNotifier do
 
   describe 'In general' do
 
-    xit 'posts a tweet for the given Pod' do
-      @twitter_client.expects(:update).with('[AFNetworking by @AFNetworking] A delightful iOS and OS X networking framework. https://github.com/AFNetworking/AFNetworking')
+    it 'posts a tweet for the given Pod' do
+      @twitter_client.expects(:update).with('[AFNetworking by @AFNetworking] A delightful iOS and OS X networking framework. https://cocoapods.org/pods/AFNetworking')
       @sut.tweet(@pod)
     end
 

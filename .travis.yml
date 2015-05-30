@@ -1,4 +1,7 @@
 language: ruby
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y postgresql-server-dev-all
 install: rake bootstrap
 branches:
   only:

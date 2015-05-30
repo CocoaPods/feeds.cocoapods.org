@@ -73,6 +73,7 @@ describe FeedsApp::RSS do
       &lt;img src='https://github.com/Flipboard/FLAnimatedImage/raw/master/images/flanimatedimage-demo-player.gif' style='border:1px solid #aaa;min-width:44px; min-height:44px;margin: 22px 22px 0 0; padding: 4px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);border: 1px solid rgba(0, 0, 0, 0.2);'&gt;
       </description>
             <pubDate>Sat, 30 May 2015 14:09:48 -0700</pubDate>
+            <guid isPermaLink="false">FLAnimatedImage</guid>
             <dc:date>2015-05-30T14:09:48-07:00</dc:date>
           </item>
         </channel>

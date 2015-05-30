@@ -66,6 +66,8 @@ module FeedsApp
       item.link         = "https://cocoapods.org/pods/#{pod.name}"
       item.pubDate      = @creation_dates[pod.name]
       item.description  = rss_item_description(pod)
+      item.guid.content = pod.name
+      item.guid.isPermaLink = false
     end
 
     # Returns the HTML description of the RSS item corresponding to the given

@@ -42,13 +42,15 @@ module FeedsApp
       end
 
       get '/new-pods.rss' do
-        pods = DB.fetch(query("0", "168 HR")).to_a
-        creation_dates = Hash[pods.map { |pod| [pod[:name], pod[:created_at]] }]
+        pods = DB.fetch(query("0", "168 HR"))
+        creation_dates = {}
         pods = pods.map do |pod|
           spec = Pod::Specification.from_json(pod[:specification_data])
+          creation_dates[spec.name] = pod[:created_at]
           set = SpecSet.new(spec)
           Pod::Specification::Set::Presenter.new(set)
         end
+
         content_type :rss
         RSS.new(pods, creation_dates).feed
       end

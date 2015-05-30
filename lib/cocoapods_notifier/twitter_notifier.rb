@@ -58,8 +58,8 @@ module FeedsApp
         status = "[#{name}] #{summary}"
       end
       if status.length > message_max_length
-        max_lenght = message_max_length
-        status = truncate_message(status, max_lenght, ELLIPSIS_STRING)
+        max_length = message_max_length
+        status = truncate_message(status, max_length, ELLIPSIS_STRING)
       end
       status << LINK_SEPARATOR_STRING
       status << link
@@ -95,8 +95,8 @@ module FeedsApp
     #
     def truncate_message(message, length, ellipsis_string)
       chars = message.scan(/./mu)
-      max_lenght_with_ellipsis = length - ellipsis_string.length - 1
-      allowed_chars = chars[0..max_lenght_with_ellipsis]
+      max_length_with_ellipsis = length - ellipsis_string.length - 1
+      allowed_chars = chars[0..max_length_with_ellipsis]
       allowed_chars.join.gsub(/ ?\.?,?$/, '') + ellipsis_string
     end
 

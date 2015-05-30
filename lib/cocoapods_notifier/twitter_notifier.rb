@@ -28,7 +28,7 @@ module FeedsApp
     #
     def status_for_pod(pod)
       social_media_url = pod.social_media_url
-      make_status(pod.name, pod.summary, pod.homepage, social_media_url)
+      make_status(pod.name, pod.summary, pod_page_for_pod(pod), social_media_url)
     end
 
     # Returns the body for the tweet of the given Pod taking into account
@@ -94,6 +94,11 @@ module FeedsApp
     #
     def message_max_length
       MESSAGE_MAX_LENGTH - LINK_MAX_LENGTH - LINK_SEPARATOR_STRING.length
+    end
+
+    # @return [String] The pod page URL for the given pod
+    def pod_page_for_pod(pod)
+      "https://cocoapods.org/pods/#{pod.name}"
     end
 
     private

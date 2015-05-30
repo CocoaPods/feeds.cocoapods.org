@@ -30,9 +30,27 @@ module FeedsApp
         slim :index
       end
 
+      SpecSet = Struct.new(:specification)
+
+      class SpecSet
+        def name
+          specification.name
+        end
+        def versions
+          [specification.version]
+        end
+      end
+
       get '/new-pods.rss' do
-        #RSS.new(master_repo.pods, master_repo.creation_dates).feed
-        "<xml></xml>"
+        pods = DB.fetch(query("0", "168 HR")).to_a
+        creation_dates = Hash[pods.map { |pod| [pod[:name], pod[:created_at]] }]
+        pods = pods.map do |pod|
+          spec = Pod::Specification.from_json(pod[:specification_data])
+          set = SpecSet.new(spec)
+          Pod::Specification::Set::Presenter.new(set)
+        end
+        content_type :rss
+        RSS.new(pods, creation_dates).feed
       end
 
       TIME_QUERY = <<-QUERY.freeze

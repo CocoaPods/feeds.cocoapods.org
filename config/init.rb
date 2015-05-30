@@ -14,4 +14,3 @@ require 'pg'
 db_loggers = []
 DB = Sequel.connect(ENV['DATABASE_URL'], loggers: db_loggers)
 Sequel.extension :core_extensions, :migration
-

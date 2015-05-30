@@ -46,7 +46,7 @@ module FeedsApp
     #         most recent pods sorted from newest to oldest.
     #
     def pods_for_feed
-      pods.sort_by { |pod| creation_dates[pod.name] }.reverse[0..29]
+      pods
     end
 
     private
@@ -76,20 +76,16 @@ module FeedsApp
     # @return [String] the description for the RSS item.
     #
     def rss_item_description(pod)
-      github_watchers = Statistics.get_stargazer_count(pod)
-
       s =  "<p>#{markdown(pod.description)}</p>"
       s << "\n<p>Authored by #{pod.authors}.</p>"
       s << "\n<p>[ Available at: <a href=\"#{pod.source_url}\">#{pod.source_url}</a> ]</p>"
       s << "\n<ul>"
       s << "\n  <li>Latest version: #{pod.version}</li>"
       s << "\n  <li>Platform: #{pod.platform}</li>"
-      s << "\n  <li>Homepage: #{pod.homepage}</li>"
+      s << "\n  <li>Homepage: <a href='#{pod.homepage}'>#{pod.homepage}</a></li>"
       s << "\n  <li>License: #{pod.license}</li>" if pod.license
-      s << "\n  <li>Stargazers: #{github_watchers}</li>" if github_watchers
       s << "\n</ul>"
 
-      # TODO: Fix nil in 1.8.7 in CocoaPods Core.
       pod.spec.screenshots.compact.each do |screenshot_url|
         style =  'border:1px solid #aaa;'
         style << 'min-width:44px; min-height:44px;'

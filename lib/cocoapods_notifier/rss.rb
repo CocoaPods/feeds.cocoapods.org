@@ -63,7 +63,7 @@ module FeedsApp
     #
     def configure_rss_item(item, pod)
       item.title        = pod.name
-      item.link         = pod.homepage
+      item.link         = "https://cocoapods.org/pods/#{pod.name}"
       item.pubDate      = @creation_dates[pod.name]
       item.description  = rss_item_description(pod)
     end
@@ -84,6 +84,7 @@ module FeedsApp
       s << "\n<ul>"
       s << "\n  <li>Latest version: #{pod.version}</li>"
       s << "\n  <li>Platform: #{pod.platform}</li>"
+      s << "\n  <li>Homepage: #{pod.homepage}</li>"
       s << "\n  <li>License: #{pod.license}</li>" if pod.license
       s << "\n  <li>Stargazers: #{github_watchers}</li>" if github_watchers
       s << "\n</ul>"

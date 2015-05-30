@@ -1,8 +1,8 @@
 require 'pathname'
-ROOT = Pathname.new(File.expand_path('../../', __FILE__))
-$LOAD_PATH.unshift((ROOT + 'lib').to_s)
-$LOAD_PATH.unshift((ROOT + 'spec').to_s)
-$LOAD_PATH.unshift((ROOT).to_s)
+SPEC_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
+$LOAD_PATH.unshift((SPEC_ROOT + 'lib').to_s)
+$LOAD_PATH.unshift((SPEC_ROOT + 'spec').to_s)
+$LOAD_PATH.unshift((SPEC_ROOT).to_s)
 
 ENV['RACK_ENV'] = 'test'
 HOOK_PATH = ENV['HOOK_PATH'] = 'secret'

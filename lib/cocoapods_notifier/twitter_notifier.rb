@@ -36,11 +36,21 @@ module FeedsApp
     #
     # @note   The summary is a required attribute of a Specification.
     #
-    # @param  [] pod
+    # @param  [String] name
+    #          The name of the pod
+    #
+    # @param  [String] summary
+    #         The (mandatory) summary of the pod
+    #
+    # @param  [String] link
+    #         The link to the pod page to add at the end of the tweet
+    #
+    # @param  [String] social_media_url
+    #         The Social Media URL (e.g. twitter account) of the pod author
     #
     # @return [String] The body of the tweet.
     #
-    def make_status(name, summary, homepage, social_media_url)
+    def make_status(name, summary, link, social_media_url)
       account = account_for_social_media_url(social_media_url)
       if account
         status = "[#{name} by #{account}] #{summary}"
@@ -52,7 +62,7 @@ module FeedsApp
         status = truncate_message(status, max_lenght, ELLIPSIS_STRING)
       end
       status << LINK_SEPARATOR_STRING
-      status << homepage
+      status << link
       status
     end
 

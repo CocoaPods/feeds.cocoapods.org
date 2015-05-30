@@ -36,12 +36,12 @@ module FeedsApp
       end
 
       TIME_QUERY = <<-QUERY.freeze
-        SELECT DISTINCT ON (pods.name) * FROM pods
+        SELECT DISTINCT ON (pods.name, pods.created_at) * FROM pods
         INNER JOIN pod_versions ON pods.id=pod_versions.pod_id
         INNER JOIN commits ON pod_versions.id = commits.pod_version_id
         WHERE pods.created_at BETWEEN NOW() - '%{after_date}'::INTERVAL AND NOW() - '%{before_date}'::INTERVAL
         AND pods.deleted IS FALSE
-        ORDER BY pods.name, pods.created_at DESC
+        ORDER BY pods.created_at DESC
       QUERY
 
       def query before_date, after_date
